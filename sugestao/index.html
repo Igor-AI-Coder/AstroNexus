@@ -11,7 +11,7 @@
 <style>
     body {
         margin: 0;
-        background: #18181b;
+        background: #03050D;
         font-family: "Orbitron", sans-serif;
         color: #fff;
         height: 200vh;
@@ -404,6 +404,28 @@
             font-size: 18px;
         }
     }
+
+    /* EFEITO AO INICIAR O SITE  */
+    .hero-image,
+    .hero-content {
+        opacity: 0;
+        transform: translateX(-80px);
+        transition: opacity 0.9s cubic-bezier(.77, 0, .18, 1) 0.2s, transform 0.9s cubic-bezier(.77, 0, .18, 1) 0.2s;
+    }
+
+    .hero-image.hero-in,
+    .hero-content.hero-in {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .hero-image.hero-in {
+        transition-delay: 0.3s;
+    }
+
+    .hero-content.hero-in {
+        transition-delay: 0.5s;
+    }
 </style>
 
 <body>
@@ -425,25 +447,7 @@
             </button>
         </div>
     </header>
-    <script>
-        // Header scroll background
-        const header = document.getElementById('astrodHeader');
-        window.addEventListener('scroll', function () {
-            if (window.scrollY > 0) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
 
-        // Hamburger menu
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const nav = document.getElementById('mainNav');
-        hamburgerBtn.addEventListener('click', function () {
-            nav.classList.toggle('open');
-            hamburgerBtn.setAttribute('aria-expanded', nav.classList.contains('open') ? 'true' : 'false');
-        });
-    </script>
     <!-- Seção Hero Centralizada -->
     <section class="hero-section">
         <div class="hero-container">
@@ -458,6 +462,51 @@
             </div>
         </div>
     </section>
+    <!-- About Section Novo -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-left">
+                <p class="about-up">Sobre AstroNexus</p>
+                <h2 class="about-title">Explore o Universo da AstroNexus</h2>
+                <p class="about-desc">
+                    AstroNexus é uma plataforma inovadora que conecta entusiastas da astronomia, oferecendo recursos avançados para explorar o cosmos. Com uma interface intuitiva e ferramentas poderosas, os usuários podem descobrir constelações, planetas e fenômenos celestiais de forma interativa. Junte-se a nós e desvende os mistérios do universo!
+                </p>
+                <div class="about-more">
+                    <a href="#">Saiba mais</a>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="canvas1.png" alt="">
+            </div>
+        </div>
+    </section>
 </body>
+<script>
+    // Header scroll background
+    const header = document.getElementById('astrodHeader');
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 0) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // Hamburger menu
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const nav = document.getElementById('mainNav');
+    hamburgerBtn.addEventListener('click', function () {
+        nav.classList.toggle('open');
+        hamburgerBtn.setAttribute('aria-expanded', nav.classList.contains('open') ? 'true' : 'false');
+    });
+
+    // HERO ANIMATION - Garante que roda depois que tudo foi renderizado
+    window.addEventListener('load', function () {
+        setTimeout(function () {
+            document.querySelector('.hero-image').classList.add('hero-in');
+            document.querySelector('.hero-content').classList.add('hero-in');
+        }, 100); // pequeno delay para suavizar a entrada
+    });
+</script>
 
 </html>
