@@ -1,549 +1,97 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AstroNexus - Sistema Solar Interativo</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;700&display=swap');
-        
-        :root {
-            --cosmic-purple: #1a0d2e;
-            --deep-blue: #16213e;
-            --nebula-pink: #e056fd;
-            --star-yellow: #ffd700;
-            --meteor-blue: #00d4ff;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #0c0c1d 0%, #1a0d2e 25%, #16213e 50%, #0a051a 100%);
-            color: white;
-            overflow-x: hidden;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .cosmic-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .stars {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 3s infinite alternate;
-        }
-
-        @keyframes twinkle {
-            0% { opacity: 0.3; transform: scale(1); }
-            100% { opacity: 1; transform: scale(1.2); }
-        }
-
-        .shooting-star {
-            position: absolute;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
-            animation: shoot 4s linear infinite;
-            opacity: 0;
-        }
-
-        @keyframes shoot {
-            0% {
-                opacity: 0;
-                transform: translateX(-100px) translateY(100px);
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                transform: translateX(300px) translateY(-100px);
-            }
-        }
-
-        .solar-system {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .orbit {
-            position: absolute;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: rotate 20s linear infinite;
-        }
-
-        .orbit-1 { width: 150px; height: 150px; animation-duration: 8s; }
-        .orbit-2 { width: 200px; height: 200px; animation-duration: 12s; }
-        .orbit-3 { width: 280px; height: 280px; animation-duration: 16s; }
-        .orbit-4 { width: 360px; height: 360px; animation-duration: 24s; }
-        .orbit-5 { width: 450px; height: 450px; animation-duration: 32s; }
-        .orbit-6 { width: 540px; height: 540px; animation-duration: 40s; }
-        .orbit-7 { width: 630px; height: 630px; animation-duration: 48s; }
-        .orbit-8 { width: 720px; height: 720px; animation-duration: 56s; }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .sun {
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle, #ffd700, #ff8c00);
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 100px #ffd700, 0 0 200px #ff8c00;
-            animation: pulse 3s ease-in-out infinite alternate;
-            z-index: 10;
-        }
-
-        @keyframes pulse {
-            0% { transform: translate(-50%, -50%) scale(1); }
-            100% { transform: translate(-50%, -50%) scale(1.1); }
-        }
-
-        .planet {
-            position: absolute;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: spin 10s linear infinite;
-        }
-
-        .planet:hover {
-            transform: scale(1.2);
-            filter: brightness(1.3);
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .mercury { width: 12px; height: 12px; background: #8c7853; top: -6px; left: 75px; }
-        .venus { width: 16px; height: 16px; background: #ffc649; top: -8px; left: 100px; }
-        .earth { width: 18px; height: 18px; background: linear-gradient(45deg, #1e90ff, #228b22); top: -9px; left: 140px; }
-        .mars { width: 14px; height: 14px; background: #cd5c5c; top: -7px; left: 180px; }
-        .jupiter { width: 32px; height: 32px; background: linear-gradient(45deg, #daa520, #b8860b); top: -16px; left: 225px; }
-        .saturn { width: 28px; height: 28px; background: #fad5a5; top: -14px; left: 270px; position: relative; }
-        .uranus { width: 22px; height: 22px; background: #4fd0e4; top: -11px; left: 315px; }
-        .neptune { width: 20px; height: 20px; background: #4169e1; top: -10px; left: 360px; }
-
-        .saturn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 40px;
-            height: 40px;
-            border: 2px solid rgba(250, 213, 165, 0.6);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .section-container {
-            min-height: 100vh;
-            padding: 4rem 2rem;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            margin: 2rem 0;
-        }
-
-        .planet-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .planet-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .glow-text {
-            font-family: 'Orbitron', monospace;
-            text-shadow: 0 0 20px currentColor;
-        }
-
-        .cosmic-button {
-            background: linear-gradient(45deg, #e056fd, #00d4ff);
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            color: white;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .cosmic-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(224, 86, 253, 0.4);
-        }
-
-        .size-comparison {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .star-visual {
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        .sun-visual {
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, #ffd700, #ff8c00);
-        }
-
-        .uy-scuti-visual {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, #ff4500, #dc143c);
-        }
-
-        @media (max-width: 768px) {
-            .orbit-1 { width: 100px; height: 100px; }
-            .orbit-2 { width: 130px; height: 130px; }
-            .orbit-3 { width: 180px; height: 180px; }
-            .orbit-4 { width: 230px; height: 230px; }
-            .orbit-5 { width: 280px; height: 280px; }
-            .orbit-6 { width: 330px; height: 330px; }
-            .orbit-7 { width: 380px; height: 380px; }
-            .orbit-8 { width: 430px; height: 430px; }
-
-            .sun { width: 50px; height: 50px; }
-            .mercury { left: 50px; }
-            .venus { left: 65px; }
-            .earth { left: 90px; }
-            .mars { left: 115px; }
-            .jupiter { left: 140px; width: 24px; height: 24px; top: -12px; }
-            .saturn { left: 165px; width: 20px; height: 20px; top: -10px; }
-            .uranus { left: 190px; width: 16px; height: 16px; top: -8px; }
-            .neptune { left: 215px; width: 14px; height: 14px; top: -7px; }
-
-            .uy-scuti-visual {
-                width: 200px;
-                height: 200px;
-            }
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AstroNexus - Explore o Universo</title>
+    <meta name="description" content="AstroNexus - Plataforma inovadora para explorar o cosmos, descobrir constelações e fenômenos celestiais">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
-    <!-- Fundo Cósmico -->
-    <div class="cosmic-bg" id="cosmic-bg"></div>
-
     <!-- Header -->
-    <header class="fixed top-0 w-full z-50 bg-black bg-opacity-30 backdrop-blur-md">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <h1 class="text-3xl font-bold glow-text" style="font-family: 'Orbitron', monospace;">AstroNexus</h1>
-                <div class="hidden md:flex space-x-6">
-                    <a href="#sistema-solar" class="hover:text-yellow-300 transition-colors">Sistema Solar</a>
-                    <a href="#planetas" class="hover:text-yellow-300 transition-colors">Planetas</a>
-                    <a href="#luas" class="hover:text-yellow-300 transition-colors">Luas</a>
-                    <a href="#galaxia" class="hover:text-yellow-300 transition-colors">Galáxia</a>
-                    <a href="#estrelas" class="hover:text-yellow-300 transition-colors">Estrelas</a>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Sistema Solar Interativo -->
-    <section id="sistema-solar" class="solar-system">
-        <div class="sun" title="Sol - Nossa Estrela"></div>
-        
-        <!-- Órbitas e Planetas -->
-        <div class="orbit orbit-1">
-            <div class="planet mercury" onclick="scrollToPlanet('mercurio')" title="Mercúrio"></div>
-        </div>
-        <div class="orbit orbit-2">
-            <div class="planet venus" onclick="scrollToPlanet('venus')" title="Vênus"></div>
-        </div>
-        <div class="orbit orbit-3">
-            <div class="planet earth" onclick="scrollToPlanet('terra')" title="Terra"></div>
-        </div>
-        <div class="orbit orbit-4">
-            <div class="planet mars" onclick="scrollToPlanet('marte')" title="Marte"></div>
-        </div>
-        <div class="orbit orbit-5">
-            <div class="planet jupiter" onclick="scrollToPlanet('jupiter')" title="Júpiter"></div>
-        </div>
-        <div class="orbit orbit-6">
-            <div class="planet saturn" onclick="scrollToPlanet('saturno')" title="Saturno"></div>
-        </div>
-        <div class="orbit orbit-7">
-            <div class="planet uranus" onclick="scrollToPlanet('urano')" title="Urano"></div>
-        </div>
-        <div class="orbit orbit-8">
-            <div class="planet neptune" onclick="scrollToPlanet('netuno')" title="Netuno"></div>
-        </div>
-
-        <!-- Instruções -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-center">
-            <p class="text-lg mb-4 glow-text">Clique nos planetas para explorar</p>
-            <button class="cosmic-button" onclick="document.getElementById('planetas').scrollIntoView()">
-                Começar Exploração
+    <header class="astrod-header" id="astrodHeader">
+        <div class="header-container">
+            <div class="logo">AstroNexus</div>
+            <nav class="nav" id="mainNav">
+                <a href="#home" class="nav-item home">Home</a>
+                <a href="#about" class="nav-item">Sobre</a>
+                <a href="#services" class="nav-item">Serviços</a>
+                <a href="#blog" class="nav-item">Blog</a>
+                <a href="#contact" class="nav-item">Contato</a>
+            </nav>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Abrir navegação" aria-controls="mainNav" aria-expanded="false" type="button">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
             </button>
         </div>
+    </header>
+
+    <!-- Seção Hero -->
+    <section class="hero-section" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">AstroNexus</h1>
+                <p class="hero-desc">
+                    Conecte-se com o universo através da nossa plataforma inovadora.
+                    Explore constelações, planetas e fenômenos celestiais de forma interativa
+                    e desvende os mistérios do cosmos.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#about" class="btn-primary">Explorar Agora</a>
+                    <a href="#services" class="btn-secondary">Saiba Mais</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="img/slide-img.png" alt="Exploração do universo - AstroNexus">
+            </div>
+        </div>
     </section>
 
-    <!-- Seção dos Planetas -->
-    <section id="planetas" class="section-container">
-        <div class="container mx-auto max-w-6xl">
-            <h2 class="text-5xl font-bold text-center mb-16 glow-text" style="font-family: 'Orbitron', monospace;">Os Planetas</h2>
-            
-            <!-- Mercúrio -->
-            <div id="mercurio" class="planet-card">
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <div>
-                        <h3 class="text-3xl font-bold mb-4 text-yellow-300 glow-text">Mercúrio</h3>
-                        <div class="space-y-4">
-                            <p><strong>Composição:</strong> Núcleo de ferro, manto de silicato</p>
-                            <p><strong>Temperatura:</strong> -173°C a 427°C</p>
-                            <p><strong>Distância do Sol:</strong> 58 milhões de km</p>
-                            <p><strong>Período Orbital:</strong> 88 dias terrestres</p>
-                            <p><strong>Curiosidade:</strong> É o menor planeta do Sistema Solar e o mais próximo do Sol. Suas crateras são semelhantes às da Lua.</p>
-                        </div>
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <div class="about-left">
+                <p class="about-label">Sobre AstroNexus</p>
+                <h2 class="about-title">Explore o Universo Conosco</h2>
+                <p class="about-desc">
+                    AstroNexus é uma plataforma inovadora que conecta entusiastas da astronomia,
+                    oferecendo recursos avançados para explorar o cosmos. Com uma interface intuitiva
+                    e ferramentas poderosas, os usuários podem descobrir constelações, planetas e
+                    fenômenos celestiais de forma interativa.
+                </p>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">★</span>
+                        <span>Interface Intuitiva</span>
                     </div>
-                    <div class="flex justify-center">
-                        <div class="w-48 h-48 bg-gray-400 rounded-full" style="background: radial-gradient(circle at 30% 30%, #a0a0a0, #606060);"></div>
+                    <div class="feature-item">
+                        <span class="feature-icon">◉</span>
+                        <span>Exploração Interativa</span>
                     </div>
-                </div>
-            </div>
-
-            <!-- Vênus -->
-            <div id="venus" class="planet-card">
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <div class="order-2 md:order-1 flex justify-center">
-                        <div class="w-48 h-48 rounded-full" style="background: radial-gradient(circle at 30% 30%, #ffc649, #cc9900);"></div>
-                    </div>
-                    <div class="order-1 md:order-2">
-                        <h3 class="text-3xl font-bold mb-4 text-yellow-400 glow-text">Vênus</h3>
-                        <div class="space-y-4">
-                            <p><strong>Composição:</strong> Atmosfera densa de CO₂, núcleo de ferro</p>
-                            <p><strong>Temperatura:</strong> 462°C (o mais quente do Sistema Solar)</p>
-                            <p><strong>Distância do Sol:</strong> 108 milhões de km</p>
-                            <p><strong>Período Orbital:</strong> 225 dias terrestres</p>
-                            <p><strong>Curiosidade:</strong> Conhecido como "Estrela da Manhã", tem rotação retrógrada e pressão atmosférica 90 vezes maior que a Terra.</p>
-                        </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">◆</span>
+                        <span>Descobertas Celestiais</span>
                     </div>
                 </div>
-            </div>
-
-            <!-- Terra -->
-            <div id="terra" class="planet-card">
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <div>
-                        <h3 class="text-3xl font-bold mb-4 text-blue-400 glow-text">Terra</h3>
-                        <div class="space-y-4">
-                            <p><strong>Composição:</strong> 71% água, atmosfera de N₂ e O₂</p>
-                            <p><strong>Temperatura:</strong> -89°C a 58°C (média: 15°C)</p>
-                            <p><strong>Distância do Sol:</strong> 150 milhões de km</p>
-                            <p><strong>Período Orbital:</strong> 365,25 dias</p>
-                            <p><strong>Lua:</strong> 1 satélite natural (Lua)</p>
-                            <p><strong>Curiosidade:</strong> O único planeta conhecido com vida, possui campo magnético protetor e placas tectônicas ativas.</p>
-                        </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <div class="w-48 h-48 rounded-full" style="background: radial-gradient(circle at 30% 30%, #1e90ff, #228b22, #1e90ff);"></div>
-                    </div>
+                <div class="about-more">
+                    <a href="#services" class="btn-outline">Descobrir Mais</a>
                 </div>
             </div>
-
-            <!-- Marte -->
-            <div id="marte" class="planet-card">
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <div class="order-2 md:order-1 flex justify-center">
-                        <div class="w-48 h-48 rounded-full" style="background: radial-gradient(circle at 30% 30%, #cd5c5c, #8b0000);"></div>
-                    </div>
-                    <div class="order-1 md:order-2">
-                        <h3 class="text-3xl font-bold mb-4 text-red-400 glow-text">Marte</h3>
-                        <div class="space-y-4">
-                            <p><strong>Composição:</strong> Óxido de ferro (ferrugem), CO₂ na atmosfera</p>
-                            <p><strong>Temperatura:</strong> -143°C a 35°C</p>
-                            <p><strong>Distância do Sol:</strong> 228 milhões de km</p>
-                            <p><strong>Período Orbital:</strong> 687 dias terrestres</p>
-                            <p><strong>Luas:</strong> 2 (Fobos e Deimos)</p>
-                            <p><strong>Curiosidade:</strong> Chamado de "Planeta Vermelho", possui o maior vulcão do Sistema Solar (Monte Olimpo) e evidências de água antiga.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Júpiter -->
-            <div id="jupiter" class="planet-card">
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <div>
-                        <h3 class="text-3xl font-bold mb-4 text-orange-400 glow-text">Júpiter</h3>
-                        <div class="space-y-4">
-                            <p><strong>Composição:</strong> Hidrogênio e hélio gasosos</p>
-                            <p><strong>Temperatura:</strong> -145°C</p>
-                            <p><strong>Distância do Sol:</strong> 778 milhões de km</p>
-                            <p><strong>Período Orbital:</strong> 12 anos terrestres</p>
-                            <p><strong>Luas:</strong> 95 confirmadas (incluindo Io, Europa, Ganimedes, Calisto)</p>
-                            <p><strong>Curiosidade:</strong> O maior planeta do Sistema Solar, com uma Grande Mancha Vermelha (tempestade maior que a Terra) ativa há séculos.</p>
-                        </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <div class="w-48 h-48 rounded-full" style="background: radial-gradient(circle at 30% 30%, #daa520, #b8860b);"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Saturno -->
-            <div id="saturno" class="planet-card">
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <div class="order-2 md:order-1 flex justify-center">
-                        <div class="relative">
-                            <div class="w-48 h-48 rounded-full" style="background: radial-gradient(circle at 30% 30%, #fad5a5, #daa520);"></div>
-                            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 border-4 border-yellow-200 rounded-full opacity-60"></div>
-                        </div>
-                    </div>
-                    <div class="order-1 md:order-2">
-                        <h3 class="text-3xl font-bold mb-4 text-yellow-200 glow-text">Saturno</h3>
-                        <div class="space-y-4">
-                            <p><strong>Composição:</strong> Hidrogênio e hélio, menos denso que a água</p>
-                            <p><strong>Temperatura:</strong> -178°C</p>
-                            <p><strong>Distância do Sol:</strong> 1,4 bilhões de km</p>
-                            <p><strong>Período Orbital:</strong> 29 anos terrestres</p>
-                            <p><strong>Luas:</strong> 146 confirmadas (incluindo Titã, Encélado)</p>
-                            <p><strong>Curiosidade:</strong> Famoso por seus espetaculares anéis compostos de gelo e rocha. Flutuaria na água se houvesse um oceano grande o suficiente!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Urano -->
-            <div id="urano" class="planet-card">
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <div>
-                        <h3 class="text-3xl font-bold mb-4 text-cyan-400 glow-text">Urano</h3>
-                        <div class="space-y-4">
-                            <p><strong>Composição:</strong> Água, metano e amônia congelados</p>
-                            <p><strong>Temperatura:</strong> -224°C</p>
-                            <p><strong>Distância do Sol:</strong> 2,9 bilhões de km</p>
-                            <p><strong>Período Orbital:</strong> 84 anos terrestres</p>
-                            <p><strong>Luas:</strong> 27 conhecidas</p>
-                            <p><strong>Curiosidade:</strong> Gira "de lado" com inclinação de 98°, tem anéis fracos e uma atmosfera rica em metano que lhe dá a cor azul-esverdeada.</p>
-                        </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <div class="w-48 h-48 rounded-full" style="background: radial-gradient(circle at 30% 30%, #4fd0e4, #00ced1);"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Netuno -->
-            <div id="netuno" class="planet-card">
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <div class="order-2 md:order-1 flex justify-center">
-                        <div class="w-48 h-48 rounded-full" style="background: radial-gradient(circle at 30% 30%, #4169e1, #191970);"></div>
-                    </div>
-                    <div class="order-1 md:order-2">
-                        <h3 class="text-3xl font-bold mb-4 text-blue-500 glow-text">Netuno</h3>
-                        <div class="space-y-4">
-                            <p><strong>Composição:</strong> Hidrogênio, hélio e metano</p>
-                            <p><strong>Temperatura:</strong> -218°C</p>
-                            <p><strong>Distância do Sol:</strong> 4,5 bilhões de km</p>
-                            <p><strong>Período Orbital:</strong> 165 anos terrestres</p>
-                            <p><strong>Luas:</strong> 16 conhecidas (incluindo Tritão)</p>
-                            <p><strong>Curiosidade:</strong> O planeta mais ventoso do Sistema Solar, com ventos de até 2.100 km/h. Sua existência foi prevista matematicamente antes de ser observado.</p>
-                        </div>
-                    </div>
+            <div class="about-right">
+                <div class="about-image">
+                    <img src="img/canvas1.png" alt="Exploração espacial - Tecnologia AstroNexus">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Seção das Luas -->
-    <section id="luas" class="section-container">
-        <div class="container mx-auto max-w-6xl">
-            <h2 class="text-5xl font-bold text-center mb-16 glow-text" style="font-family: 'Orbitron', monospace;">Principais Luas</h2>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="planet-card">
-                    <h3 class="text-2xl font-bold mb-4 text-gray-300 glow-text">Lua (Terra)</h3>
-                    <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gray-400"></div>
-                    <p><strong>Diâmetro:</strong> 3.474 km</p>
-                    <p><strong>Temperatura:</strong> -233°C a 123°C</p>
-                    <p><strong>Curiosidade:</strong> Responsável pelas marés terrestres e estabilização do eixo da Terra.</p>
-                </div>
+    <script src="js/script.js"></script>
+</body>
 
-                <div class="planet-card">
-                    <h3 class="text-2xl font-bold mb-4 text-yellow-400 glow-text">Io (Júpiter)</h3>
-                    <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-yellow-400"></div>
-                    <p><strong>Diâmetro:</strong> 3.643 km</p>
-                    <p><strong>Temperatura:</strong> -183°C</p>
-                    <p><strong>Curiosidade:</strong> A lua mais vulcanicamente ativa do Sistema Solar, com mais de 400 vulcões ativos.</p>
-                </div>
-
-                <div class="planet-card">
-                    <h3 class="text-2xl font-bold mb-4 text-blue-300 glow-text">Europa (Júpiter)</h3>
-                    <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-blue-200"></div>
-                    <p><strong>Diâmetro:</strong> 3.122 km</p>
-                    <p><strong>Temperatura:</strong> -223°C a -148°C</p>
-                    <p><strong>Curiosidade:</strong> Possui um oceano subterrâneo que pode conter mais água que todos os oceanos da Terra.</p>
-                </div>
-
-                <div class="planet-card">
-                    <h3 class="text-2xl font-bold mb-4 text-gray-400 glow-text">Ganimedes (Júpiter)</h3>
-                    <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gray-500"></div>
-                    <p><strong>Diâmetro:</strong> 5.268 km</p>
-                    <p><strong>Temperatura:</strong> -183°C</p>
-                    <p><strong>Curiosidade:</strong> A maior lua do Sistema Solar, maior que Mercúrio, com campo magnético próprio.</p>
-                </div>
-
-                <div class="planet-card">
-                    <h3 class="text-2xl font-bold mb-4 text-orange-400 glow-text">Titã (Saturno)</h3>
-                    <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-orange-300"></div>
-                    <p><strong>Diâmetro:</strong> 5.149 km</p>
-                    <p><strong>Temperatura:</strong> -179°C</p>
-                    <p><strong>Curiosidade:</strong> Possui atmosfera densa e lagos de metano líquido. É considerado similar à Terra primitiva.</p>
-                </div>
-
-                <div class="planet-card">
-                    <h3 class="text-2xl font-bold mb-4 text-blue-400 glow
+</html>
