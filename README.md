@@ -19,4 +19,4 @@ Este projeto foi desenvolvido como parte da disciplina **Linguagem Script** do c
 
 ## 🌐 Acesse o Projeto
 
-🚀 **[Ver Site Online](https://maneuu.github.io/astronexus/)**
+🚀 **[Ver Site Online](https://igor-ai-coder.github.io/AstroNexus/)**
