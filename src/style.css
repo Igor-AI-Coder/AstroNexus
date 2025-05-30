@@ -8,7 +8,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: url(../img/gif-02.gif) center center/cover no-repeat fixed;
+  background: url(./../img/gif-02.gif) center center/cover no-repeat fixed;
   font-family: "Orbitron", sans-serif;
   color: #ffffff;
   line-height: 1.6;
