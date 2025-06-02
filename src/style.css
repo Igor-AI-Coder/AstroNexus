@@ -504,7 +504,7 @@ html {
 
 .title-main {
   display: block;
-  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-size: clamp(3.5rem, 8vw, 5.9rem);
   font-weight: 900;
   letter-spacing: 3px;
   background: linear-gradient(135deg, #ffffff, #e0e0e0, #cccccc);
