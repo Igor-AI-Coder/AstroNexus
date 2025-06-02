@@ -1,209 +1,205 @@
-// DOM Content Loaded
+// DOM Content Loaded - Versão Simplificada
 document.addEventListener("DOMContentLoaded", function () {
-  initializeHeader();
   initializeHamburgerMenu();
-  initializeHeroAnimation();
   initializeSmoothScrolling();
-  initializeScrollAnimations();
+  initializeCart();
+  initializeLogin();
 });
 
-// Header scroll effect
-function initializeHeader() {
-  const header = document.getElementById("astrodHeader");
-
-  function handleScroll() {
-    if (window.scrollY > 50) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-  }
-
-  window.addEventListener("scroll", handleScroll);
-  handleScroll();
-}
-
-// Hamburger menu functionality
+// Hamburger menu
 function initializeHamburgerMenu() {
   const hamburgerBtn = document.getElementById("hamburgerBtn");
-  const nav = document.getElementById("mainNav");
-  const navItems = document.querySelectorAll(".nav-item");
+  const navCompact = document.querySelector(".nav-compact");
 
-  function toggleMenu() {
-    nav.classList.toggle("open");
-    hamburgerBtn.classList.toggle("active");
-
-    const isOpen = nav.classList.contains("open");
-    hamburgerBtn.setAttribute("aria-expanded", isOpen);
-
-    document.body.style.overflow = isOpen ? "hidden" : "";
-  }
-
-  function closeMenu() {
-    nav.classList.remove("open");
-    hamburgerBtn.classList.remove("active");
-    hamburgerBtn.setAttribute("aria-expanded", "false");
-    document.body.style.overflow = "";
-  }
-
-  hamburgerBtn.addEventListener("click", toggleMenu);
-
-  navItems.forEach((item) => {
-    item.addEventListener("click", closeMenu);
-  });
-
-  document.addEventListener("click", function (e) {
-    if (!nav.contains(e.target) && !hamburgerBtn.contains(e.target)) {
-      closeMenu();
-    }
-  });
-
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && nav.classList.contains("open")) {
-      closeMenu();
-    }
-  });
-}
-
-// Hero animation
-function initializeHeroAnimation() {
-  const heroContent = document.querySelector(".hero-content");
-  const heroImage = document.querySelector(".hero-image");
-
-  function triggerAnimation() {
-    if (heroContent) heroContent.classList.add("hero-in");
-    if (heroImage) heroImage.classList.add("hero-in");
-  }
-
-  if (document.readyState === "loading") {
-    window.addEventListener("load", () => {
-      setTimeout(triggerAnimation, 300);
+  if (hamburgerBtn && navCompact) {
+    hamburgerBtn.addEventListener("click", function () {
+      navCompact.classList.toggle("open");
+      hamburgerBtn.classList.toggle("active");
     });
-  } else {
-    setTimeout(triggerAnimation, 300);
+
+    // Close menu when clicking nav items
+    navCompact.addEventListener("click", function (e) {
+      if (
+        e.target.classList.contains("nav-item") ||
+        e.target.closest(".nav-item")
+      ) {
+        navCompact.classList.remove("open");
+        hamburgerBtn.classList.remove("active");
+      }
+    });
   }
 }
 
-// Smooth scrolling for anchor links
+// Smooth scrolling
 function initializeSmoothScrolling() {
-  const links = document.querySelectorAll('a[href^="#"]');
+  document.addEventListener("click", function (e) {
+    if (e.target.matches('a[href^="#"]')) {
+      e.preventDefault();
+      const target = document.querySelector(e.target.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  });
+}
 
-  links.forEach((link) => {
-    link.addEventListener("click", function (e) {
+// Cart functionality
+function initializeCart() {
+  let cartCount = 0;
+  const cartCountElement = document.getElementById("cartCount");
+  const cartIcon = document.getElementById("cartIcon");
+
+  // Add to cart buttons
+  document.addEventListener("click", function (e) {
+    if (
+      e.target.classList.contains("btn-add-cart") ||
+      e.target.closest(".btn-add-cart")
+    ) {
       e.preventDefault();
 
-      const targetId = this.getAttribute("href");
-      const targetElement = document.querySelector(targetId);
-
-      if (targetElement) {
-        const headerHeight =
-          document.querySelector(".astrod-header").offsetHeight;
-        const targetPosition = targetElement.offsetTop - headerHeight;
-
-        window.scrollTo({
-          top: targetPosition,
-          behavior: "smooth",
-        });
+      // Check if user is logged in
+      if (!isUserLoggedIn()) {
+        showLoginModal();
+        return;
       }
-    });
-  });
-}
 
-// Intersection Observer for scroll animations
-function initializeScrollAnimations() {
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -100px 0px",
-  };
+      cartCount++;
+      cartCountElement.textContent = cartCount;
+      cartCountElement.style.display = cartCount > 0 ? "flex" : "none";
 
-  const observer = new IntersectionObserver(function (entries) {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("animate-in");
-      }
-    });
-  }, observerOptions);
+      // Add animation to cart icon
+      cartIcon.style.transform = "scale(1.2)";
+      setTimeout(() => {
+        cartIcon.style.transform = "scale(1)";
+      }, 200);
 
-  const animateElements = document.querySelectorAll(".about-section");
-  animateElements.forEach((element) => {
-    observer.observe(element);
-  });
-}
-
-// Parallax effect for hero section
-function initializeParallax() {
-  const heroSection = document.querySelector(".hero-section");
-
-  function handleParallax() {
-    const scrolled = window.pageYOffset;
-    const rate = scrolled * -0.5;
-
-    if (heroSection) {
-      heroSection.style.transform = `translateY(${rate}px)`;
+      // Show success message
+      showNotification("Produto adicionado ao carrinho!");
     }
+  });
+
+  // Cart icon click
+  if (cartIcon) {
+    cartIcon.addEventListener("click", function () {
+      if (cartCount > 0) {
+        showNotification(`Você tem ${cartCount} item(s) no carrinho`);
+      } else {
+        showNotification("Seu carrinho está vazio");
+      }
+    });
+  }
+}
+
+// Login functionality
+function initializeLogin() {
+  const loginIcon = document.getElementById("loginIcon");
+  const loginModal = document.getElementById("loginModal");
+  const closeModal = loginModal.querySelector(".close");
+  const loginForm = document.getElementById("loginForm");
+
+  if (loginIcon) {
+    loginIcon.addEventListener("click", function () {
+      showLoginModal();
+    });
   }
 
-  window.addEventListener("scroll", debounce(handleParallax, 16));
+  if (closeModal) {
+    closeModal.addEventListener("click", function () {
+      hideLoginModal();
+    });
+  }
+
+  window.addEventListener("click", function (e) {
+    if (e.target === loginModal) {
+      hideLoginModal();
+    }
+  });
+
+  if (loginForm) {
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      // Simulate login
+      localStorage.setItem("userLoggedIn", "true");
+      hideLoginModal();
+      showNotification("Login realizado com sucesso!");
+      updateLoginStatus();
+    });
+  }
 }
 
-// Enhanced typing effect for hero title
-function initializeTypingEffect() {
-  const heroTitle = document.querySelector(".hero-title");
-  const text = heroTitle.textContent;
+// Helper functions
+function isUserLoggedIn() {
+  return localStorage.getItem("userLoggedIn") === "true";
+}
 
-  heroTitle.textContent = "";
-  heroTitle.style.borderRight = "2px solid #ffffff";
+function showLoginModal() {
+  const modal = document.getElementById("loginModal");
+  if (modal) {
+    modal.style.display = "block";
+  }
+}
 
-  let i = 0;
-  function typeWriter() {
-    if (i < text.length) {
-      heroTitle.textContent += text.charAt(i);
-      i++;
-      setTimeout(typeWriter, 100);
+function hideLoginModal() {
+  const modal = document.getElementById("loginModal");
+  if (modal) {
+    modal.style.display = "none";
+  }
+}
+
+function updateLoginStatus() {
+  const loginIcon = document.getElementById("loginIcon");
+  if (loginIcon) {
+    if (isUserLoggedIn()) {
+      loginIcon.innerHTML = '<i class="fas fa-user-check"></i>';
+      loginIcon.title = "Usuário logado";
     } else {
-      heroTitle.style.borderRight = "none";
+      loginIcon.innerHTML = '<i class="fas fa-user"></i>';
+      loginIcon.title = "Fazer login";
     }
   }
-
-  setTimeout(typeWriter, 1000);
 }
 
-// Utility function for debouncing
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
+function showNotification(message) {
+  // Create notification element
+  const notification = document.createElement("div");
+  notification.style.cssText = `
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    z-index: 3000;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+  `;
+  notification.textContent = message;
+
+  document.body.appendChild(notification);
+
+  // Show notification
+  setTimeout(() => {
+    notification.style.opacity = "1";
+    notification.style.transform = "translateX(0)";
+  }, 100);
+
+  // Hide notification after 3 seconds
+  setTimeout(() => {
+    notification.style.opacity = "0";
+    notification.style.transform = "translateX(100%)";
+    setTimeout(() => {
+      if (document.body.contains(notification)) {
+        document.body.removeChild(notification);
+      }
+    }, 300);
+  }, 3000);
 }
 
-// Enhanced mouse cursor effect
-function initializeCursorEffect() {
-  const cursor = document.createElement("div");
-  cursor.className = "custom-cursor";
-  document.body.appendChild(cursor);
-
-  document.addEventListener("mousemove", function (e) {
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
-  });
-
-  document.addEventListener("mousedown", function () {
-    cursor.classList.add("active");
-  });
-
-  document.addEventListener("mouseup", function () {
-    cursor.classList.remove("active");
-  });
-}
-
-// Performance optimized scroll handler
-const optimizedScrollHandler = debounce(function () {
-  // Additional scroll-based functionality
-}, 16);
-
-window.addEventListener("scroll", optimizedScrollHandler);
+// Initialize login status on page load
+updateLoginStatus();

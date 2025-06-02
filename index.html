@@ -5,10 +5,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AstroNexus - Explore o Universo</title>
-    <meta name="description" content="AstroNexus - Plataforma inovadora para explorar o cosmos, descobrir constelações e fenômenos celestiais">
+    <meta name="description" content="AstroNexus - Plataforma inovadora para explorar o cosmos, descobrir constelações e produtos astronômicos">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="src/style.css" />
 </head>
 
@@ -16,14 +17,57 @@
     <!-- Header -->
     <header class="astrod-header" id="astrodHeader">
         <div class="header-container">
-            <div class="logo">AstroNexus</div>
-            <nav class="nav" id="mainNav">
-                <a href="#home" class="nav-item home">Home</a>
-                <a href="#about" class="nav-item">Sobre</a>
-                <a href="#services" class="nav-item">Serviços</a>
-                <a href="#blog" class="nav-item">Blog</a>
-                <a href="#contact" class="nav-item">Contato</a>
+            <div class="logo">
+                <i class="fas fa-satellite"></i>
+                AstroNexus
+            </div>
+
+            <!-- Navegação Compacta -->
+            <nav class="nav-compact">
+                <div class="nav-item dropdown menu-dropdown">
+                    <span><i class="fas fa-bars"></i> Menu</span>
+                    <div class="dropdown-menu main-menu">
+                        <a href="#home">Home</a>
+                        <a href="#about">Sobre</a>
+                        <a href="#services">Serviços</a>
+                        <a href="#products">Produtos</a>
+                        <a href="#constellations">Constelações</a>
+                        <a href="#gallery">Galeria</a>
+                        <a href="#events">Eventos</a>
+                        <a href="#contact">Contato</a>
+                    </div>
+                </div>
+
+                <div class="nav-item dropdown pages-dropdown">
+                    <span><i class="fas fa-file-alt"></i> Páginas</span>
+                    <div class="dropdown-menu pages-menu">
+                        <a href="#quiz">Quiz Astronômico</a>
+                        <a href="#faq">FAQ</a>
+                        <a href="#blog">Blog</a>
+                        <a href="#recursos">Recursos</a>
+                        <a href="#buracos-negros">Buracos Negros</a>
+                        <a href="#nebulosas">Nebulosas</a>
+                        <a href="#galaxias">Galáxias</a>
+                        <a href="#loja">Loja</a>
+                        <a href="#planetas">Planetas</a>
+                    </div>
+                </div>
+
+                <a href="#contact" class="nav-item contact-btn">
+                    <i class="fas fa-envelope"></i> Contato
+                </a>
             </nav>
+
+            <div class="header-actions">
+                <div class="action-icon cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="action-icon login-icon" id="loginIcon">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+
             <button class="hamburger" id="hamburgerBtn" aria-label="Abrir navegação" aria-controls="mainNav" aria-expanded="false" type="button">
                 <span class="hamburger-bar"></span>
                 <span class="hamburger-bar"></span>
@@ -34,21 +78,68 @@
 
     <!-- Seção Hero -->
     <section class="hero-section" id="home">
+        <div class="hero-background-elements">
+            <div class="floating-icon star-1"><i class="fas fa-star"></i></div>
+            <div class="floating-icon planet-1"><i class="fas fa-globe"></i></div>
+            <div class="floating-icon rocket-1"><i class="fas fa-rocket"></i></div>
+            <div class="floating-icon satellite-1"><i class="fas fa-satellite"></i></div>
+            <div class="floating-icon moon-1"><i class="fas fa-moon"></i></div>
+        </div>
+
         <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">AstroNexus</h1>
+            <div class="hero-content hero-in">
+
+                <div class="hero-badge">
+                    <i class="fas fa-sparkles"></i>
+                    <span>Explore o Infinito</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-main">AstroNexus</span>
+                    <span class="title-subtitle">Sua Jornada Cósmica Começa Aqui</span>
+                </h1>
                 <p class="hero-desc">
                     Conecte-se com o universo através da nossa plataforma inovadora.
-                    Explore constelações, planetas e fenômenos celestiais de forma interativa
+                    Explore constelações, produtos astronômicos e fenômenos celestiais de forma interativa
                     e desvende os mistérios do cosmos.
                 </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-telescope"></i>
+                        <div class="stat-content">
+                            <span class="stat-number">10k+</span>
+                            <span class="stat-label">Observações</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <div class="stat-content">
+                            <span class="stat-number">5k+</span>
+                            <span class="stat-label">Exploradores</span>
+                        </div>
+                    </div>
+                </div>
                 <div class="hero-buttons">
-                    <a href="#about" class="btn-primary">Explorar Agora</a>
-                    <a href="#services" class="btn-secondary">Saiba Mais</a>
+                    <a href="#products" class="btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        <span>Explorar Produtos</span>
+                    </a>
+                    <a href="#services" class="btn-secondary">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Saiba Mais</span>
+                    </a>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="/img/slide-img.png" alt="Exploração do universo - AstroNexus">
+            <div class="hero-image hero-in">
+                <div class="image-container">
+                    <div class="image-glow"></div>
+                    <div class="orbit-ring ring-1"></div>
+                    <div class="orbit-ring ring-2"></div>
+                    <div class="orbit-ring ring-3"></div>
+                    <div class="orbit-ring ring-4"></div>
+                    <div class="orbit-ring ring-5"></div>
+                    <div class="orbit-ring ring-6"></div>
+                    <img src="https://cms.code4rest.com/wp102/wp-content/uploads/2024/05/slide-img.png" alt="Exploração do universo - AstroNexus">
+                </div>
             </div>
         </div>
     </section>
@@ -62,8 +153,8 @@
                 <p class="about-desc">
                     AstroNexus é uma plataforma inovadora que conecta entusiastas da astronomia,
                     oferecendo recursos avançados para explorar o cosmos. Com uma interface intuitiva
-                    e ferramentas poderosas, os usuários podem descobrir constelações, planetas e
-                    fenômenos celestiais de forma interativa.
+                    e ferramentas poderosas, os usuários podem descobrir constelações, adquirir equipamentos
+                    e participar de eventos astronômicos de forma interativa.
                 </p>
                 <div class="about-features">
                     <div class="feature-item">
@@ -72,11 +163,11 @@
                     </div>
                     <div class="feature-item">
                         <span class="feature-icon">◉</span>
-                        <span>Exploração Interativa</span>
+                        <span>Produtos Especializados</span>
                     </div>
                     <div class="feature-item">
                         <span class="feature-icon">◆</span>
-                        <span>Descobertas Celestiais</span>
+                        <span>Comunidade Ativa</span>
                     </div>
                 </div>
                 <div class="about-more">
@@ -85,14 +176,408 @@
             </div>
             <div class="about-right">
                 <div class="about-image">
-                    <img src="/img/canvas1.png" alt="Exploração espacial - Tecnologia AstroNexus">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500" alt="Exploração espacial - Tecnologia AstroNexus">
                 </div>
             </div>
         </div>
     </section>
 
-    <script type="module" src="src/script.js"></script>
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="services-container">
+            <div class="section-header">
+                <h2 class="section-title">Nossos Serviços</h2>
+                <p class="section-subtitle">Descubra todas as ferramentas que oferecemos para sua jornada astronômica</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔭</div>
+                    <h3>Observação Guiada</h3>
+                    <p>Aprenda a usar telescópios e identificar objetos celestes com nossos guias especializados.</p>
+                    <a href="#" class="service-link">Saiba Mais</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌌</div>
+                    <h3>Mapas Estelares</h3>
+                    <p>Navegue pelo céu noturno com nossos mapas interativos de constelações em tempo real.</p>
+                    <a href="#" class="service-link">Explorar</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📡</div>
+                    <h3>Alertas Astronômicos</h3>
+                    <p>Receba notificações sobre eventos celestiais importantes e fenômenos raros.</p>
+                    <a href="#" class="service-link">Ativar</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>Consultoria Especializada</h3>
+                    <p>Orientação personalizada para escolha de equipamentos e planejamento de observações.</p>
+                    <a href="#" class="service-link">Consultar</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="products-container">
+            <div class="section-header">
+                <h2 class="section-title">Nossos Produtos</h2>
+                <p class="section-subtitle">Equipamentos e acessórios para sua jornada astronômica</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://w7.pngwing.com/pngs/565/269/png-transparent-refracting-telescope-sky-watcher-reflecting-telescope-optical-telescope-others-angle-refracting-telescope-achromatic-lens.png" alt="Telescópio Refrator">
+                        <div class="product-badge">Destaque</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Telescópio Refrator Pro</h3>
+                        <p class="product-description">Telescópio refrator de alta qualidade, ideal para observação planetária.</p>
+                        <div class="product-price">R$ 1.299,90</div>
+                        <button class="btn-add-cart" data-product="telescopio-refrator">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://png.pngtree.com/png-clipart/20240327/original/pngtree-watercolor-binoculars-clip-art-element-png-image_14686729.png" alt="Binóculo Astronômico">
+                    </div>
+                    <div class="product-info">
+                        <h3>Binóculo Astronômico</h3>
+                        <p class="product-description">Binóculo de alta precisão para observação de objetos celestes.</p>
+                        <div class="product-price">R$ 459,90</div>
+                        <button class="btn-add-cart" data-product="binoculo-astronomico">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://w7.pngwing.com/pngs/524/923/png-transparent-northern-hemisphere-southern-hemisphere-star-chart-night-sky-star-constellation-outer-space-astronomical-object-map.png" alt="Mapa Estelar">
+                    </div>
+                    <div class="product-info">
+                        <h3>Mapa Estelar Interativo</h3>
+                        <p class="product-description">Guia completo das constelações com realidade aumentada.</p>
+                        <div class="product-price">R$ 79,90</div>
+                        <button class="btn-add-cart" data-product="mapa-estelar">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://img.kentfaith.com/cache/catalog/products/us/KF33.036/KF33.036-1-518x518.jpg">
+                    </div>
+                    <div class="product-info">
+                        <h3>Kit Observação Iniciante</h3>
+                        <p class="product-description">Kit completo para quem está começando na astronomia.</p>
+                        <div class="product-price">R$ 249,90</div>
+                        <button class="btn-add-cart" data-product="kit-iniciante">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="products-footer">
+                <a href="#" class="btn-explore-more">
+                    <span>Ver Mais Produtos</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section" id="news">
+        <div class="news-container">
+            <div class="section-header">
+                <h2 class="section-title">Últimas Notícias</h2>
+                <p class="section-subtitle">Fique por dentro das novidades do mundo da astronomia</p>
+            </div>
+            <div class="news-grid">
+                <div class="news-card featured">
+                    <div class="news-image">
+                        <img src="https://s2.glbimg.com/6fKPqdsKfZEGOM4HLwp-cpXghxQ=/e.glbimg.com/og/ed/f/original/2022/08/24/low-res_toi_1452b_exoplanet_benoit_gougeon.jpg.png" alt="Descoberta de novo exoplaneta">
+                        <div class="news-category">Descoberta</div>
+                    </div>
+                    <div class="news-content">
+                        <h3>Novo Exoplaneta Descoberto na Zona Habitável</h3>
+                        <p>Cientistas descobrem planeta similar à Terra a 100 anos-luz de distância, com possibilidades de abrigar vida.</p>
+                        <div class="news-meta">
+                            <span class="news-date">15 de Junho, 2025</span>
+                            <span class="news-author">NASA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://ceuprofundo.com/wp-content/uploads/2022/05/shadow_diagram_gen_202205_printPT.png" alt="Eclipse lunar">
+                    </div>
+                    <div class="news-content">
+                        <h3>Eclipse Lunar Total em Setembro</h3>
+                        <p>Prepare-se para o próximo eclipse lunar total que será visível em toda a América do Sul.</p>
+                        <div class="news-meta">
+                            <span class="news-date">10 de Junho, 2025</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://img.odcdn.com.br/wp-content/uploads/2021/04/Nebulosa_Veu.jpg">
+                    </div>
+                    <div class="news-content">
+                        <h3>Hubble Captura Nova Nebulosa</h3>
+                        <p>Telescópio espacial revela detalhes impressionantes de nebulosa de formação estelar.</p>
+                        <div class="news-meta">
+                            <span class="news-date">8 de Junho, 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Constellations Section -->
+    <section class="constellations-section" id="constellations">
+        <div class="constellations-container">
+            <div class="section-header">
+                <h2 class="section-title">Constelações</h2>
+                <p class="section-subtitle">Descubra as histórias e mitologias por trás das constelações</p>
+            </div>
+            <div class="constellations-content">
+                <div class="constellation-featured">
+                    <div class="constellation-image">
+                        <img src="https://cdn.mos.cms.futurecdn.net/LPzg5FpttoEUoqCwBDZt9B.jpg" alt="Constelação de Órion">
+                    </div>
+                    <div class="constellation-info">
+                        <h3>Órion - O Caçador</h3>
+                        <p>Uma das constelações mais reconhecíveis do céu noturno, Órion é visível em todo o mundo durante o inverno no hemisfério norte. Contém estrelas brilhantes como Betelgeuse e Rigel, além da famosa Nebulosa de Órion.</p>
+                        <div class="constellation-details">
+                            <div class="detail-item">
+                                <strong>Melhor época:</strong> Dezembro a Fevereiro
+                            </div>
+                            <div class="detail-item">
+                                <strong>Estrelas principais:</strong> Betelgeuse, Rigel, Bellatrix
+                            </div>
+                            <div class="detail-item">
+                                <strong>Objetos notáveis:</strong> Nebulosa de Órion (M42)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="constellations-grid">
+                    <div class="constellation-card">
+                        <div class="constellation-card-image">
+                            <img src="https://img.freepik.com/fotos-gratis/constelacoes-da-ursa-maior-e-da-ursa-menor_23-2150028892.jpg?semt=ais_hybrid&w=740" alt="Ursa Maior">
+                        </div>
+                        <div class="constellation-card-content">
+                            <h4>Ursa Maior</h4>
+                            <p>Contém a famosa asterismo "Grande Carro", visível durante todo o ano no hemisfério norte.</p>
+                        </div>
+                    </div>
+                    <div class="constellation-card">
+                        <div class="constellation-card-image">
+                            <img src="https://www.go-astronomy.com/images/constellations/Cassiopeia.jpg" alt="Cassiopeia">
+                        </div>
+                        <div class="constellation-card-content">
+                            <h4>Cassiopeia</h4>
+                            <p>Forma um "W" distintivo no céu e é facilmente reconhecível próxima à Estrela Polar.</p>
+                        </div>
+                    </div>
+                    <div class="constellation-card">
+                        <div class="constellation-card-image">
+                            <img src="https://img.quizur.com/f/img63596d2757a3d1.01064085.jpg?lastEdited=1666805126" alt="Leão">
+                        </div>
+                        <div class="constellation-card-content">
+                            <h4>Leão</h4>
+                            <p>Uma constelação zodiacal que realmente se parece com um leão, melhor vista na primavera.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="gallery-container">
+            <div class="section-header">
+                <h2 class="section-title">Galeria Cósmica</h2>
+                <p class="section-subtitle">Uma coleção das mais belas imagens do universo</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item large-item">
+                    <img src="https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2023/08/cnn-L19jb21wb25lbnRzL2ltYWdlL2luc3RhbmNlcy9jbGx3cDdtcHkwMDBubzdvemMyaWgydjRu-L19wYWdlcy9jbGx3cDdtcDIwMDAwbzdvemFvYzJoM3Iy.JPG.jpg" alt="Nebulosa Colorida">
+                    <div class="gallery-overlay">
+                        <h4>Nebulosa de Formação Estelar</h4>
+                        <p>Berçário de estrelas em cores vibrantes</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Hubble2005-01-barred-spiral-galaxy-NGC1300.jpg/1024px-Hubble2005-01-barred-spiral-galaxy-NGC1300.jpg" alt="Galáxia Espiral">
+                    <div class="gallery-overlay">
+                        <h4>Galáxia Espiral</h4>
+                        <p>Majestosa estrutura em espiral</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://content.nationalgeographic.pt/medio/2023/06/04/sistema-solar_00000000_230604011221_1200x630.jpg" alt="Planeta e Luas">
+                    <div class="gallery-overlay">
+                        <h4>Sistema Planetário</h4>
+                        <p>Planeta com suas luas naturais</p>
+                    </div>
+                </div>
+                <div class="gallery-item tall-item">
+                    <img src="https://forbes.com.br/wp-content/uploads/2024/12/Life_Com-Goway-voce-pode-ver-a-aurora-boreal-em-varios-locais-incluindo-a-Noruega.jpg" alt="Aurora Boreal">
+                    <div class="gallery-overlay">
+                        <h4>Aurora Boreal</h4>
+                        <p>Dança de luzes nos polos terrestres</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://wallpapers.com/images/hd/windows-11-4k-starry-night-sky-8mkqxzhtg5cdfyn7.jpg" alt="Telescópio Espacial">
+                    <div class="gallery-overlay">
+                        <h4>Telescópio Espacial</h4>
+                        <p>Tecnologia avançada de observação</p>
+                    </div>
+                </div>
+                <div class="gallery-item wide-item">
+                    <img src="https://s2.static.brasilescola.uol.com.br/be/2022/05/via-lactea.jpg" alt="Via Láctea">
+                    <div class="gallery-overlay">
+                        <h4>Via Láctea</h4>
+                        <p>Nossa galáxia vista da Terra</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section" id="events">
+        <div class="events-container">
+            <div class="section-header">
+                <h2 class="section-title">Próximos Eventos</h2>
+                <p class="section-subtitle">Não perca os eventos astronômicos mais importantes</p>
+            </div>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">15</span>
+                        <span class="month">JUL</span>
+                    </div>
+                    <div class="event-image">
+                        <img src="https://www.jornaldafranca.com.br/wp-content/uploads/2023/10/incrivel-eclipse-solar-e-raios-de-luz-no-ceu-estrelado-sol-e-lua-no-espaco-1.jpg" alt="Eclipse Solar">
+                    </div>
+                    <div class="event-content">
+                        <h3>Eclipse Solar Parcial</h3>
+                        <p>Observação do eclipse solar parcial visível em várias regiões do Brasil. Evento gratuito com equipamentos de proteção fornecidos.</p>
+                        <div class="event-meta">
+                            <span class="event-time"><i class="fas fa-clock"></i> 14:30 - 17:00</span>
+                            <span class="event-location"><i class="fas fa-map-marker-alt"></i> São Paulo</span>
+                        </div>
+                        <a href="#" class="event-link">Mais Detalhes</a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">22</span>
+                        <span class="month">JUL</span>
+                    </div>
+                    <div class="event-image">
+                        <img src="https://img.odcdn.com.br/wp-content/uploads/2022/07/chuva-de-meteoros-Jeff-Dai.jpg" alt="Chuva de Meteoros">
+                    </div>
+                    <div class="event-content">
+                        <h3>Chuva de Meteoros Delta Aquáridas</h3>
+                        <p>Noite de observação da chuva de meteoros com até 20 meteoros por hora. Ideal para fotografia astronômica.</p>
+                        <div class="event-meta">
+                            <span class="event-time"><i class="fas fa-clock"></i> 21:00 - 05:00</span>
+                            <span class="event-location"><i class="fas fa-map-marker-alt"></i> Campos do Jordão</span>
+                        </div>
+                        <a href="#" class="event-link">Mais Detalhes</a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">05</span>
+                        <span class="month">AGO</span>
+                    </div>
+                    <div class="event-image">
+                        <img src="https://www.astroshop.pt/CMS/images/text/category/showroom_landsberg169_all.jpeg" alt="Workshop Telescópio">
+                    </div>
+                    <div class="event-content">
+                        <h3>Workshop: Usando seu Telescópio</h3>
+                        <p>Aprenda a configurar e usar seu telescópio para obter as melhores observações. Para iniciantes e intermediários.</p>
+                        <div class="event-meta">
+                            <span class="event-time"><i class="fas fa-clock"></i> 19:00 - 22:00</span>
+                            <span class="event-location"><i class="fas fa-map-marker-alt"></i> Online</span>
+                        </div>
+                        <a href="#" class="event-link">Inscrever-se</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>AstroNexus</h3>
+                    <p>Conectando você com as maravilhas do universo.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Links Rápidos</h4>
+                        <ul>
+                            <li><a href="#about">Sobre</a></li>
+                            <li><a href="#products">Produtos</a></li>
+                            <li><a href="#events">Eventos</a></li>
+                            <li><a href="#contact">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Suporte</h4>
+                        <ul>
+                            <li><a href="#faq">FAQ</a></li>
+                            <li><a href="#help">Ajuda</a></li>
+                            <li><a href="#privacy">Privacidade</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AstroNexus. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Senha" required>
+                <button type="submit">Entrar</button>
+                <p>Não tem conta? <a href="#register">Cadastre-se</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="src/script.js"></script>
 </body>
 
 </html>
