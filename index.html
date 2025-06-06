@@ -11,68 +11,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="src/style.css" />
+    <link rel="stylesheet" href="src/background.css">
 </head>
 
 <body>
+    <div id="space">
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+    </div>
+
     <!-- Header -->
-    <header class="astrod-header" id="astrodHeader">
+    <header class="astrod-header">
         <div class="header-container">
             <div class="logo">
                 <i class="fas fa-satellite"></i>
                 AstroNexus
             </div>
 
-            <!-- Navegação Compacta -->
-            <nav class="nav-compact">
-                <div class="nav-item dropdown menu-dropdown">
-                    <span><i class="fas fa-bars"></i> Menu</span>
-                    <div class="dropdown-menu main-menu">
-                        <a href="#home">Home</a>
-                        <a href="#about">Sobre</a>
-                        <a href="#services">Serviços</a>
-                        <a href="#products">Produtos</a>
-                        <a href="#constellations">Constelações</a>
-                        <a href="#gallery">Galeria</a>
-                        <a href="#events">Eventos</a>
-                        <a href="#contact">Contato</a>
-                    </div>
-                </div>
-
-                <div class="nav-item dropdown pages-dropdown">
-                    <span><i class="fas fa-file-alt"></i> Páginas</span>
-                    <div class="dropdown-menu pages-menu">
-                        <a href="#quiz">Quiz Astronômico</a>
-                        <a href="#faq">FAQ</a>
-                        <a href="#blog">Blog</a>
-                        <a href="#recursos">Recursos</a>
-                        <a href="#buracos-negros">Buracos Negros</a>
-                        <a href="#nebulosas">Nebulosas</a>
-                        <a href="#galaxias">Galáxias</a>
-                        <a href="#loja">Loja</a>
-                        <a href="#planetas">Planetas</a>
-                    </div>
-                </div>
-
-                <a href="#contact" class="nav-item contact-btn">
-                    <i class="fas fa-envelope"></i> Contato
-                </a>
-            </nav>
-
             <div class="header-actions">
-                <div class="action-icon cart-icon" id="cartIcon">
+                <div class="action-icon cart-icon">
                     <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count" id="cartCount">0</span>
+                    <span class="cart-count">0</span>
                 </div>
-                <div class="action-icon login-icon" id="loginIcon">
+                <div class="action-icon login-icon">
                     <i class="fas fa-user"></i>
                 </div>
+                <a href="#contact" class="contact-btn">
+                    <i class="fas fa-envelope"></i> Contato
+                </a>
             </div>
-
-            <button class="hamburger" id="hamburgerBtn" aria-label="Abrir navegação" aria-controls="mainNav" aria-expanded="false" type="button">
-                <span class="hamburger-bar"></span>
-                <span class="hamburger-bar"></span>
-                <span class="hamburger-bar"></span>
-            </button>
         </div>
     </header>
 
@@ -88,13 +62,12 @@
 
         <div class="hero-container">
             <div class="hero-content hero-in">
-
                 <div class="hero-badge">
                     <i class="fas fa-sparkles"></i>
                     <span>Explore o Infinito</span>
                 </div>
                 <h1 class="hero-title">
-                    <span class="title-main">AstroNexus</span>
+                    <span class="title-main">Astro<span class="quebra-linha-mobile"></span>Nexus</span>
                     <span class="title-subtitle">Sua Jornada Cósmica Começa Aqui</span>
                 </h1>
                 <p class="hero-desc">
@@ -141,6 +114,24 @@
                     <img src="https://cms.code4rest.com/wp102/wp-content/uploads/2024/05/slide-img.png" alt="Exploração do universo - AstroNexus">
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Navigation Buttons Section -->
+    <section class="nav-buttons-section">
+        <div class="nav-buttons-container">
+            <a href="https://loja.astronexus.com" class="nav-button" target="_blank" rel="noopener">
+                <i class="fas fa-shopping-bag"></i>
+                <span>Loja</span>
+            </a>
+            <a href="https://galeria.astronexus.com" class="nav-button" target="_blank" rel="noopener">
+                <i class="fas fa-images"></i>
+                <span>Galeria</span>
+            </a>
+            <a href="https://blog.astronexus.com" class="nav-button" target="_blank" rel="noopener">
+                <i class="fas fa-blog"></i>
+                <span>Blog</span>
+            </a>
         </div>
     </section>
 
@@ -208,12 +199,7 @@
                     <p>Receba notificações sobre eventos celestiais importantes e fenômenos raros.</p>
                     <a href="#" class="service-link">Ativar</a>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">🚀</div>
-                    <h3>Consultoria Especializada</h3>
-                    <p>Orientação personalizada para escolha de equipamentos e planejamento de observações.</p>
-                    <a href="#" class="service-link">Consultar</a>
-                </div>
+
             </div>
         </div>
     </section>
@@ -235,7 +221,7 @@
                         <h3>Telescópio Refrator Pro</h3>
                         <p class="product-description">Telescópio refrator de alta qualidade, ideal para observação planetária.</p>
                         <div class="product-price">R$ 1.299,90</div>
-                        <button class="btn-add-cart" data-product="telescopio-refrator">
+                        <button class="btn-add-cart">
                             <i class="fas fa-cart-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -249,26 +235,13 @@
                         <h3>Binóculo Astronômico</h3>
                         <p class="product-description">Binóculo de alta precisão para observação de objetos celestes.</p>
                         <div class="product-price">R$ 459,90</div>
-                        <button class="btn-add-cart" data-product="binoculo-astronomico">
+                        <button class="btn-add-cart">
                             <i class="fas fa-cart-plus"></i>
                             Adicionar ao Carrinho
                         </button>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://w7.pngwing.com/pngs/524/923/png-transparent-northern-hemisphere-southern-hemisphere-star-chart-night-sky-star-constellation-outer-space-astronomical-object-map.png" alt="Mapa Estelar">
-                    </div>
-                    <div class="product-info">
-                        <h3>Mapa Estelar Interativo</h3>
-                        <p class="product-description">Guia completo das constelações com realidade aumentada.</p>
-                        <div class="product-price">R$ 79,90</div>
-                        <button class="btn-add-cart" data-product="mapa-estelar">
-                            <i class="fas fa-cart-plus"></i>
-                            Adicionar ao Carrinho
-                        </button>
-                    </div>
-                </div>
+
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://img.kentfaith.com/cache/catalog/products/us/KF33.036/KF33.036-1-518x518.jpg">
@@ -277,7 +250,7 @@
                         <h3>Kit Observação Iniciante</h3>
                         <p class="product-description">Kit completo para quem está começando na astronomia.</p>
                         <div class="product-price">R$ 249,90</div>
-                        <button class="btn-add-cart" data-product="kit-iniciante">
+                        <button class="btn-add-cart">
                             <i class="fas fa-cart-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -524,6 +497,9 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
+
+
     <!-- Footer -->
     <footer class="footer-section">
         <div class="footer-container">
@@ -562,22 +538,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Login Modal -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Login</h2>
-            <form id="loginForm">
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Senha" required>
-                <button type="submit">Entrar</button>
-                <p>Não tem conta? <a href="#register">Cadastre-se</a></p>
-            </form>
-        </div>
-    </div>
-
-    <script src="src/script.js"></script>
 </body>
 
 </html>
