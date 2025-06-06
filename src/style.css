@@ -1666,6 +1666,9 @@ html {
     text-align: center;
     gap: 40px;
   }
+  .logo-text {
+    display: none;
+  }
 
   .hero-content {
     order: 2;
@@ -1725,9 +1728,18 @@ html {
   .contact-info {
     grid-template-columns: 1fr;
   }
+  .contact-btn {
+    display: none;
+  }
+  .hero-image {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
+  .contact-btn {
+    display: none;
+  }
   .quebra-linha-mobile::after {
     content: "\A";
     white-space: pre;
