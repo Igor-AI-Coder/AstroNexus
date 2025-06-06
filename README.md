@@ -20,3 +20,34 @@ Este projeto foi desenvolvido como parte da disciplina **Linguagem Script** do c
 ## 🌐 Acesse o Projeto
 
 🚀 **[Ver Site Online](https://igor-ai-coder.github.io/AstroNexus/)**
+
+## 🛠️ Como instalar e executar o projeto
+
+1. **Clone o repositório:**
+   ```sh
+   git clone https://github.com/Igor-AI-Coder/AstroNexus.git
+   ```
+2. **Navegue até o diretório do projeto:**
+   ```sh
+   cd AstroNexus
+   ```
+3. **Instale as dependências:**
+   ```sh
+   npm install
+   ```
+4. **Execute o projeto em modo de desenvolvimento:**
+   ```sh
+   npm run dev
+   ```
+   Ou, para visualizar uma prévia de produção, primeiro gere o build:
+   ```sh
+   npm run build
+   ```
+   E então execute:
+   ```sh
+   npm run preview
+   ```
+
+5. **Abra o navegador e acesse o endereço exibido no terminal** (geralmente `http://localhost:5173`).
+
+Agora você pode explorar o projeto localmente! 🌌
