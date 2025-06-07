@@ -51,3 +51,6 @@ Este projeto foi desenvolvido como parte da disciplina **Linguagem Script** do c
 5. **Abra o navegador e acesse o endereço exibido no terminal** (geralmente `http://localhost:5173`).
 
 Agora você pode explorar o projeto localmente! 🌌
+
+
+.
