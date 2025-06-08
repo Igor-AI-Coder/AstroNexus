@@ -1,0 +1,526 @@
+/* =========================
+        CART SECTION
+========================== */
+.cart-section {
+  padding: 120px 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.cart-container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 max(16px, 5vw);
+}
+
+.cart-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+}
+
+/* =========================
+        CART ITEMS
+========================== */
+.cart-items {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  gap: 30px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.cart-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.item-image {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  height: 150px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+}
+
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+.cart-item:hover .item-image img {
+  transform: scale(1.05);
+}
+
+.item-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #000000;
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.item-badge.new {
+  background: linear-gradient(135deg, #4ecdc4, #26a69a);
+}
+
+.item-badge.popular {
+  background: linear-gradient(135deg, #ff6b6b, #ff5252);
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item-category {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.item-title {
+  font-size: 1.4rem;
+  margin: 0 0 12px 0;
+  color: #ffffff;
+  font-weight: 700;
+  font-family: "Orbitron", sans-serif;
+  line-height: 1.3;
+}
+
+.item-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.item-rating .stars {
+  display: flex;
+  gap: 2px;
+}
+
+.item-rating .stars i {
+  color: #ffd700;
+  font-size: 14px;
+}
+
+.item-rating span {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.item-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  line-height: 1.6;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.item-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+  min-width: 180px;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.qty-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.qty-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.quantity {
+  padding: 0 15px;
+  font-weight: 600;
+  color: #ffffff;
+  min-width: 40px;
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+}
+
+.item-price {
+  text-align: right;
+}
+
+.original-price {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: line-through;
+  display: block;
+  margin-bottom: 4px;
+  font-family: "Orbitron", sans-serif;
+}
+
+.current-price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: "Orbitron", sans-serif;
+  display: block;
+}
+
+.discount {
+  background: linear-gradient(135deg, #4caf50, #388e3c);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-top: 4px;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.remove-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 75, 75, 0.3);
+  color: #ff4b4b;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.remove-btn:hover {
+  background: rgba(255, 75, 75, 0.1);
+  border-color: rgba(255, 75, 75, 0.5);
+  transform: translateY(-1px);
+}
+
+.continue-shopping {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-continue {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  color: #ffffff;
+  padding: 12px 24px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+  text-decoration: none;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.btn-continue:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* =========================
+        ORDER SUMMARY
+========================== */
+.order-summary {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.summary-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+}
+
+.summary-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 25px 0;
+  color: #ffffff;
+  font-family: "Orbitron", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.summary-title i {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.summary-details {
+  margin-bottom: 30px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.summary-row.discount span:last-child {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.free-shipping {
+  color: #4caf50 !important;
+  font-weight: 600;
+}
+
+.summary-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 15px 0;
+}
+
+.summary-row.total {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 15px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.summary-row.total span:last-child {
+  font-family: "Orbitron", sans-serif;
+  color: #ffffff;
+}
+
+.btn-checkout {
+  width: 100%;
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
+  color: #000000;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 25px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.btn-checkout:hover {
+  background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+.payment-methods {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.payment-methods p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  margin-bottom: 10px;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.payment-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.payment-icons i {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s ease;
+}
+
+.payment-icons i:hover {
+  color: #ffffff;
+}
+
+.guarantees {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+}
+
+.guarantee-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.guarantee-item i {
+  color: #4caf50;
+  width: 16px;
+}
+
+/* =========================
+        RESPONSIVE
+========================== */
+@media (max-width: 1024px) {
+  .cart-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .cart-item {
+    grid-template-columns: 150px 1fr;
+    gap: 20px;
+  }
+
+  .item-controls {
+    grid-column: 1 / 3;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  .order-summary {
+    position: static;
+    top: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-item {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .item-image {
+    height: 200px;
+    margin: 0 auto;
+    max-width: 250px;
+  }
+
+  .item-controls {
+    grid-column: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .item-info {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-items,
+  .summary-card {
+    padding: 20px;
+  }
+
+  .cart-item {
+    padding: 20px;
+  }
+
+  .item-image {
+    height: 150px;
+  }
+
+  .item-title {
+    font-size: 1.2rem;
+  }
+
+  .current-price {
+    font-size: 1.4rem;
+  }
+}
+
+/* =========================
+        ANIMATIONS
+========================== */
+.cart-item {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

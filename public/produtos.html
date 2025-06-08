@@ -10,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../src/produtos.css" />
-    <link rel="stylesheet" href="../src/background.css">
+    <link rel="stylesheet" href="src/produtos.css" />
+    <link rel="stylesheet" href="src/background.css">
 </head>
 
 <body>
@@ -24,6 +24,7 @@
         <div class="stars"></div>
         <div class="stars"></div>
     </div>
+
     <!-- Header -->
     <header class="astrod-header">
         <div class="header-container">
@@ -40,8 +41,70 @@
                 <div class="action-icon login-icon">
                     <i class="fas fa-user"></i>
                 </div>
+
+                <!-- Menu Hambúrguer -->
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
             </div>
         </div>
+
+        <!-- Menu Lateral -->
+        <nav class="side-menu" id="sideMenu">
+            <div class="menu-header">
+                <h3>Menu</h3>
+                <button class="close-menu" id="closeMenu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <ul class="menu-links">
+                <li><a href="index.html" class="menu-link">
+                        <i class="fas fa-home"></i>
+                        <span>Início</span>
+                    </a></li>
+                <li>
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-user"></i>
+                        <span>Login</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="produtos.html" class="menu-link">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Loja</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="carrinho.html" class="menu-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Carrinho</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Quizes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-images"></i>
+                        <span>Galeria</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-blog"></i>
+                        <span>Blog</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Overlay para fechar menu -->
+        <div class="menu-overlay" id="menuOverlay"></div>
     </header>
 
     <!-- Hero Section -->
@@ -96,6 +159,7 @@
         </div>
     </section>
 
+    <!-- Products Section -->
     <!-- Products Section -->
     <section class="products-section">
         <div class="products-container">
@@ -711,6 +775,8 @@
         </div>
     </footer>
 
+    <!-- JavaScript do Menu -->
+    <script src="src/menu.js"></script>
     <script src="script.js"></script>
 </body>
 
