@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="src/style.css" />
     <link rel="stylesheet" href="src/background.css">
+    <link rel="stylesheet" href="src/menu.css">
 </head>
 
 <body>
     <div id="space">
-
         <div class="stars"></div>
         <div class="stars"></div>
         <div class="stars"></div>
@@ -34,20 +34,81 @@
             </div>
 
             <div class="header-actions">
-                <!-- <div class="action-icon cart-icon">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
-                </div> -->
                 <div class="action-icon login-icon">
                     <i class="fas fa-user"></i>
                 </div>
                 <a href="#contact" class="contact-btn">
                     <i class="fas fa-envelope"></i> Contato
                 </a>
+
+                <!-- Menu Hambúrguer -->
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
             </div>
         </div>
+
+        <!-- Menu Lateral -->
+        <nav class="side-menu" id="sideMenu">
+            <div class="menu-header">
+                <h3>Menu</h3>
+                <button class="close-menu" id="closeMenu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <ul class="menu-links">
+                <li>
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-user"></i>
+                        <span>Login</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="produtos.html" class="menu-link">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Loja</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="carrinho.html" class="menu-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Carrinho</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Quizes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-images"></i>
+                        <span>Galeria</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-blog"></i>
+                        <span>Blog</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Overlay para fechar menu -->
+        <div class="menu-overlay" id="menuOverlay"></div>
     </header>
 
+    <!-- Resto do conteúdo permanece igual... -->
     <!-- Seção Hero -->
     <section class="hero-section" id="home">
         <div class="hero-background-elements">
@@ -115,23 +176,7 @@
         </div>
     </section>
 
-    <!-- Navigation Buttons Section -->
-    <section class="nav-buttons-section">
-        <div class="nav-buttons-container">
-            <a href="produtos.html" class="nav-button" rel="noopener">
-                <i class="fas fa-shopping-bag"></i>
-                <span>Loja</span>
-            </a>
-            <a href="https://galeria.astronexus.com" class="nav-button" rel="noopener">
-                <i class="fas fa-images"></i>
-                <span>Galeria</span>
-            </a>
-            <a href="https://blog.astronexus.com" class="nav-button" rel="noopener">
-                <i class="fas fa-blog"></i>
-                <span>Blog</span>
-            </a>
-        </div>
-    </section>
+
 
     <!-- About Section -->
     <section class="about-section" id="about">
@@ -495,9 +540,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-
-
     <!-- Footer -->
     <footer class="footer-section">
         <div class="footer-container">
@@ -536,6 +578,9 @@
             </div>
         </div>
     </footer>
+
+    <!-- JavaScript do Menu -->
+    <script src="src/menu.js"></script>
 </body>
 
 </html>

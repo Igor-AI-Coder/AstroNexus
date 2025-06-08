@@ -603,97 +603,6 @@ html {
 }
 
 /* =========================
-        NAVIGATION BUTTONS SECTION
-========================== */
-.nav-buttons-section {
-  padding: 60px 0; /* Reduzido */
-  background: rgba(0, 0, 0, 0.2); /* Mais sutil */
-  backdrop-filter: blur(5px); /* Mais sutil */
-  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Mais sutil */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Mais sutil */
-}
-
-.nav-buttons-container {
-  max-width: 1400px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 max(16px, 5vw); /* Responsivo para telas pequenas */
-  display: flex;
-  justify-content: center;
-  gap: 30px; /* Reduzido */
-  flex-wrap: wrap;
-}
-
-.nav-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px; /* Reduzido */
-  padding: 20px 30px; /* Reduzido */
-  background: rgba(255, 255, 255, 0.03); /* Mais sutil */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Mais sutil */
-  border-radius: 15px; /* Mais arredondado */
-  text-decoration: none;
-  color: #ffffff;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  min-width: 120px; /* Menor */
-  position: relative;
-  overflow: hidden;
-}
-
-.nav-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.05),
-    transparent
-  ); /* Mais sutil */
-  transition: left 0.5s ease;
-}
-
-.nav-button:hover::before {
-  left: 100%;
-}
-
-.nav-button:hover {
-  transform: translateY(-5px); /* Menor movimento */
-  background: rgba(255, 255, 255, 0.06); /* Mais sutil */
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Sombra mais sutil */
-}
-
-.nav-button i {
-  font-size: 1.8rem; /* Menor */
-  color: #ffffff;
-  transition: all 0.3s ease;
-}
-
-.nav-button:hover i {
-  transform: scale(1.1); /* Menor escala */
-  color: #ffffff;
-}
-
-.nav-button span {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 0.9rem; /* Menor */
-  font-weight: 500; /* Mais leve */
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-}
-
-.nav-button:hover span {
-  color: #ffffff;
-}
-
-/* =========================
         ABOUT SECTION
 ========================== */
 .about-section {
@@ -1649,15 +1558,6 @@ html {
   .gallery-item.wide-item {
     grid-column: span 1;
   }
-
-  .nav-buttons-container {
-    gap: 25px;
-  }
-
-  .nav-button {
-    min-width: 110px;
-    padding: 18px 25px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1712,17 +1612,6 @@ html {
 
   .orbit-ring {
     display: none;
-  }
-
-  .nav-buttons-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .nav-button {
-    width: 80%;
-    max-width: 250px;
   }
 
   .contact-info {
@@ -1806,25 +1695,6 @@ html {
     font-size: 11px;
   }
 
-  .nav-buttons-section {
-    padding: 50px 0;
-  }
-
-  .nav-button {
-    width: 90%;
-    max-width: 200px; /* Reduzido */
-    padding: 16px 20px; /* Reduzido */
-    min-width: auto;
-  }
-
-  .nav-button i {
-    font-size: 1.5rem; /* Reduzido */
-  }
-
-  .nav-button span {
-    font-size: 0.8rem; /* Reduzido */
-  }
-
   /* Fix para telas muito pequenas */
   .services-grid,
   .products-grid,
@@ -1865,8 +1735,7 @@ html {
   .events-container,
   .gallery-container,
   .footer-container,
-  .contact-container,
-  .nav-buttons-container {
+  .contact-container {
     padding: 0 12px; /* Padding ainda menor */
   }
 
@@ -1884,20 +1753,6 @@ html {
 
   .hero-desc {
     font-size: 14px;
-  }
-
-  .nav-button {
-    width: 95%;
-    max-width: 180px;
-    padding: 14px 18px;
-  }
-
-  .nav-button i {
-    font-size: 1.3rem;
-  }
-
-  .nav-button span {
-    font-size: 0.75rem;
   }
 
   .contact-btn {

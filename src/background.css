@@ -1,5 +1,5 @@
 #space,
-.stars {
+#space .stars {
   overflow: hidden;
   position: fixed; /* <-- aqui o segredo */
   top: 0;
@@ -9,7 +9,7 @@
   z-index: -1; /* joga pra trás do conteúdo */
 }
 
-.stars {
+#space .stars {
   background-image: radial-gradient(
       2px 2px at 20px 30px,
       #eee,
@@ -26,23 +26,23 @@
   opacity: 0;
 }
 
-.stars:nth-child(1) {
+#space .stars:nth-child(1) {
   background-position: 50% 50%;
   animation-delay: 0s;
 }
-.stars:nth-child(2) {
+#space .stars:nth-child(2) {
   background-position: 20% 60%;
   animation-delay: 1s;
 }
-.stars:nth-child(3) {
+#space .stars:nth-child(3) {
   background-position: -20% -30%;
   animation-delay: 2s;
 }
-.stars:nth-child(4) {
+#space .stars:nth-child(4) {
   background-position: 40% -80%;
   animation-delay: 3s;
 }
-.stars:nth-child(5) {
+#space .stars:nth-child(5) {
   background-position: -20% 30%;
   animation-delay: 4s;
 }
