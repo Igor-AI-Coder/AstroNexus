@@ -53,4 +53,3 @@ Este projeto foi desenvolvido como parte da disciplina **Linguagem Script** do c
 Agora você pode explorar o projeto localmente! 🌌
 
 
-.
