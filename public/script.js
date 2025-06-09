@@ -29,10 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateCartCount() {
-        const cartCount = document.querySelector('.cart-count');
+        const cartCount = document.querySelectorAll('.cart-count');
         if (cartCount) {
             const total = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartCount.textContent = total;
+            cartCount.forEach(count => count.textContent = total);
         }
     }
 
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <button class="p-2 hover:bg-white/10 transition-colors rounded-l-lg" onclick="decreaseQuantity(this)">
                                         <i class="fas fa-minus text-sm"></i>
                                     </button>
-                                    <span class="px-4 py-2 min-w-[3rem] text-center font-orbitron font-medium">${item.quantity}</span>
+                                    <span class="quantity px-4 py-2 min-w-[3rem] text-center font-orbitron font-medium">${item.quantity}</span>
                                     <button class="p-2 hover:bg-white/10 transition-colors rounded-r-lg" onclick="increaseQuantity(this)">
                                         <i class="fas fa-plus text-sm"></i>
                                     </button>
@@ -75,9 +75,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="text-right">
                                 ${item.discount > 0
                                     ? `<div class="text-white/50 text-sm line-through font-orbitron">R$ ${originalPrice}</div>
-                                       <div class="font-orbitron font-bold text-xl">R$ ${priceWithDiscount}</div>
+                                       <div class="price font-orbitron font-bold text-xl">R$ ${priceWithDiscount}</div>
                                        <div class="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded font-space">-${item.discount}%</div>`
-                                    : `<div class="font-orbitron font-bold text-xl">R$ ${originalPrice}</div>`
+                                    : `<div class="price font-orbitron font-bold text-xl">R$ ${originalPrice}</div>`
                                 }
                             </div>
                         </div>
@@ -85,6 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
         });
+
+        priceTotal(); // <-- Chame aqui para atualizar o total sempre que o carrinho mudar
     }
 
     window.decreaseQuantity = function(thisProduct) {
@@ -118,6 +120,23 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCartCount();
         updateCartDisplay();
     };
+
+    function priceTotal() {
+        const priceTotal = document.querySelector('.price-total');
+        if (!priceTotal) return;
+
+        // Calcula o total diretamente do array cart
+        let total = 0;
+        cart.forEach(item => {
+            // Usa o preço com desconto, se houver
+            const price = item.discount > 0
+                ? item.price * (1 - item.discount / 100)
+                : item.price;
+            total += price * item.quantity;
+        });
+
+        priceTotal.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
 
     // Inicializa contador e carrinho ao carregar a página
     updateCartCount();

@@ -99,6 +99,31 @@
             background: rgba(255, 255, 255, 0.5);
         }
 
+        .action-icon {
+            position: relative;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .action-icon:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .action-icon i {
+            font-size: 14px;
+            color: #ffffff;
+        }
+
         /* Efeito glass morphism */
         .glass-effect {
             background: rgba(255, 255, 255, 0.05);
@@ -151,13 +176,15 @@
                 </a>
 
                 <div class="flex items-center space-x-4">
-                    <button class="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all">
+                    <div class="action-icon relative">
+                        <button class="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all">
                         <i class="fas fa-user text-lg"></i>
-                    </button>
-                    <div class="relative">
+                        </button>
+                    </div>
+                    <div class="action-icon relative">
                         <button class="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all">
                             <i class="fas fa-shopping-cart text-lg"></i>
-                            <span class="absolute -top-1 -right-1 bg-white text-black text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">3</span>
+                            <span class="cart-count absolute -top-1 -right-1 bg-white text-black text-xs rounded-full w-5 h-5 flex items-center justify-center font-space">0</span>
                         </button>
                     </div>
                 </div>
@@ -215,12 +242,12 @@
 
                         <div class="space-y-4 mb-6">
                             <div class="flex justify-between items-center">
-                                <span class="text-white/70 font-space">Subtotal (4 itens)</span>
-                                <span class="font-orbitron font-medium">R$ 2.869,70</span>
+                                <span class="text-white/70 font-space">Subtotal <span class="cart-count">0</span></span>
+                                <span class="font-orbitron font-medium">R$ 00,00</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-white/70 font-space">Desconto</span>
-                                <span class="text-green-400 font-orbitron font-medium">-R$ 459,80</span>
+                                <span class="text-green-400 font-orbitron font-medium">-R$ 00,00</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-white/70 font-space">Frete</span>
@@ -229,7 +256,7 @@
                             <hr class="border-white/20">
                             <div class="flex justify-between items-center text-lg font-bold">
                                 <span class="font-orbitron">Total</span>
-                                <span class="font-orbitron text-xl">R$ 2.409,70</span>
+                                <span class="price-total font-orbitron text-xl">R$ 00,00</span>
                             </div>
                         </div>
 
