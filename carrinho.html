@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - AstroNexus | Equipamentos Astronômicos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="src/background.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'orbitron': ['Orbitron', 'monospace'],
+                        'space': ['Space Grotesk', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'twinkle': 'twinkle 2s ease-in-out infinite alternate',
+                        'rotate': 'rotate 8s linear infinite',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite alternate',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes twinkle {
+            0% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            }
+
+            100% {
+                box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+
+        /* Gradiente de fundo espacial */
+        body {
+            background: #000000;
+            min-height: 100vh;
+        }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .action-icon {
+            position: relative;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .action-icon:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .action-icon i {
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        /* Efeito glass morphism */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Botão com efeito hover espacial */
+        .cosmic-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .cosmic-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cosmic-button:hover::before {
+            left: 100%;
+        }
+    </style>
+</head>
+
+<body class="font-orbitron text-white overflow-x-hidden bg-black">
+    <!-- Estrelas de fundo -->
+    <div id="space">
+
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+    </div>
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center space-x-3 text-white hover:text-gray-300 transition-colors">
+                    <i class="fas fa-satellite text-2xl sm:text-3xl animate-rotate"></i>
+                    <span class="font-orbitron text-xl sm:text-2xl font-bold hidden sm:block ">ASTRONEXUS</span>
+                </a>
+
+                <div class="flex items-center space-x-4">
+                    <!-- <button class="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all">
+                        <i class="fas fa-user text-lg"></i>
+                    </button> -->
+                    <div class="action-icon relative">
+                        <button class="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all">
+                            <i class="fas fa-shopping-cart text-lg"></i>
+                            <span class="cart-count absolute -top-1 -right-1 bg-white text-black text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold font-space">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Título da página -->
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center px-4 py-2 bg-white/10 rounded-full text-white mb-6 border border-white/20">
+                    <i class="fas fa-shopping-cart mr-2"></i>
+                    <span class="text-sm font-medium font-space uppercase tracking-wider">Meu Carrinho</span>
+                </div>
+                <h1 class="font-orbitron text-4xl md:text-6xl font-bold mb-4">
+                    <span class="bg-gradient-to-r from-white via-gray-200 to-gray-300 bg-clip-text text-transparent">
+                        Seus Equipamentos
+                    </span>
+                </h1>
+                <p class="text-white/70 text-lg max-w-2xl mx-auto font-space">
+                    Revise seus itens selecionados e finalize sua jornada astronômica
+                </p>
+            </div>
+
+            <div class="cart-container grid lg:grid-cols-3 gap-8">
+                <!-- Lista de Produtos no Carrinho -->
+                <div class="lg:col-span-2">
+                    <div class="glass-effect rounded-2xl p-6 mb-6">
+                        <h2 class="font-orbitron text-xl font-bold mb-6 flex items-center">
+                            <i class="fas fa-list mr-3 text-white"></i>
+                            Itens no Carrinho
+                        </h2>
+                        <div class="items-cart-dinamic">
+                            <!-- Aqui vão os itens do carrinho -->
+                        </div>
+                        <!-- Continuar Comprando -->
+                        <div class="pt-6 border-t border-white/10">
+                            <a href="produtos.html" class="cosmic-button bg-white/10 hover:bg-white/20 px-6 py-3 rounded-lg transition-all duration-300 flex items-center space-x-2 w-fit border border-white/20">
+                                <i class="fas fa-arrow-left"></i>
+                                <span class="font-space font-medium uppercase tracking-wider text-sm">Continuar Comprando</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resumo do Pedido -->
+                <div class="lg:col-span-1">
+                    <div class="glass-effect rounded-2xl p-6 sticky top-28">
+                        <h2 class="font-orbitron text-xl font-bold mb-6 flex items-center">
+                            <i class="fas fa-calculator mr-3 text-white"></i>
+                            Resumo do Pedido
+                        </h2>
+
+                        <div class="space-y-4 mb-6">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white/70 font-space">Subtotal <span class="cart-count">0</span></span>
+                                <span class="font-orbitron font-medium">R$ 00,00</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-white/70 font-space">Desconto</span>
+                                <span class="text-green-400 font-orbitron font-medium">-R$ 00,00</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-white/70 font-space">Frete</span>
+                                <span class="text-green-400 font-orbitron font-medium">Grátis</span>
+                            </div>
+                            <hr class="border-white/20">
+                            <div class="flex justify-between items-center text-lg font-bold">
+                                <span class="font-orbitron">Total</span>
+                                <span class="price-total font-orbitron text-xl">R$ 00,00</span>
+                            </div>
+                        </div>
+
+                        <!-- Botão Finalizar Compra -->
+                        <button class="w-full cosmic-button bg-gradient-to-r from-white to-gray-200 hover:from-gray-100 hover:to-gray-300 text-black py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 animate-pulse-glow mb-6 font-orbitron uppercase tracking-wider">
+                            <i class="fas fa-rocket mr-2"></i>
+                            Finalizar Compra
+                        </button>
+
+                        <!-- Formas de Pagamento -->
+                        <div class="text-center mb-6">
+                            <p class="text-white/50 text-sm mb-3 font-space">Formas de pagamento aceitas:</p>
+                            <div class="flex justify-center space-x-4">
+                                <i class="fab fa-cc-visa text-2xl text-white/60 hover:text-white transition-colors"></i>
+                                <i class="fab fa-cc-mastercard text-2xl text-white/60 hover:text-white transition-colors"></i>
+                                <i class="fab fa-cc-paypal text-2xl text-white/60 hover:text-white transition-colors"></i>
+                                <i class="fas fa-credit-card text-2xl text-white/60 hover:text-white transition-colors"></i>
+                            </div>
+                        </div>
+
+                        <!-- Garantias -->
+                        <div class="pt-6 border-t border-white/10 space-y-3">
+                            <div class="flex items-center space-x-3 text-sm">
+                                <i class="fas fa-shield-alt text-green-400 w-4"></i>
+                                <span class="text-white/70 font-space">Compra 100% segura</span>
+                            </div>
+                            <div class="flex items-center space-x-3 text-sm">
+                                <i class="fas fa-truck text-blue-400 w-4"></i>
+                                <span class="text-white/70 font-space">Frete grátis acima de R$ 199</span>
+                            </div>
+                            <div class="flex items-center space-x-3 text-sm">
+                                <i class="fas fa-undo text-yellow-400 w-4"></i>
+                                <span class="text-white/70 font-space">30 dias para troca</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

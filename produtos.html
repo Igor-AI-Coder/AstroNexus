@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produtos - AstroNexus | Equipamentos Astronômicos</title>
+    <meta name="description" content="Descubra nossa coleção completa de telescópios, binóculos, acessórios e equipamentos astronômicos profissionais na AstroNexus">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="src/produtos.css" />
+    <link rel="stylesheet" href="src/background.css">
+</head>
+
+<body>
+    <!-- Efeito de espaço do fundo -->
+    <div id="space">
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="astrod-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-satellite"></i>
+                AstroNexus
+            </a>
+
+            <div class="header-actions">
+                <div class="action-icon cart-icon">
+                    <a href="carrinho.html" class="cart-link">
+                        <i class="fas fa-shopping-cart text-lg"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+                <!-- <div class="action-icon login-icon">
+                    <i class="fas fa-user"></i>
+                </div> -->
+
+                <!-- Menu Hambúrguer -->
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu Lateral -->
+        <nav class="side-menu" id="sideMenu">
+            <div class="menu-header">
+                <h3>Menu</h3>
+                <button class="close-menu" id="closeMenu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <ul class="menu-links">
+                <li><a href="index.html" class="menu-link">
+                        <i class="fas fa-home"></i>
+                        <span>Início</span>
+                    </a></li>
+                <li>
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-user"></i>
+                        <span>Login</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="produtos.html" class="menu-link">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Loja</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="carrinho.html" class="menu-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Carrinho</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Quizes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="galeria.html" class="menu-link">
+                        <i class="fas fa-images"></i>
+                        <span>Galeria</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="planetas.html" class="menu-link">
+                        <i class="fas fa-globe"></i>
+                        <span>Planetas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-blog"></i>
+                        <span>Blog</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Overlay para fechar menu -->
+        <div class="menu-overlay" id="menuOverlay"></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>Loja Oficial</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-main">Produtos</span>
+                    <span class="title-subtitle">Equipamentos Profissionais para Astronomia</span>
+                </h1>
+                <p class="hero-desc">
+                    Descubra nossa coleção completa de telescópios, binóculos, acessórios e equipamentos astronômicos
+                    selecionados especialmente para entusiastas e profissionais da astronomia.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="filter-container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-category="todos">
+                    <i class="fas fa-th"></i>
+                    <span>Todos</span>
+                </button>
+                <button class="filter-tab" data-category="telescopios">
+                    <i class="fas fa-telescope"></i>
+                    <span>Telescópios</span>
+                </button>
+                <button class="filter-tab" data-category="binoculos">
+                    <i class="fas fa-binoculars"></i>
+                    <span>Binóculos</span>
+                </button>
+                <button class="filter-tab" data-category="acessorios">
+                    <i class="fas fa-cog"></i>
+                    <span>Acessórios</span>
+                </button>
+                <button class="filter-tab" data-category="livros">
+                    <i class="fas fa-book"></i>
+                    <span>Livros</span>
+                </button>
+                <button class="filter-tab" data-category="decoracao">
+                    <i class="fas fa-star"></i>
+                    <span>Decoração</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="products-container">
+
+            <!-- Telescópios -->
+            <div class="products-grid">
+                <div class="product-card" data-category="telescopios">
+                    <div class="product-image">
+                        <img src="img/1.png" alt="Telescópio Refrator Pro">
+                        <div class="product-badge best-seller">Best Seller</div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="action-btn quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Telescópios</div>
+                        <h3>Telescópio Refrator Pro 90mm</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(124 avaliações)</span>
+                        </div>
+                        <p class="product-description">Telescópio refrator de alta qualidade com lente de 90mm, ideal para observação planetária e lunar. Inclui tripé robusto e oculares.</p>
+                        <div class="product-price">
+                            <span class="price-original">R$ 1.599,90</span>
+                            <span class="price-current">R$ 1.299,90</span>
+                            <span class="price-discount">-19%</span>
+                        </div>
+                        <button class="btn-add-cart" data-name="Telescópio Refrator Pro 90mm" data-price="1599.90" data-discount="19" data-img="img/1.png" data-category="telescopios" onclick="addToCart(this)">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="telescopios">
+                    <div class="product-image">
+                        <img src="img/2.png" alt="Telescópio Refletor">
+                        <div class="product-badge new">Novo</div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="action-btn quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Telescópios</div>
+                        <h3>Telescópio Refletor Newton 150mm</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(87 avaliações)</span>
+                        </div>
+                        <p class="product-description">Telescópio refletor newtoniano com espelho primário de 150mm. Excelente para deep sky e astrofotografia básica.</p>
+                        <div class="product-price">
+                            <span class="price-current">R$ 2.899,90</span>
+                        </div>
+                        <button class="btn-add-cart" data-name="Telescópio Refletor Newton 150mm" data-price="2899.90" data-discount="0" data-img="img/2.png" data-category="telescopios" onclick="addToCart(this)">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="telescopios">
+                    <div class="product-image">
+                        <img src="img/3.png" alt="Telescópio Cassegrain">
+                        <div class="product-badge premium">Premium</div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="action-btn quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Telescópios</div>
+                        <h3>Telescópio Schmidt-Cassegrain 200mm</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(156 avaliações)</span>
+                        </div>
+                        <p class="product-description">Telescópio profissional Schmidt-Cassegrain com abertura de 200mm. Sistema GoTo computadorizado incluso.</p>
+                        <div class="product-price">
+                            <span class="price-current">R$ 8.999,90</span>
+                        </div>
+                        <button class="btn-add-cart" data-name="Telescópio Schmidt-Cassegrain 200mm" data-price="8999.90" data-discount="0" data-img="img/3.png" data-category="telescopios" onclick="addToCart(this)">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Binóculos -->
+                <div class="product-card" data-category="binoculos">
+                    <div class="product-image">
+                        <img src="img/4.png" alt="Binóculo Astronômico">
+                        <div class="product-actions">
+                            <button class="action-btn wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="action-btn quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Binóculos</div>
+                        <h3>Binóculo Astronômico 15x70</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(93 avaliações)</span>
+                        </div>
+                        <p class="product-description">Binóculo de alta qualidade 15x70mm, ideal para observação de objetos celestes. Lentes multicobertas.</p>
+                        <div class="product-price">
+                            <span class="price-current">R$ 459,90</span>
+                        </div>
+                        <button class="btn-add-cart" data-name="Binóculo Astronômico 15x70" data-price="459.90" data-discount="0" data-img="img/4.png" data-category="binoculos" onclick="addToCart(this)">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="binoculos">
+                    <div class="product-image">
+                        <img src="img/5.png" alt="Binóculo Compacto">
+                        <div class="product-badge portable">Portátil</div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="action-btn quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Binóculos</div>
+                        <h3>Binóculo Compacto 10x42</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(67 avaliações)</span>
+                        </div>
+                        <p class="product-description">Binóculo compacto e leve 10x42mm, perfeito para observações casuais e viagens. À prova d'água.</p>
+                        <div class="product-price">
+                            <span class="price-current">R$ 299,90</span>
+                        </div>
+                        <button class="btn-add-cart" data-name="Binóculo Compacto 10x42" data-price="299.90" data-discount="0" data-img="img/5.png" data-category="binoculos" onclick="addToCart(this)">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Acessórios -->
+                <div class="product-card" data-category="acessorios">
+                    <div class="product-image">
+                        <img src="img/6.png" alt="Tripé Profissional">
+                        <div class="product-actions">
+                            <button class="action-btn wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="action-btn quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Acessórios</div>
+                        <h3>Tripé Profissional Carbono</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(78 avaliações)</span>
+                        </div>
+                        <p class="product-description">Tripé em fibra de carbono ultra leve e resistente. Suporta até 15kg com máxima estabilidade.</p>
+                        <div class="product-price">
+                            <span class="price-current">R$ 899,90</span>
+                        </div>
+                        <button class="btn-add-cart" data-name="Tripé Profissional Carbono" data-price="899.90" data-discount="0" data-img="img/6.png" data-category="acessorios" onclick="addToCart(this)">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="acessorios">
+                    <div class="product-image">
+                        <img src="img/7.png" alt="Conjunto de Oculares">
+                        <div class="product-badge kit">Kit Completo</div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="action-btn quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Acessórios</div>
+                        <h3>Kit Oculares Profissionais (5 peças)</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(112 avaliações)</span>
+                        </div>
+                        <p class="product-description">Conjunto com 5 oculares de diferentes aumentos (6mm, 10mm, 15mm, 20mm, 25mm). Inclui maleta.</p>
+                        <div class="product-price">
+                            <span class="price-original">R$ 799,90</span>
+                            <span class="price-current">R$ 649,90</span>
+                            <span class="price-discount">-19%</span>
+                        </div>
+                        <button class="btn-add-cart" data-name="Kit Oculares Profissionais (5 peças)" data-price="799.90" data-discount="19" data-img="img/7.png" data-category="acessorios" onclick="addToCart(this)">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="acessorios">
+                    <div class="product-image">
+                        <img src="img/8.png" alt="Filtros Solares">
+                        <div class="product-badge safety">Segurança</div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="action-btn quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Acessórios</div>
+                        <h3>Filtro Solar Profissional</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(45 avaliações)</span>
+                        </div>
+                        <p class="product-description">Filtro solar de alta qualidade para observação segura do Sol. Densidade neutra certificada.</p>
+                        <div class="product-price">
+                            <span class="price-current">R$ 189,90</span>
+                        </div>
+                        <button class="btn-add-cart" data-name="Filtro Solar Profissional" data-price="189.90" data-discount="0" data-img="img/8.png" data-category="acessorios" onclick="addToCart(this)">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Livros -->
+                <div class="product-card" data-category="livros">
+                    <div class="product-image">
+                        <img src="img/9.png" alt="Atlas Celeste">
+                        <div class="product-actions">
+                            <button class="action-btn wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="action-btn quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Livros</div>
+                        <h3>Atlas Celeste Interativo</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(201 avaliações)</span>
+                        </div>
+                        <p class="product-description">Guia completo das constelações com realidade aumentada. Inclui app móvel para identificação.</p>
+                        <div class="product-price">
+                            <span class="price-current">R$ 79,90</span>
+                        </div>
+                        <button class="btn-add-cart" data-name="Atlas Celeste Interativo" data-price="79.90" data-discount="0" data-img="img/9.png" data-category="livros" onclick="addToCart(this)">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="livros">
+                    <div class="product-image">
+                        <img src="img/10.png" alt="Guia do Astrônomo">
+                        <div class="product-badge educational">Educativo</div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="action-btn quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Livros</div>
+                        <h3>Guia Completo do Astrônomo Amador</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(89 avaliações)</span>
+                        </div>
+                        <p class="product-description">Manual completo para iniciantes e intermediários. 400 páginas com dicas práticas e técnicas.</p>
+                        <div class="product-price">
+                            <span class="price-current">R$ 129,90</span>
+                        </div>
+                        <button class="btn-add-cart" data-name="Guia Completo do Astrônomo Amador" data-price="129.90" data-discount="0" data-img="img/10.png" data-category="livros" onclick="addToCart(this)">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Decoração -->
+                <div class="product-card" data-category="decoracao">
+                    <div class="product-image">
+                        <img src="img/11.png" alt="Luminária Planetário">
+                        <div class="product-badge trending">Tendência</div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="action-btn quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Decoração</div>
+                        <h3>Luminária Planetário LED</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(156 avaliações)</span>
+                        </div>
+                        <p class="product-description">Projeta constelações no teto com tecnologia LED. 12 discos intercambiáveis inclusos.</p>
+                        <div class="product-price">
+                            <span class="price-current">R$ 199,90</span>
+                        </div>
+                        <button class="btn-add-cart" data-name="Luminária Planetário LED" data-price="199.90" data-discount="0" data-img="img/11.png" data-category="decoracao" onclick="addToCart(this)">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="decoracao">
+                    <div class="product-image">
+                        <img src="img/12.png" alt="Quadro Constelações">
+                        <div class="product-actions">
+                            <button class="action-btn wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="action-btn quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Decoração</div>
+                        <h3>Quadro Mapa Estelar Personalizado</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(73 avaliações)</span>
+                        </div>
+                        <p class="product-description">Quadro personalizado mostrando o céu de uma data especial. Moldura em madeira nobre.</p>
+                        <div class="product-price">
+                            <span class="price-current">R$ 149,90</span>
+                        </div>
+                        <button class="btn-add-cart" data-name="Quadro Mapa Estelar Personalizado" data-price="149.90" data-discount="0" data-img="img/12.png" data-category="decoracao" onclick="addToCart(this)">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Kit Iniciante -->
+                <div class="product-card" data-category="acessorios">
+                    <div class="product-image">
+                        <img src="img/13.png" alt="Kit Iniciante">
+                        <div class="product-badge starter">Kit Iniciante</div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="action-btn quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Kits</div>
+                        <h3>Kit Observação Iniciante Completo</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(234 avaliações)</span>
+                        </div>
+                        <p class="product-description">Kit completo para iniciantes: telescópio 70mm, tripé, oculares, mapa estelar e guia prático.</p>
+                        <div class="product-price">
+                            <span class="price-original">R$ 349,90</span>
+                            <span class="price-current">R$ 249,90</span>
+                            <span class="price-discount">-29%</span>
+                        </div>
+                        <button class="btn-add-cart" data-name="Kit Observação Iniciante Completo" data-price="349.90" data-discount="29" data-img="img/13.png" data-category="acessorios" onclick="addToCart(this)">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>AstroNexus</h3>
+                    <p>Conectando você com as maravilhas do universo.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Links Rápidos</h4>
+                        <ul>
+                            <li><a href="index.html#about">Sobre</a></li>
+                            <li><a href="produtos.html">Produtos</a></li>
+                            <li><a href="index.html#events">Eventos</a></li>
+                            <li><a href="index.html#contact">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Suporte</h4>
+                        <ul>
+                            <li><a href="#faq">FAQ</a></li>
+                            <li><a href="#help">Ajuda</a></li>
+                            <li><a href="#privacy">Privacidade</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AstroNexus. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript do Menu -->
+    <script src="src/menu.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
