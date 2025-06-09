@@ -1,5 +1,5 @@
 // ========================================
-// MENU HAMBÚRGUER - AstroNexus
+// MENU HAMBÚRGUER
 // ========================================
 
 // Elementos do menu
