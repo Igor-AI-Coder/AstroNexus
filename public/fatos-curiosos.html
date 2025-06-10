@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AstroNexus - Fatos Curiosos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="src/style.css" />
+    <link rel="stylesheet" href="src/background.css">
+    <link rel="stylesheet" href="src/menu.css">
+    <style>
+        body {
+            background: #000000;
+        }
+
+        .facts-container {
+            max-width: 800px;
+            margin: 120px auto 40px;
+            padding: 0 20px;
+        }
+
+        .facts-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .fact-display {
+            min-height: 200px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .fact-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.8s;
+        }
+
+        .fact-display:hover::before {
+            left: 100%;
+        }
+
+        .fact-display::after {
+            content: '🌟';
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            opacity: 0.3;
+        }
+
+        .fact-text {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .fact-text.placeholder {
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+        }
+
+        .generate-btn {
+            background: linear-gradient(135deg, #fff, #f0f0f0);
+            color: #000;
+            padding: 18px 36px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 255, 255, 0.4);
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+        }
+
+        .generate-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .categories {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .category-btn.active {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .category-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .facts-card {
+                padding: 25px;
+            }
+
+            .fact-display {
+                min-height: 180px;
+                padding: 30px 25px;
+            }
+
+            .fact-text {
+                font-size: 1.1rem;
+            }
+
+            .categories {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .category-btn {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="space">
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="astrod-header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-satellite"></i>
+                <a href="index.html" style="color: inherit; text-decoration: none;">
+                    <span class="logo-text">AstroNexus</span>
+                </a>
+            </div>
+            <div class="header-actions">
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+
+        <nav class="side-menu" id="sideMenu">
+            <div class="menu-header">
+                <h3>Menu</h3>
+                <button class="close-menu" id="closeMenu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <ul class="menu-links">
+                <li><a href="index.html" class="menu-link"><i class="fas fa-home"></i><span>Home</span></a></li>
+                <li><a href="#" class="menu-link"><i class="fas fa-user"></i><span>Login</span></a></li>
+                <li><a href="produtos.html" class="menu-link"><i class="fas fa-shopping-bag"></i><span>Loja</span></a></li>
+                <li><a href="planetas.html" class="menu-link"><i class="fas fa-globe"></i><span>Planetas</span></a></li>
+                <li><a href="galeria.html" class="menu-link"><i class="fas fa-images"></i><span>Galeria</span></a></li>
+            </ul>
+        </nav>
+        <div class="menu-overlay" id="menuOverlay"></div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="facts-container">
+        <div class="facts-card">
+            <div style="text-align: center; margin-bottom: 35px;">
+                <h1 style="font-family: 'Orbitron', monospace; font-size: 2.5rem; color: #fff; margin-bottom: 10px;">Fatos Astronômicos</h1>
+                <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem;">Descubra curiosidades fascinantes sobre o universo</p>
+            </div>
+
+            <!-- Categorias -->
+            <div class="categories">
+                <button class="category-btn active" data-category="todos">Todos</button>
+                <button class="category-btn" data-category="planetas">Planetas</button>
+                <button class="category-btn" data-category="estrelas">Estrelas</button>
+                <button class="category-btn" data-category="curiosidades">Curiosidades</button>
+            </div>
+
+            <!-- Display do Fato -->
+            <div class="fact-display">
+                <p class="fact-text placeholder" id="factText">Clique em "Gerar Fato" para descobrir algo incrível sobre o universo!</p>
+            </div>
+
+            <!-- Botão -->
+            <div style="text-align: center;">
+                <button class="generate-btn" id="generateBtn">
+                    <i class="fas fa-magic"></i> Gerar Fato
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="src/gerador-fatos.js"></script>
+    <script src="src/menu.js"></script>
+</body>
+
+</html>
