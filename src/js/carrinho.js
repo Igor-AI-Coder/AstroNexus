@@ -38,8 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateCartDisplay() {
     const cartContainer = document.querySelector(".items-cart-dinamic");
-    if (!cartContainer) return;
-
     cartContainer.innerHTML = "";
 
     cart.forEach((item) => {
@@ -139,12 +137,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function priceTotal() {
     const priceTotal = document.querySelector(".price-total");
-    if (!priceTotal) return;
-
-    // Calcula o total diretamente do array cart
     let total = 0;
     cart.forEach((item) => {
-      // Usa o preço com desconto, se houver
       const price =
         item.discount > 0 ? item.price * (1 - item.discount / 100) : item.price;
       total += price * item.quantity;
@@ -152,6 +146,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
     priceTotal.textContent = `R$ ${total.toFixed(2).replace(".", ",")}`;
   }
+
+    function clearCart() {
+        cart = [];
+        saveCart();
+        updateCartCount();
+        updateCartDisplay();
+    }
+    
+    function showSuccessModal() {
+        const modal = document.getElementById('successModal');
+        modal.classList.add('active');
+    }
+    function showEmptyCartModal() {
+        const modal = document.getElementById('emptyCartModal');
+        modal.classList.add('active');
+    }
+
+    document.getElementById('closeSuccessModal').addEventListener('click', function() {
+        document.getElementById('successModal').classList.remove('active');
+    });
+    document.getElementById('closeEmptyCartModal').addEventListener('click', function() {
+        document.getElementById('emptyCartModal').classList.remove('active');
+    });
+
+    window.finalizePurchase = function() {
+        if (cart.length === 0) {
+            showEmptyCartModal();
+            return;
+        }
+        showSuccessModal();
+        clearCart();
+    }
 
   // Inicializa contador e carrinho ao carregar a página
   updateCartCount();
