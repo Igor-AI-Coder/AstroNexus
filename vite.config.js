@@ -6,11 +6,11 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: "index.html",
-        produtos: "produtos.html",
-        carrinho: "carrinho.html",
-        fatosCuriosos: "fatos-curiosos.html",
-        galeria: "galeria.html",
-        planetas: "planetas.html",
+        produtos: "src/pages/produtos.html",
+        carrinho: "src/pages/carrinho.html",
+        galeria: "src/pages/galeria.html",
+        planetas: "src/pages/planetas.html",
+        fatosCuriosos: "src/pages/fatos-curiosos.html",
         // adicione outras páginas aqui
       },
     },
