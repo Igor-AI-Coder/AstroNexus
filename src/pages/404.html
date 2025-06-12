@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 | AstroNexus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <script>
+        // Define o CSS da página como uma string
+        const css = `
+      body {
+        min-height: 100vh;
+        background: #000;
+        color: #fff;
+        font-family: 'Space Grotesk', Arial, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: 0;
+        text-align: center;
+      }
+      .erro404 {
+        font-family: 'Orbitron', monospace;
+        font-size: 7rem;
+        font-weight: 900;
+        color: #fff;
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+        text-shadow: 0 0 24px #32b6ff, 0 0 48px #fff2;
+      }
+      .mensagem {
+        font-size: 1.4rem;
+        color: #c9eaff;
+        margin-bottom: 2.2rem;
+        max-width: 440px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .motivos {
+        font-size: 1rem;
+        color: #fff;
+        opacity: 0.8;
+        margin-bottom: 2.5rem;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      a {
+        color: #32b6ff;
+        font-weight: bold;
+        text-decoration: underline;
+        font-family: 'Orbitron', monospace;
+        letter-spacing: 0.07em;
+        font-size: 1.1rem;
+        transition: color 0.2s;
+      }
+      a:hover {
+        color: #fff;
+      }
+    `;
+
+        // Cria uma tag <style> para aplicar o CSS à página
+        const style = document.createElement('style');
+        style.textContent = css; // Insere o CSS na tag <style>
+        document.head.appendChild(style); // Adiciona o <style> ao <head> do documento
+
+        // Monta o HTML da página 404 como uma string
+        const html404 = `
+      <div class="erro404">404</div>
+      <div class="mensagem">Página não encontrada</div>
+      <div class="motivos">
+        Possíveis motivos:<br>
+        • O endereço está incorreto<br>
+        • A página foi removida<br>
+        • A página ainda não foi construída<br>
+        <br>
+        Volte para a <a href="/">página inicial</a> e continue explorando o universo AstroNexus!
+      </div>
+    `;
+
+        // Insere o HTML gerado dentro do <body>
+        document.body.innerHTML = html404;
+        // Agora a página exibe a mensagem de erro 404 estilizada, criada dinamicamente pelo JavaScript
+    </script>
+</body>
+
+</html>
