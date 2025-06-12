@@ -2,16 +2,16 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404 | AstroNexus</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 | AstroNexus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <script>
-        // Define o CSS da página como uma string
-        const css = `
+  <script>
+    // Define o CSS da página como uma string
+    const css = `
       body {
         min-height: 100vh;
         background: #000;
@@ -64,13 +64,13 @@
       }
     `;
 
-        // Cria uma tag <style> para aplicar o CSS à página
-        const style = document.createElement('style');
-        style.textContent = css; // Insere o CSS na tag <style>
-        document.head.appendChild(style); // Adiciona o <style> ao <head> do documento
+    // Cria uma tag <style> para aplicar o CSS à página
+    const style = document.createElement('style');
+    style.textContent = css; // Insere o CSS na tag <style>
+    document.head.appendChild(style); // Adiciona o <style> ao <head> do documento
 
-        // Monta o HTML da página 404 como uma string
-        const html404 = `
+    // Monta o HTML da página 404 como uma string
+    const html404 = `
       <div class="erro404">404</div>
       <div class="mensagem">Página não encontrada</div>
       <div class="motivos">
@@ -79,14 +79,14 @@
         • A página foi removida<br>
         • A página ainda não foi construída<br>
         <br>
-        Volte para a <a href="/">página inicial</a> e continue explorando o universo AstroNexus!
+        Volte para a <a href="/AstroNexus/">página inicial</a> e continue explorando o universo AstroNexus!
       </div>
     `;
 
-        // Insere o HTML gerado dentro do <body>
-        document.body.innerHTML = html404;
-        // Agora a página exibe a mensagem de erro 404 estilizada, criada dinamicamente pelo JavaScript
-    </script>
+    // Insere o HTML gerado dentro do <body>
+    document.body.innerHTML = html404;
+    // Agora a página exibe a mensagem de erro 404 estilizada, criada dinamicamente pelo JavaScript
+  </script>
 </body>
 
 </html>
