@@ -2143,7 +2143,7 @@ html {
 
 .solar-system-visual img {
   width: 100%;
-  height: 600px; /* Altura fixa maior */
+  height: 850px; /* Altura fixa maior */
   object-fit: cover; /* Para manter proporção */
   border-radius: 20px;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);

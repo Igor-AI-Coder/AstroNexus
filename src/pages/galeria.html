@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Galeria - AstroNexus | Imagens do Cosmos</title>
     <meta name="description" content="Explore nossa galeria de imagens astronômicas espetaculares - nebulosas, galáxias, planetas e muito mais na AstroNexus">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/galeria.css" />
     <link rel="stylesheet" href="../css/background.css">
+    <script src="../js/main.js" type="module"></script>
 </head>
 
 <body>
@@ -28,7 +27,7 @@
     <!-- Header -->
     <header class="astrod-header">
         <div class="header-container">
-            <a href="/AstroNexus/index.html" class="logo">
+            <a href="/" class="logo">
                 <i class="fas fa-satellite"></i>
                 <span class="logo-text">AstroNexus</span>
             </a>
@@ -54,7 +53,7 @@
             </div>
             <ul class="menu-links">
                 <li>
-                    <a href="#" class="menu-link">
+                    <a href="404.html" class="menu-link">
                         <i class="fas fa-user"></i>
                         <span>Login</span>
                     </a>
@@ -72,7 +71,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="menu-link">
+                    <a href="404.html" class="menu-link">
                         <i class="fas fa-question-circle"></i>
                         <span>Quizes</span>
                     </a>
@@ -96,7 +95,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="menu-link">
+                    <a href="404.html" class="menu-link">
                         <i class="fas fa-blog"></i>
                         <span>Blog</span>
                     </a>
@@ -188,9 +187,9 @@
 
                 <!-- Galáxias -->
                 <div class="gallery-item" data-category="galaxias">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Hubble2005-01-barred-spiral-galaxy-NGC1300.jpg/1024px-Hubble2005-01-barred-spiral-galaxy-NGC1300.jpg" alt="Galáxia Espiral NGC1300">
+                    <img src="/img/galeria-01.jpg" alt="Galáxia Espiral NGC1300">
                     <div class="image-overlay">
-                        <button class="view-btn" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Hubble2005-01-barred-spiral-galaxy-NGC1300.jpg/1024px-Hubble2005-01-barred-spiral-galaxy-NGC1300.jpg" data-title="Galáxia Espiral NGC1300" data-description="Uma magnífica galáxia espiral barrada localizada na constelação de Eridanus">
+                        <button class="view-btn" data-image="/AstroNexus/img/galeria-01.jpg" data-title="Galáxia Espiral NGC1300" data-description="Uma magnífica galáxia espiral barrada localizada na constelação de Eridanus">
                             <i class="fas fa-eye"></i>
                             <span>Ver Imagem</span>
                         </button>
@@ -202,9 +201,9 @@
                 </div>
 
                 <div class="gallery-item" data-category="galaxias">
-                    <img src="https://starwalk.space/gallery/images/andromeda-galaxy-2022/1920x1080.jpg" alt="Galáxia de Andrômeda">
+                    <img src="/img/galeria-02.jpg" alt="Galáxia de Andrômeda">
                     <div class="image-overlay">
-                        <button class="view-btn" data-image="https://starwalk.space/gallery/images/andromeda-galaxy-2022/1920x1080.jpg" data-title="Galáxia de Andrômeda" data-description="A galáxia mais próxima da Via Láctea, também conhecida como M31">
+                        <button class="view-btn" data-image="/AstroNexus/img/galeria-02.jpg" data-title="Galáxia de Andrômeda" data-description="A galáxia mais próxima da Via Láctea, também conhecida como M31">
                             <i class="fas fa-eye"></i>
                             <span>Ver Imagem</span>
                         </button>
@@ -217,9 +216,9 @@
 
                 <!-- Nebulosas -->
                 <div class="gallery-item tall" data-category="nebulosas">
-                    <img src="https://www.casadasciencias.org/storage/app/uploads/public/5c8/1e4/fb4/5c81e4fb49f18416064451.jpeg" alt="Nebulosa Cabeça de Cavalo">
+                    <img src="/img/galeria-03.jpeg" alt="Nebulosa Cabeça de Cavalo">
                     <div class="image-overlay">
-                        <button class="view-btn" data-image="https://www.casadasciencias.org/storage/app/uploads/public/5c8/1e4/fb4/5c81e4fb49f18416064451.jpeg" data-title="Nebulosa Cabeça de Cavalo" data-description="Uma das nebulosas escuras mais famosas do céu, localizada na constelação de Órion">
+                        <button class="view-btn" data-image="/AstroNexus/img/galeria-03.jpeg" data-title="Nebulosa Cabeça de Cavalo" data-description="Uma das nebulosas escuras mais famosas do céu, localizada na constelação de Órion">
                             <i class="fas fa-eye"></i>
                             <span>Ver Imagem</span>
                         </button>
@@ -231,9 +230,9 @@
                 </div>
 
                 <div class="gallery-item" data-category="nebulosas">
-                    <img src="https://t2.tudocdn.net/631379?w=1920&h=1440" alt="Nebulosa do Caranguejo">
+                    <img src="/img/galeria-04.jfif" alt="Nebulosa do Caranguejo">
                     <div class="image-overlay">
-                        <button class="view-btn" data-image="https://t2.tudocdn.net/631379?w=1920&h=1440" data-title="Nebulosa do Caranguejo" data-description="Resultado da explosão de uma supernova observada pelos chineses em 1054 d.C.">
+                        <button class="view-btn" data-image="/AstroNexus/img/galeria-04.jfif" data-title="Nebulosa do Caranguejo" data-description="Resultado da explosão de uma supernova observada pelos chineses em 1054 d.C.">
                             <i class="fas fa-eye"></i>
                             <span>Ver Imagem</span>
                         </button>
@@ -245,9 +244,9 @@
                 </div>
 
                 <div class="gallery-item wide" data-category="nebulosas">
-                    <img src="https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2021/06/10834_0812AC8B028102C4.jpg" alt="Nebulosa Borboleta">
+                    <img src="/img/galeria-05.webp" alt="Nebulosa Borboleta">
                     <div class="image-overlay">
-                        <button class="view-btn" data-image="https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2021/06/10834_0812AC8B028102C4.jpg" data-title="Nebulosa Borboleta" data-description="Uma nebulosa planetária com formato característico de borboleta">
+                        <button class="view-btn" data-image="/AstroNexus/img/galeria-05.webp" data-title="Nebulosa Borboleta" data-description="Uma nebulosa planetária com formato característico de borboleta">
                             <i class="fas fa-eye"></i>
                             <span>Ver Imagem</span>
                         </button>
@@ -260,9 +259,9 @@
 
                 <!-- Planetas -->
                 <div class="gallery-item" data-category="planetas">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/1200px-Saturn_during_Equinox.jpg" alt="Saturno">
+                    <img src="/img/galeria-06.jpg" alt="Saturno">
                     <div class="image-overlay">
-                        <button class="view-btn" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/1200px-Saturn_during_Equinox.jpg" data-title="Saturno" data-description="O magnífico planeta dos anéis capturado pela sonda Cassini">
+                        <button class="view-btn" data-image="/AstroNexus/img/galeria-06.jpg" alt="Saturno" data-title="Saturno" data-description="O magnífico planeta dos anéis capturado pela sonda Cassini">
                             <i class="fas fa-eye"></i>
                             <span>Ver Imagem</span>
                         </button>
@@ -274,9 +273,9 @@
                 </div>
 
                 <div class="gallery-item" data-category="planetas">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Jupiter_and_its_shrunken_Great_Red_Spot.jpg/800px-Jupiter_and_its_shrunken_Great_Red_Spot.jpg" alt="Júpiter">
+                    <img src="/img/galeria-07.jpg" alt="Júpiter">
                     <div class="image-overlay">
-                        <button class="view-btn" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Jupiter_and_its_shrunken_Great_Red_Spot.jpg/800px-Jupiter_and_its_shrunken_Great_Red_Spot.jpg" data-title="Júpiter" data-description="O maior planeta do sistema solar com sua Grande Mancha Vermelha">
+                        <button class="view-btn" data-image="/AstroNexus/img/galeria-07.jpg" alt="Júpiter" data-title="Júpiter" data-description="O maior planeta do sistema solar com sua Grande Mancha Vermelha">
                             <i class="fas fa-eye"></i>
                             <span>Ver Imagem</span>
                         </button>
@@ -289,9 +288,9 @@
 
                 <!-- Estrelas -->
                 <div class="gallery-item" data-category="estrelas">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/V838_Mon_HST.jpg/1200px-V838_Mon_HST.jpg" alt="V838 Monocerotis">
+                    <img src="/img/galeria-09.jpg" alt="V838 Monocerotis">
                     <div class="image-overlay">
-                        <button class="view-btn" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/V838_Mon_HST.jpg/1200px-V838_Mon_HST.jpg" data-title="V838 Monocerotis" data-description="Uma estrela variável luminosa azul que expandiu dramaticamente em 2002">
+                        <button class="view-btn" data-image="/AstroNexus/img/galeria-09.jpg" data-title="V838 Monocerotis" data-description="Uma estrela variável luminosa azul que expandiu dramaticamente em 2002">
                             <i class="fas fa-eye"></i>
                             <span>Ver Imagem</span>
                         </button>
@@ -303,9 +302,9 @@
                 </div>
 
                 <div class="gallery-item tall" data-category="estrelas">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/EtaCarinae.jpg/1200px-EtaCarinae.jpg" alt="Eta Carinae">
+                    <img src="/img/galeria-10.jpg" alt="Eta Carinae">
                     <div class="image-overlay">
-                        <button class="view-btn" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/EtaCarinae.jpg/1200px-EtaCarinae.jpg" data-title="Eta Carinae" data-description="Uma das estrelas mais massivas e luminosas conhecidas">
+                        <button class="view-btn" data-image="/AstroNexus/img/galeria-10.jpg" data-title="Eta Carinae" data-description="Uma das estrelas mais massivas e luminosas conhecidas">
                             <i class="fas fa-eye"></i>
                             <span>Ver Imagem</span>
                         </button>
@@ -318,9 +317,9 @@
 
                 <!-- Sistema Solar -->
                 <div class="gallery-item wide" data-category="sistema-solar">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/The_Blue_Marble_%28remastered%29.jpg/512px-The_Blue_Marble_%28remastered%29.jpg" alt="Terra">
+                    <img src="/img/galeria-11.jpg" alt="Terra">
                     <div class="image-overlay">
-                        <button class="view-btn" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/The_Blue_Marble_%28remastered%29.jpg/512px-The_Blue_Marble_%28remastered%29.jpg" data-title="Terra - Pálido Ponto Azul" data-description="Nossa casa no cosmos, vista do espaço">
+                        <button class="view-btn" data-image="/AstroNexus/img/galeria-11.jpg" data-title="Terra - Pálido Ponto Azul" data-description="Nossa casa no cosmos, vista do espaço">
                             <i class="fas fa-eye"></i>
                             <span>Ver Imagem</span>
                         </button>
@@ -332,9 +331,9 @@
                 </div>
 
                 <div class="gallery-item" data-category="sistema-solar">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/512px-FullMoon2010.jpg" alt="Lua">
+                    <img src="/img/galeria-12.jpg" alt="Lua">
                     <div class="image-overlay">
-                        <button class="view-btn" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/512px-FullMoon2010.jpg" data-title="Lua Cheia" data-description="Nosso satélite natural em toda sua glória">
+                        <button class="view-btn" data-image="/AstroNexus/img/galeria-12.jpg" data-title="Lua Cheia" data-description="Nosso satélite natural em toda sua glória">
                             <i class="fas fa-eye"></i>
                             <span>Ver Imagem</span>
                         </button>
@@ -347,9 +346,9 @@
 
                 <!-- Deep Space -->
                 <div class="gallery-item" data-category="deep-space">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Hubble_ultra_deep_field.jpg" alt="Hubble Ultra Deep Field">
+                    <img src="/img/galeria-13.jpg" alt="Hubble Ultra Deep Field">
                     <div class="image-overlay">
-                        <button class="view-btn" data-image="https://upload.wikimedia.org/wikipedia/commons/2/2f/Hubble_ultra_deep_field.jpg" data-title="Hubble Ultra Deep Field" data-description="Uma das imagens mais profundas do universo já capturadas">
+                        <button class="view-btn" data-image="/AstroNexus/img/galeria-13.jpg" data-title="Hubble Ultra Deep Field" data-description="Uma das imagens mais profundas do universo já capturadas">
                             <i class="fas fa-eye"></i>
                             <span>Ver Imagem</span>
                         </button>
@@ -361,9 +360,9 @@
                 </div>
 
                 <div class="gallery-item large" data-category="deep-space">
-                    <img src="https://e0.pxfuel.com/wallpapers/657/911/desktop-wallpaper-hubble-ultra-deep-field-hubble-ultra-deep-field.jpg" alt="Hubble Extreme Deep Field">
+                    <img src="/img/galeria-14.webp" alt="Hubble Extreme Deep Field">
                     <div class="image-overlay">
-                        <button class="view-btn" data-image="https://e0.pxfuel.com/wallpapers/657/911/desktop-wallpaper-hubble-ultra-deep-field-hubble-ultra-deep-field.jpg" data-title="Hubble Extreme Deep Field" data-description="A imagem mais profunda do universo, mostrando galáxias de bilhões de anos atrás">
+                        <button class="view-btn" data-image="/AstroNexus/img/galeria-14.webp" data-title="Hubble Extreme Deep Field" data-description="A imagem mais profunda do universo, mostrando galáxias de bilhões de anos atrás">
                             <i class="fas fa-eye"></i>
                             <span>Ver Imagem</span>
                         </button>
@@ -376,9 +375,9 @@
 
                 <!-- Mais imagens para completar a galeria -->
                 <div class="gallery-item" data-category="nebulosas">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Pillars_of_Creation_%28NIRCam_Image%29.jpg/1200px-Pillars_of_Creation_%28NIRCam_Image%29.jpg" alt="Pilares da Criação">
+                    <img src="/img/galeria-15.jpg" alt="Pilares da Criação">
                     <div class="image-overlay">
-                        <button class="view-btn" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Pillars_of_Creation_%28NIRCam_Image%29.jpg/1200px-Pillars_of_Creation_%28NIRCam_Image%29.jpg" data-title="Pilares da Criação" data-description="Estruturas icônicas na Nebulosa da Águia onde nascem novas estrelas">
+                        <button class="view-btn" data-image="/AstroNexus/img/galeria-15.jpg" data-title="Pilares da Criação" data-description="Estruturas icônicas na Nebulosa da Águia onde nascem novas estrelas">
                             <i class="fas fa-eye"></i>
                             <span>Ver Imagem</span>
                         </button>
@@ -390,9 +389,9 @@
                 </div>
 
                 <div class="gallery-item" data-category="planetas">
-                    <img src="https://s1.static.brasilescola.uol.com.br/be/2021/11/planeta-marte.jpg" alt="Marte">
+                    <img src="/img/galeria-16.webp" alt="Marte">
                     <div class="image-overlay">
-                        <button class="view-btn" data-image="https://s1.static.brasilescola.uol.com.br/be/2021/11/planeta-marte.jpg" data-title="Marte" data-description="O planeta vermelho capturado pelo Telescópio Hubble">
+                        <button class="view-btn" data-image="/AstroNexus/img/galeria-16.webp" data-title="Marte" data-description="O planeta vermelho capturado pelo Telescópio Hubble">
                             <i class="fas fa-eye"></i>
                             <span>Ver Imagem</span>
                         </button>
