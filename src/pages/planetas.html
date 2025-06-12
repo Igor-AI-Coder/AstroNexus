@@ -180,6 +180,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             animation: rotate-orbit 20s linear infinite;
+            pointer-events: none; /* ADICIONADO */
         }
 
         .orbit-1 {
@@ -248,6 +249,7 @@
             top: 0;
             left: 50%;
             transform: translateX(-50%);
+            pointer-events: auto; /* ADICIONADO */
         }
 
         .planet:hover {
@@ -372,10 +374,8 @@
 </head>
 
 <body class="bg-black text-white">
-    <!-- Fundo com estrelas -->
     <div class="stars-bg" id="stars-bg"></div>
 
-    <!-- Header -->
     <header class="astrod-header">
         <div class="header-container">
             <div class="logo">
@@ -389,7 +389,6 @@
 
 
 
-                <!-- Menu Hambúrguer -->
                 <button class="hamburger-menu" id="hamburgerMenu">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
@@ -398,7 +397,6 @@
             </div>
         </div>
 
-        <!-- Menu Lateral -->
         <nav class="side-menu" id="sideMenu">
             <div class="menu-header">
                 <h3>Menu</h3>
@@ -464,15 +462,12 @@
             </ul>
         </nav>
 
-        <!-- Overlay para fechar menu -->
         <div class="menu-overlay" id="menuOverlay"></div>
     </header>
 
-    <!-- Hero Section -->
     <section class="min-h-screen flex items-center justify-center pt-20 px-4">
         <div class="max-w-7xl w-full mx-auto">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <!-- Conteúdo -->
                 <div class="text-center lg:text-left">
                     <div class="inline-flex items-center gap-2 bg-white bg-opacity-10 text-white px-5 py-2 rounded-full text-sm font-semibold uppercase tracking-wider mb-6 border border-white border-opacity-20 backdrop-blur-md">
                         <i class="fas fa-globe"></i>
@@ -505,7 +500,6 @@
                     </div>
                 </div>
 
-                <!-- Sistema Solar -->
                 <div class="flex justify-center lg:justify-end">
                     <div class="solar-system">
                         <div class="sun" onclick="scrollToPlanet('sol')" title="Sol"></div>
@@ -540,7 +534,6 @@
         </div>
     </section>
 
-    <!-- Seção dos Planetas -->
     <section id="planetas" class="py-20">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-20">
@@ -549,7 +542,6 @@
                 <p class="text-lg text-white text-opacity-80">Conheça as características únicas de cada planeta</p>
             </div>
 
-            <!-- Sol -->
             <div id="sol" class="bg-white bg-opacity-5 border border-white border-opacity-10 rounded-3xl p-10 mb-16 backdrop-blur-md transition-all hover:-translate-y-2 hover:bg-opacity-8 hover:border-opacity-20">
                 <div class="grid md:grid-cols-3 gap-8 items-center">
                     <div class="flex justify-center md:col-span-1">
@@ -573,7 +565,6 @@
                 </div>
             </div>
 
-            <!-- Mercúrio -->
             <div id="mercurio" class="bg-white bg-opacity-5 border border-white border-opacity-10 rounded-3xl p-10 mb-16 backdrop-blur-md transition-all hover:-translate-y-2 hover:bg-opacity-8 hover:border-opacity-20">
                 <div class="grid md:grid-cols-3 gap-8 items-center">
                     <div class="flex justify-center md:col-span-1">
@@ -597,7 +588,6 @@
                 </div>
             </div>
 
-            <!-- Vênus -->
             <div id="venus" class="bg-white bg-opacity-5 border border-white border-opacity-10 rounded-3xl p-10 mb-16 backdrop-blur-md transition-all hover:-translate-y-2 hover:bg-opacity-8 hover:border-opacity-20">
                 <div class="grid md:grid-cols-3 gap-8 items-center">
                     <div class="md:col-span-2 order-2 md:order-1">
@@ -621,7 +611,6 @@
                 </div>
             </div>
 
-            <!-- Terra -->
             <div id="terra" class="bg-white bg-opacity-5 border border-white border-opacity-10 rounded-3xl p-10 mb-16 backdrop-blur-md transition-all hover:-translate-y-2 hover:bg-opacity-8 hover:border-opacity-20">
                 <div class="grid md:grid-cols-3 gap-8 items-center">
                     <div class="flex justify-center md:col-span-1">
@@ -645,7 +634,6 @@
                 </div>
             </div>
 
-            <!-- Marte -->
             <div id="marte" class="bg-white bg-opacity-5 border border-white border-opacity-10 rounded-3xl p-10 mb-16 backdrop-blur-md transition-all hover:-translate-y-2 hover:bg-opacity-8 hover:border-opacity-20">
                 <div class="grid md:grid-cols-3 gap-8 items-center">
                     <div class="md:col-span-2 order-2 md:order-1">
@@ -669,7 +657,6 @@
                 </div>
             </div>
 
-            <!-- Júpiter -->
             <div id="jupiter" class="bg-white bg-opacity-5 border border-white border-opacity-10 rounded-3xl p-10 mb-16 backdrop-blur-md transition-all hover:-translate-y-2 hover:bg-opacity-8 hover:border-opacity-20">
                 <div class="grid md:grid-cols-3 gap-8 items-center">
                     <div class="flex justify-center md:col-span-1">
@@ -693,7 +680,6 @@
                 </div>
             </div>
 
-            <!-- Saturno -->
             <div id="saturno" class="bg-white bg-opacity-5 border border-white border-opacity-10 rounded-3xl p-10 mb-16 backdrop-blur-md transition-all hover:-translate-y-2 hover:bg-opacity-8 hover:border-opacity-20">
                 <div class="grid md:grid-cols-3 gap-8 items-center">
                     <div class="md:col-span-2 order-2 md:order-1">
@@ -720,7 +706,6 @@
                 </div>
             </div>
 
-            <!-- Urano -->
             <div id="urano" class="bg-white bg-opacity-5 border border-white border-opacity-10 rounded-3xl p-10 mb-16 backdrop-blur-md transition-all hover:-translate-y-2 hover:bg-opacity-8 hover:border-opacity-20">
                 <div class="grid md:grid-cols-3 gap-8 items-center">
                     <div class="flex justify-center md:col-span-1">
@@ -744,7 +729,6 @@
                 </div>
             </div>
 
-            <!-- Netuno -->
             <div id="netuno" class="bg-white bg-opacity-5 border border-white border-opacity-10 rounded-3xl p-10 mb-16 backdrop-blur-md transition-all hover:-translate-y-2 hover:bg-opacity-8 hover:border-opacity-20">
                 <div class="grid md:grid-cols-3 gap-8 items-center">
                     <div class="md:col-span-2 order-2 md:order-1">
@@ -770,7 +754,6 @@
         </div>
     </section>
 
-    <!-- Quiz Section -->
     <section id="quiz" class="py-20 bg-black bg-opacity-60">
         <div class="max-w-4xl mx-auto px-4">
             <div class="text-center mb-20">
@@ -804,7 +787,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-black bg-opacity-90 border-t border-white border-opacity-10 py-16">
         <div class="max-w-6xl mx-auto px-4">
             <div class="grid md:grid-cols-2 gap-16 mb-10">
@@ -1019,7 +1001,6 @@
         }
     </script>
 
-    <!-- JavaScript do Menu -->
     <script src="../js/menu.js" type="module"></script>
 </body>
 
