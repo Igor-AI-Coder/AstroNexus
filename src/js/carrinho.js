@@ -147,39 +147,72 @@ document.addEventListener("DOMContentLoaded", function () {
     priceTotal.textContent = `R$ ${total.toFixed(2).replace(".", ",")}`;
   }
 
-    function clearCart() {
-        cart = [];
-        saveCart();
-        updateCartCount();
-        updateCartDisplay();
-    }
-    
-    function showSuccessModal() {
-        const modal = document.getElementById('successModal');
-        modal.classList.add('active');
-    }
-    function showEmptyCartModal() {
-        const modal = document.getElementById('emptyCartModal');
-        modal.classList.add('active');
-    }
+  function clearCart() {
+    cart = [];
+    saveCart();
+    updateCartCount();
+    updateCartDisplay();
+  }
 
-    document.getElementById('closeSuccessModal').addEventListener('click', function() {
-        document.getElementById('successModal').classList.remove('active');
+  function showSuccessModal() {
+    const modal = document.getElementById("successModal");
+    modal.classList.add("active");
+  }
+  function showEmptyCartModal() {
+    const modal = document.getElementById("emptyCartModal");
+    modal.classList.add("active");
+  }
+
+  document
+    .getElementById("closeSuccessModal")
+    .addEventListener("click", function () {
+      document.getElementById("successModal").classList.remove("active");
     });
-    document.getElementById('closeEmptyCartModal').addEventListener('click', function() {
-        document.getElementById('emptyCartModal').classList.remove('active');
+  document
+    .getElementById("closeEmptyCartModal")
+    .addEventListener("click", function () {
+      document.getElementById("emptyCartModal").classList.remove("active");
     });
 
-    window.finalizePurchase = function() {
-        if (cart.length === 0) {
-            showEmptyCartModal();
-            return;
-        }
-        showSuccessModal();
-        clearCart();
+  window.finalizePurchase = function () {
+    if (cart.length === 0) {
+      showEmptyCartModal();
+      return;
     }
+    showSuccessModal();
+    clearCart();
+  };
 
   // Inicializa contador e carrinho ao carregar a página
   updateCartCount();
   updateCartDisplay();
+});
+
+// FILTRO EM PRODUTOS
+
+// Seleciona todos os botões de filtro
+const filtros = document.querySelectorAll(".filter-tab");
+// Seleciona todos os cards de produtos
+const produtos = document.querySelectorAll(".product-card");
+
+// Para cada botão de filtro
+filtros.forEach((filtro) => {
+  // Adiciona o evento de clique
+  filtro.addEventListener("click", () => {
+    // Remove a classe 'active' de todos os botões
+    filtros.forEach((f) => f.classList.remove("active"));
+    // Adiciona a classe 'active' ao botão clicado
+    filtro.classList.add("active");
+
+    // Obtém a categoria selecionada no botão
+    const categoria = filtro.dataset.category;
+
+    // Mostra ou esconde os produtos de acordo com a categoria
+    produtos.forEach((produto) => {
+      produto.style.display =
+        categoria === "todos" || produto.dataset.category === categoria
+          ? ""
+          : "none";
+    });
+  });
 });

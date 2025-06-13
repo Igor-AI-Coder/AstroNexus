@@ -6,13 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AstroNexus - Explore o Universo</title>
     <meta name="description" content="AstroNexus - Plataforma inovadora para explorar o cosmos, descobrir constelações e produtos astronômicos">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
-    <!-- links css -->
+    <meta name="keywords" content="astronomia, telescópio, constelações, planetas, sistema solar, observação estelar">
+    <meta name="author" content="AstroNexus">
 
+    <!-- Preconnect para fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Preload da fonte principal -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Space+Grotesk:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Space+Grotesk:wght@400;700&display=swap">
+    </noscript>
+
+    <!-- Preload das imagens críticas -->
+    <link rel="preload" href="img/astronauta.png" as="image" type="image/png">
+
+    <!-- CSS otimizado -->
     <link rel="stylesheet" href="src/css/style.css" />
-    <link rel="stylesheet" href="src/css/background.css">
     <link rel="stylesheet" href="src/css/menu.css">
+    <link rel="stylesheet" href="src/css/background.css">
 
+    <!-- Font Awesome com defer -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" defer>
 </head>
 
 <body>
@@ -25,96 +41,6 @@
         <div class="stars"></div>
     </div>
 
-    <!-- Header -->
-    <header class="astrod-header">
-        <div class="header-container">
-            <div class="logo">
-                <i class="fas fa-satellite"></i>
-                <span class="logo-text">AstroNexus</span>
-            </div>
-
-            <div class="header-actions">
-
-                <!-- Menu Hambúrguer -->
-                <button class="hamburger-menu" id="hamburgerMenu">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Menu Lateral -->
-        <nav class="side-menu" id="sideMenu">
-            <div class="menu-header">
-                <h3>Menu</h3>
-                <button class="close-menu" id="closeMenu">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <ul class="menu-links">
-                <li>
-                    <a href="#" class="menu-link">
-                        <i class="fas fa-home"></i>
-                        <span>Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/AstroNexus/src/pages/404.html" class="menu-link">
-                        <i class="fas fa-user"></i>
-                        <span>Login</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/AstroNexus/src/pages/produtos.html" class="menu-link">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span>Loja</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/AstroNexus/src/pages/carrinho.html" class="menu-link">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span>Carrinho</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/AstroNexus/src/pages/404.html" class="menu-link">
-                        <i class="fas fa-question-circle"></i>
-                        <span>Quizes</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/AstroNexus/src/pages/fatos-curiosos.html" class="menu-link">
-                        <i class="fas fa-lightbulb"></i>
-                        <span>Fatos Curiosos</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/AstroNexus/src/pages/galeria.html" class="menu-link">
-                        <i class="fas fa-images"></i>
-                        <span>Galeria</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/AstroNexus/src/pages/planetas.html" class="menu-link">
-                        <i class="fas fa-globe"></i>
-                        <span>Planetas</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/AstroNexus/src/pages/404.html" class="menu-link">
-                        <i class="fas fa-blog"></i>
-                        <span>Blog</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
-        <!-- Overlay para fechar menu -->
-        <div class="menu-overlay" id="menuOverlay"></div>
-    </header>
-
-    <!-- Resto do conteúdo permanece igual... -->
     <!-- Seção Hero -->
     <section class="hero-section" id="home">
         <div class="hero-background-elements">
@@ -170,19 +96,11 @@
             <div class="hero-image hero-in">
                 <div class="image-container">
                     <div class="image-glow"></div>
-                    <div class="orbit-ring ring-1"></div>
-                    <div class="orbit-ring ring-2"></div>
-                    <div class="orbit-ring ring-3"></div>
-                    <div class="orbit-ring ring-4"></div>
-                    <div class="orbit-ring ring-5"></div>
-                    <div class="orbit-ring ring-6"></div>
-                    <img src="img/astronauta.png" alt="Exploração do universo - AstroNexus">
+                    <img src="img/astronauta.png" alt="Exploração do universo - AstroNexus" loading="eager" decoding="async">
                 </div>
             </div>
         </div>
     </section>
-
-
 
     <!-- About Section -->
     <section class="about-section" id="about">
@@ -216,7 +134,7 @@
             </div>
             <div class="about-right">
                 <div class="about-image">
-                    <img src="img/sobre.png" alt="Exploração espacial - Tecnologia AstroNexus">
+                    <img src="img/sobre.png" alt="Exploração espacial - Tecnologia AstroNexus" loading="lazy" decoding="async">
                 </div>
             </div>
         </div>
@@ -248,12 +166,10 @@
                     <p>Receba notificações sobre eventos celestiais importantes e fenômenos raros.</p>
                     <a href="/AstroNexus/src/pages/404.html" class="service-link">Ativar</a>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Products Section -->
     <!-- Call to Action Section -->
     <section class="cta-section" id="products">
         <div class="cta-container">
@@ -295,7 +211,7 @@
                     </div>
                 </div>
                 <div class="cta-image">
-                    <img src="/img/3.png" alt="Equipamentos Astronômicos - AstroNexus">
+                    <img src="/img/3.png" alt="Equipamentos Astronômicos - AstroNexus" loading="lazy" decoding="async">
                 </div>
             </div>
         </div>
@@ -309,48 +225,48 @@
                 <p class="section-subtitle">Fique por dentro das novidades do mundo da astronomia</p>
             </div>
             <div class="news-grid">
-                <div class="news-card featured">
+                <article class="news-card featured">
                     <div class="news-image">
-                        <img src="img/noti-01.webp">
+                        <img src="img/noti-01.webp" alt="Novo exoplaneta descoberto" loading="lazy" decoding="async">
                         <div class="news-category">Descoberta</div>
                     </div>
                     <div class="news-content">
                         <h3>Novo Exoplaneta Descoberto na Zona Habitável</h3>
                         <p>Cientistas descobrem planeta similar à Terra a 100 anos-luz de distância, com possibilidades de abrigar vida.</p>
                         <div class="news-meta">
-                            <span class="news-date">15 de Junho, 2025</span>
+                            <time datetime="2025-06-15" class="news-date">15 de Junho, 2025</time>
                             <span class="news-author">NASA</span>
                         </div>
                     </div>
-                </div>
-                <div class="news-card">
+                </article>
+                <article class="news-card">
                     <div class="news-image">
-                        <img src="img/noti-02.png" alt="Eclipse lunar">
+                        <img src="img/noti-02.png" alt="Eclipse lunar total" loading="lazy" decoding="async">
                     </div>
                     <div class="news-content">
                         <h3>Eclipse Lunar Total em Setembro</h3>
                         <p>Prepare-se para o próximo eclipse lunar total que será visível em toda a América do Sul.</p>
                         <div class="news-meta">
-                            <span class="news-date">10 de Junho, 2025</span>
+                            <time datetime="2025-06-10" class="news-date">10 de Junho, 2025</time>
                         </div>
                     </div>
-                </div>
-                <div class="news-card">
+                </article>
+                <article class="news-card">
                     <div class="news-image">
-                        <img src="img/noti-03.jpg">
+                        <img src="img/noti-03.jpg" alt="Nebulosa capturada pelo Hubble" loading="lazy" decoding="async">
                     </div>
                     <div class="news-content">
                         <h3>Hubble Captura Nova Nebulosa</h3>
                         <p>Telescópio espacial revela detalhes impressionantes de nebulosa de formação estelar.</p>
                         <div class="news-meta">
-                            <span class="news-date">8 de Junho, 2025</span>
+                            <time datetime="2025-06-08" class="news-date">8 de Junho, 2025</time>
                         </div>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
-    <!-- Solar System Section -->
+
     <!-- Solar System Section -->
     <section class="solar-system-section" id="solar-system">
         <div class="floating-planets">
@@ -419,12 +335,13 @@
 
                 <div class="solar-system-image">
                     <div class="solar-system-visual">
-                        <img src="img/planetas.jpg" alt="Sistema Solar - Os Oito Planetas">
+                        <img src="img/planetas.jpg" alt="Sistema Solar - Os Oito Planetas" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Constellations Section -->
     <section class="constellations-section" id="constellations">
         <div class="constellations-container">
@@ -433,9 +350,9 @@
                 <p class="section-subtitle">Descubra as histórias e mitologias por trás das constelações</p>
             </div>
             <div class="constellations-content">
-                <div class="constellation-featured">
+                <article class="constellation-featured">
                     <div class="constellation-image">
-                        <img src="img/cost-01.jpg" alt="Constelação de Órion">
+                        <img src="img/cost-01.jpg" alt="Constelação de Órion" loading="lazy" decoding="async">
                     </div>
                     <div class="constellation-info">
                         <h3>Órion - O Caçador</h3>
@@ -452,35 +369,35 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </article>
                 <div class="constellations-grid">
-                    <div class="constellation-card">
+                    <article class="constellation-card">
                         <div class="constellation-card-image">
-                            <img src="img/const-02.avif" alt="Ursa Maior">
+                            <img src="img/const-02.avif" alt="Constelação Ursa Maior" loading="lazy" decoding="async">
                         </div>
                         <div class="constellation-card-content">
                             <h4>Ursa Maior</h4>
                             <p>Contém a famosa asterismo "Grande Carro", visível durante todo o ano no hemisfério norte.</p>
                         </div>
-                    </div>
-                    <div class="constellation-card">
+                    </article>
+                    <article class="constellation-card">
                         <div class="constellation-card-image">
-                            <img src="img/const-03.jpg" alt="Cassiopeia">
+                            <img src="img/const-03.jpg" alt="Constelação Cassiopeia" loading="lazy" decoding="async">
                         </div>
                         <div class="constellation-card-content">
                             <h4>Cassiopeia</h4>
                             <p>Forma um "W" distintivo no céu e é facilmente reconhecível próxima à Estrela Polar.</p>
                         </div>
-                    </div>
-                    <div class="constellation-card">
+                    </article>
+                    <article class="constellation-card">
                         <div class="constellation-card-image">
-                            <img src="img/const-04.jpg" alt="Leão">
+                            <img src="img/const-04.jpg" alt="Constelação Leão" loading="lazy" decoding="async">
                         </div>
                         <div class="constellation-card-content">
                             <h4>Leão</h4>
                             <p>Uma constelação zodiacal que realmente se parece com um leão, melhor vista na primavera.</p>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </div>
@@ -494,48 +411,48 @@
                 <p class="section-subtitle">Uma coleção das mais belas imagens do universo</p>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item large-item">
-                    <img src="img/gal-01.webp" alt="Nebulosa Colorida">
-                    <div class="gallery-overlay">
+                <figure class="gallery-item large-item">
+                    <img src="img/gal-01.webp" alt="Nebulosa de formação estelar colorida" loading="lazy" decoding="async">
+                    <figcaption class="gallery-overlay">
                         <h4>Nebulosa de Formação Estelar</h4>
                         <p>Berçário de estrelas em cores vibrantes</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="img/gal-02.jpg" alt="Galáxia Espiral">
-                    <div class="gallery-overlay">
+                    </figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="img/gal-02.jpg" alt="Galáxia espiral majestosa" loading="lazy" decoding="async">
+                    <figcaption class="gallery-overlay">
                         <h4>Galáxia Espiral</h4>
                         <p>Majestosa estrutura em espiral</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="img/gal-03.jpg" alt="Planeta e Luas">
-                    <div class="gallery-overlay">
+                    </figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="img/gal-03.jpg" alt="Sistema planetário com luas" loading="lazy" decoding="async">
+                    <figcaption class="gallery-overlay">
                         <h4>Sistema Planetário</h4>
                         <p>Planeta com suas luas naturais</p>
-                    </div>
-                </div>
-                <div class="gallery-item tall-item">
-                    <img src="img/gal-05.webp" alt="Aurora Boreal">
-                    <div class="gallery-overlay">
+                    </figcaption>
+                </figure>
+                <figure class="gallery-item tall-item">
+                    <img src="img/gal-05.webp" alt="Aurora boreal dançando no céu" loading="lazy" decoding="async">
+                    <figcaption class="gallery-overlay">
                         <h4>Aurora Boreal</h4>
                         <p>Dança de luzes nos polos terrestres</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="img/gal-06.jpg" alt="Telescópio Espacial">
-                    <div class="gallery-overlay">
+                    </figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="img/gal-06.jpg" alt="Telescópio espacial em órbita" loading="lazy" decoding="async">
+                    <figcaption class="gallery-overlay">
                         <h4>Telescópio Espacial</h4>
                         <p>Tecnologia avançada de observação</p>
-                    </div>
-                </div>
-                <div class="gallery-item wide-item">
-                    <img src="img/gal-04.webp" alt="Via Láctea">
-                    <div class="gallery-overlay">
+                    </figcaption>
+                </figure>
+                <figure class="gallery-item wide-item">
+                    <img src="img/gal-04.webp" alt="Via Láctea vista da Terra" loading="lazy" decoding="async">
+                    <figcaption class="gallery-overlay">
                         <h4>Via Láctea</h4>
                         <p>Nossa galáxia vista da Terra</p>
-                    </div>
-                </div>
+                    </figcaption>
+                </figure>
             </div>
         </div>
     </section>
@@ -548,13 +465,13 @@
                 <p class="section-subtitle">Não perca os eventos astronômicos mais importantes</p>
             </div>
             <div class="events-grid">
-                <div class="event-card">
+                <article class="event-card">
                     <div class="event-date">
                         <span class="day">15</span>
                         <span class="month">JUL</span>
                     </div>
                     <div class="event-image">
-                        <img src="https://www.jornaldafranca.com.br/wp-content/uploads/2023/10/incrivel-eclipse-solar-e-raios-de-luz-no-ceu-estrelado-sol-e-lua-no-espaco-1.jpg" alt="Eclipse Solar">
+                        <img src="https://www.jornaldafranca.com.br/wp-content/uploads/2023/10/incrivel-eclipse-solar-e-raios-de-luz-no-ceu-estrelado-sol-e-lua-no-espaco-1.jpg" alt="Eclipse solar parcial" loading="lazy" decoding="async">
                     </div>
                     <div class="event-content">
                         <h3>Eclipse Solar Parcial</h3>
@@ -565,14 +482,14 @@
                         </div>
                         <a href="#" class="event-link">Mais Detalhes</a>
                     </div>
-                </div>
-                <div class="event-card">
+                </article>
+                <article class="event-card">
                     <div class="event-date">
                         <span class="day">22</span>
                         <span class="month">JUL</span>
                     </div>
                     <div class="event-image">
-                        <img src="https://img.odcdn.com.br/wp-content/uploads/2022/07/chuva-de-meteoros-Jeff-Dai.jpg" alt="Chuva de Meteoros">
+                        <img src="https://img.odcdn.com.br/wp-content/uploads/2022/07/chuva-de-meteoros-Jeff-Dai.jpg" alt="Chuva de meteoros Delta Aquáridas" loading="lazy" decoding="async">
                     </div>
                     <div class="event-content">
                         <h3>Chuva de Meteoros Delta Aquáridas</h3>
@@ -583,14 +500,14 @@
                         </div>
                         <a href="#" class="event-link">Mais Detalhes</a>
                     </div>
-                </div>
-                <div class="event-card">
+                </article>
+                <article class="event-card">
                     <div class="event-date">
                         <span class="day">05</span>
                         <span class="month">AGO</span>
                     </div>
                     <div class="event-image">
-                        <img src="https://www.astroshop.pt/CMS/images/text/category/showroom_landsberg169_all.jpeg" alt="Workshop Telescópio">
+                        <img src="https://www.astroshop.pt/CMS/images/text/category/showroom_landsberg169_all.jpeg" alt="Workshop sobre uso de telescópio" loading="lazy" decoding="async">
                     </div>
                     <div class="event-content">
                         <h3>Workshop: Usando seu Telescópio</h3>
@@ -601,7 +518,7 @@
                         </div>
                         <a href="#" class="event-link">Inscrever-se</a>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
@@ -645,9 +562,10 @@
         </div>
     </footer>
 
-    <!-- JavaScript do Menu -->
-    <script src="/src/js/menu.js" type="module"></script>
-    <script src="/src/js/main.js" type="module"></script>
+    <!-- JavaScript do Menu com defer -->
+    <script src="/src/js/header.js" type="module" defer></script>
+    <script src="/src/js/menu.js" type="module" defer></script>
+    <script src="/src/js/main.js" type="module" defer></script>
 </body>
 
 </html>

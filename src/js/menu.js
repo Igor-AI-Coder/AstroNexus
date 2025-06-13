@@ -2,58 +2,56 @@
 // MENU HAMBÚRGUER
 // ========================================
 
-// Elementos do menu
-const hamburgerMenu = document.getElementById("hamburgerMenu");
-const sideMenu = document.getElementById("sideMenu");
-const closeMenu = document.getElementById("closeMenu");
-const menuOverlay = document.getElementById("menuOverlay");
-const menuLinks = document.querySelectorAll(".menu-link");
+// Elementos relacionados ao menu
+const hamburgerMenu = document.getElementById("hamburgerMenu"); // Ícone de hambúrguer
+const sideMenu = document.getElementById("sideMenu"); // Menu lateral
+const closeMenuButton = document.getElementById("closeMenu"); // Botão de fechar o menu
+const menuOverlay = document.getElementById("menuOverlay"); // Fundo escurecido ao abrir o menu
+const menuLinks = document.querySelectorAll(".menu-link"); // Links dentro do menu lateral
 
-// Abre o menu lateral
-const openMenu = () => {
-  sideMenu.classList.add("active");
-  menuOverlay.classList.add("active");
-  hamburgerMenu.classList.add("active");
-  document.body.style.overflow = "hidden";
+// Função para abrir o menu
+const abrirMenu = () => {
+  sideMenu.classList.add("active"); // Exibe o menu lateral
+  menuOverlay.classList.add("active"); // Exibe o fundo escurecido
+  hamburgerMenu.classList.add("active"); // Anima o ícone de hambúrguer
+  document.body.style.overflow = "hidden"; // Impede rolagem da página
 };
 
-// Fecha o menu lateral
-const closeMenuFunction = () => {
-  sideMenu.classList.remove("active");
-  menuOverlay.classList.remove("active");
-  hamburgerMenu.classList.remove("active");
-  document.body.style.overflow = "auto";
+// Função para fechar o menu
+const fecharMenu = () => {
+  sideMenu.classList.remove("active"); // Esconde o menu lateral
+  menuOverlay.classList.remove("active"); // Remove o fundo escurecido
+  hamburgerMenu.classList.remove("active"); // Restaura o ícone de hambúrguer
+  document.body.style.overflow = "auto"; // Libera a rolagem da página
 };
 
-// Eventos de clique
-hamburgerMenu.addEventListener("click", openMenu);
-closeMenu.addEventListener("click", closeMenuFunction);
-menuOverlay.addEventListener("click", closeMenuFunction);
+// Eventos de clique para abrir e fechar o menu
+hamburgerMenu.addEventListener("click", abrirMenu);
+closeMenuButton.addEventListener("click", fecharMenu);
+menuOverlay.addEventListener("click", fecharMenu);
 
-// Fecha o menu ao pressionar ESC
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && sideMenu.classList.contains("active"))
-    closeMenuFunction();
+// Fecha o menu ao pressionar a tecla ESC
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && sideMenu.classList.contains("active")) {
+    fecharMenu();
+  }
 });
 
-// Fecha o menu ao clicar em um link
-menuLinks.forEach((link) =>
-  link.addEventListener("click", () => setTimeout(closeMenuFunction, 100))
-);
-
-// Fecha o menu se a tela for redimensionada para desktop
+// Fecha o menu se a janela for redimensionada para tamanho desktop
 window.addEventListener("resize", () => {
-  if (window.innerWidth > 1024 && sideMenu.classList.contains("active"))
-    closeMenuFunction();
+  if (window.innerWidth > 1024 && sideMenu.classList.contains("active")) {
+    fecharMenu();
+  }
 });
 
-// Fecha o menu ao clicar fora dele
-document.addEventListener("click", (e) => {
-  if (
+// Fecha o menu ao clicar fora dele (exceto se clicar no menu ou no botão hambúrguer)
+document.addEventListener("click", (event) => {
+  const clicouForaDoMenu =
     sideMenu.classList.contains("active") &&
-    !sideMenu.contains(e.target) &&
-    !hamburgerMenu.contains(e.target)
-  ) {
-    closeMenuFunction();
+    !sideMenu.contains(event.target) &&
+    !hamburgerMenu.contains(event.target);
+
+  if (clicouForaDoMenu) {
+    fecharMenu();
   }
 });

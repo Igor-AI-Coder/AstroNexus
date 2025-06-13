@@ -1,45 +1,51 @@
 // =====================================
-// MODAL E FILTROS — AstroNexus Galeria
+// MODAL — AstroNexus Galeria
 // =====================================
 
-// Pegar elementos do modal
-const modal = document.getElementById("imageModal");
-const modalImage = document.getElementById("modalImage");
-const modalTitle = document.getElementById("modalTitle");
-const modalDescription = document.getElementById("modalDescription");
-const closeBtn = document.getElementById("modalClose");
-const overlay = document.getElementById("modalOverlay");
+// Seleciona os elementos do modal
+const modal = document.getElementById("imageModal"); // Container do modal
+const modalImage = document.getElementById("modalImage"); // Imagem exibida no modal
+const modalTitle = document.getElementById("modalTitle"); // Título da imagem
+const modalDescription = document.getElementById("modalDescription"); // Descrição da imagem
+const closeButton = document.getElementById("modalClose"); // Botão para fechar
+const modalOverlay = document.getElementById("modalOverlay"); // Fundo escurecido
 
-// Função para abrir o modal com imagem, título e descrição
-function openModal(src, title, desc) {
+// Abre o modal com a imagem, título e descrição informados
+function abrirModal(src, titulo, descricao) {
   modalImage.src = src;
-  modalTitle.textContent = title;
-  modalDescription.textContent = desc;
+  modalTitle.textContent = titulo;
+  modalDescription.textContent = descricao;
   modal.classList.add("active");
-  document.body.style.overflow = "hidden"; // Travar o scroll da página
+  document.body.style.overflow = "hidden"; // Impede rolagem da página enquanto o modal está aberto
 }
 
-// Função para fechar o modal
-function closeModal() {
+// Fecha o modal e libera o scroll da página
+function fecharModal() {
   modal.classList.remove("active");
-  document.body.style.overflow = "auto"; // Liberar scroll da página
+  document.body.style.overflow = "auto";
 }
 
-// Abrir modal ao clicar no botão "Ver Imagem"
-document.addEventListener("click", (e) => {
-  const btn = e.target.closest(".view-btn");
-  if (btn) {
-    e.preventDefault();
-    openModal(btn.dataset.image, btn.dataset.title, btn.dataset.description);
+// Evento para abrir o modal ao clicar em um botão de imagem
+document.addEventListener("click", (event) => {
+  const botaoImagem = event.target.closest(".view-btn");
+  if (botaoImagem) {
+    event.preventDefault();
+    abrirModal(
+      botaoImagem.dataset.image,
+      botaoImagem.dataset.title,
+      botaoImagem.dataset.description
+    );
   }
 });
 
-// Fechar modal pelo botão, overlay ou tecla ESC
-closeBtn.addEventListener("click", closeModal);
-overlay.addEventListener("click", closeModal);
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && modal.classList.contains("active")) {
-    closeModal();
+// Eventos para fechar o modal
+closeButton.addEventListener("click", fecharModal);
+modalOverlay.addEventListener("click", fecharModal);
+
+// Fecha o modal ao pressionar a tecla ESC
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && modal.classList.contains("active")) {
+    fecharModal();
   }
 });
 
@@ -47,26 +53,29 @@ document.addEventListener("keydown", (e) => {
 // FILTROS DA GALERIA
 // =====================================
 
-// Pegar filtros e itens da galeria
-const filterTabs = document.querySelectorAll(".filter-tab");
-const galleryItems = document.querySelectorAll(".gallery-item");
+// Seleciona os botões de filtro e os itens da galeria
+const botoesFiltro = document.querySelectorAll(".filter-tab");
+const itensGaleria = document.querySelectorAll(".gallery-item");
 
-// Função para exibir imagens filtradas
-function filterImages(category) {
-  galleryItems.forEach((item) => {
+// Mostra as imagens filtradas conforme a categoria selecionada
+function filtrarImagens(categoria) {
+  itensGaleria.forEach((item) => {
     item.style.display =
-      category === "todos" || item.dataset.category === category
+      categoria === "todos" || item.dataset.category === categoria
         ? "block"
         : "none";
   });
 }
 
-// Ativar filtro ao clicar e destacar o botão ativo
-filterTabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    filterTabs.forEach((t) => t.classList.remove("active")); // Remove ativo de todos
-    tab.classList.add("active"); // Ativa o clicado
-    filterImages(tab.dataset.filter); // Filtra imagens
+// Adiciona evento de clique nos filtros
+botoesFiltro.forEach((botao) => {
+  botao.addEventListener("click", () => {
+    // Remove a classe 'active' de todos os botões
+    botoesFiltro.forEach((b) => b.classList.remove("active"));
+    // Adiciona 'active' ao botão clicado
+    botao.classList.add("active");
+    // Filtra as imagens da galeria pela categoria selecionada
+    filtrarImagens(botao.dataset.filter);
   });
 });
 

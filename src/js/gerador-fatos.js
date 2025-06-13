@@ -1,91 +1,94 @@
-// Importa a função que fornece os fatos astronômicos
+// ===============================================
+// GERADOR DE FATOS ASTRONÔMICOS — AstroNexus
+// ===============================================
+
+// Importa a função que retorna os fatos por categoria
 import { obterFatos } from "./fatos-astronomicos.js";
 
-// Variáveis globais para controlar a aplicação
-let categoriaAtual = "todos"; // Categoria inicial
-let fatosUsados = new Set(); // Armazena os fatos já exibidos para evitar repetição
+// Variáveis globais de controle
+let categoriaAtual = "todos"; // Categoria padrão
+let fatosUsados = new Set(); // Controla os fatos já exibidos
 
-// Variáveis para acessar elementos do HTML
-let factText;
-let generateBtn;
-let categoryBtns;
+// Elementos da interface
+let textoFato; // Elemento onde o fato aparece
+let botaoGerar; // Botão para gerar novo fato
+let botoesCategoria; // Botões de filtro de categoria
 
-// Quando a página for carregada, executa a função inicializar
+// Executa quando a página estiver carregada
 document.addEventListener("DOMContentLoaded", inicializar);
 
-// Função que configura os elementos e os eventos da página
+// Configura os elementos e eventos da página
 function inicializar() {
-  // Captura os elementos do HTML
-  factText = document.getElementById("factText");
-  generateBtn = document.getElementById("generateBtn");
-  categoryBtns = document.querySelectorAll(".category-btn");
+  // Captura os elementos HTML
+  textoFato = document.getElementById("factText");
+  botaoGerar = document.getElementById("generateBtn");
+  botoesCategoria = document.querySelectorAll(".category-btn");
 
-  // Quando clicar no botão de gerar fato, chama a função gerarFato
-  generateBtn.addEventListener("click", gerarFato);
+  // Clica no botão de gerar fato → chama gerarFato()
+  botaoGerar.addEventListener("click", gerarFato);
 
-  // Quando clicar em um botão de categoria, muda a categoria
-  categoryBtns.forEach((btn) => {
-    btn.addEventListener("click", () => mudarCategoria(btn.dataset.category));
+  // Clica em um botão de categoria → chama mudarCategoria()
+  botoesCategoria.forEach((botao) => {
+    botao.addEventListener("click", () =>
+      mudarCategoria(botao.dataset.category)
+    );
   });
 
-  console.log("🌟 Gerador de fatos inicializado!");
+  console.log("🌟 Gerador de Fatos Astronômicos pronto!");
 }
 
-// Função para alterar a categoria de fatos
+// Altera a categoria atual e reseta os fatos usados
 function mudarCategoria(categoria) {
-  categoriaAtual = categoria; // Atualiza a categoria atual
-  fatosUsados.clear(); // Limpa os fatos usados para começar de novo
+  categoriaAtual = categoria;
+  fatosUsados.clear(); // Limpa os fatos já exibidos
 
-  // Atualiza visualmente os botões, destacando o selecionado
-  categoryBtns.forEach((btn) => {
-    const isAtiva = btn.dataset.category === categoria;
-    btn.classList.toggle("active", isAtiva); // se encontrar a categoria, adiciona a classe 'active', se false, remove
+  // Atualiza visualmente o botão ativo
+  botoesCategoria.forEach((botao) => {
+    const ativo = botao.dataset.category === categoria;
+    botao.classList.toggle("active", ativo);
   });
 
-  // Mensagem informando que a categoria mudou
-  factText.textContent = "Categoria alterada! Clique para gerar um fato.";
-  factText.classList.add("placeholder");
+  // Atualiza texto inicial após mudar categoria
+  textoFato.textContent = "Categoria alterada! Clique para gerar um fato.";
+  textoFato.classList.add("placeholder");
 }
 
-// Função para gerar um fato aleatório da categoria atual
+// Gera e exibe um fato aleatório da categoria atual
 function gerarFato() {
-  // Busca os fatos disponíveis da categoria selecionada
   const fatosDisponiveis = obterFatos(categoriaAtual);
 
-  // Se não houver fatos, exibe uma mensagem e encerra
+  // Se não houver fatos disponíveis
   if (fatosDisponiveis.length === 0) {
-    factText.textContent = "Nenhum fato disponível para esta categoria.";
-    factText.classList.add("placeholder");
+    textoFato.textContent = "Nenhum fato disponível para esta categoria.";
+    textoFato.classList.add("placeholder");
     return;
   }
 
-  // Se todos os fatos já foram usados, reinicia a lista
+  // Se todos os fatos já foram exibidos, reinicia
   if (fatosUsados.size >= fatosDisponiveis.length) {
     fatosUsados.clear();
   }
 
-  // Escolhe aleatoriamente um fato ainda não usado
-  let fato;
+  // Seleciona um fato aleatório que ainda não foi exibido
+  let fatoSelecionado;
   do {
-    const indiceAleatorio = Math.floor(Math.random() * fatosDisponiveis.length);
-    fato = fatosDisponiveis[indiceAleatorio];
-  } while (fatosUsados.has(fato)); // Repete enquanto o fato já tiver sido usado
+    const indice = Math.floor(Math.random() * fatosDisponiveis.length);
+    fatoSelecionado = fatosDisponiveis[indice];
+  } while (fatosUsados.has(fatoSelecionado));
 
-  // Marca o fato como usado
-  fatosUsados.add(fato);
-
-  // Exibe o fato na tela
-  exibirFato(fato);
+  // Marca o fato como usado e exibe na tela
+  fatosUsados.add(fatoSelecionado);
+  exibirFato(fatoSelecionado);
 }
 
-// Função para exibir um fato com uma pequena animação de opacidade
+// Exibe um fato com efeito de transição de opacidade
 function exibirFato(fato) {
-  factText.style.opacity = "0"; // Esconde o texto atual
+  textoFato.style.opacity = "0"; // Esconde o texto atual
 
-  // Após 300 milissegundos, troca o texto e exibe novamente
+  // Troca o texto após 300ms e reaparece
   setTimeout(() => {
-    factText.textContent = fato;
-    factText.classList.remove("placeholder"); // Remove estilo de placeholder
-    factText.style.opacity = "1";
+    textoFato.textContent = fato;
+    textoFato.classList.remove("placeholder");
+    textoFato.style.opacity = "1";
   }, 300);
 }

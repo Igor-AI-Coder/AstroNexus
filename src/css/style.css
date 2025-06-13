@@ -576,54 +576,13 @@ html {
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
 }
 
-.orbit-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  z-index: 1;
-  animation: orbit 20s linear infinite;
-}
-
-.ring-1 {
-  width: 110%;
-  height: 110%;
-  transform: translate(-50%, -50%);
-  animation-duration: 15s;
-}
-
-.ring-2 {
-  width: 130%;
-  height: 130%;
-  transform: translate(-50%, -50%);
-  animation-duration: 25s;
-  animation-direction: reverse;
-}
-
-.ring-3 {
-  width: 150%;
-  height: 150%;
-  transform: translate(-50%, -50%);
-  animation-duration: 35s;
-}
-
-@keyframes orbit {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
 @keyframes float {
   0%,
   100% {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-25px);
   }
 }
 
@@ -1683,10 +1642,6 @@ html {
   .gallery-item.tall-item {
     grid-column: span 1;
     grid-row: span 1;
-  }
-
-  .orbit-ring {
-    display: none;
   }
 
   .contact-info {
