@@ -1,5 +1,4 @@
 // 📦 Base de dados com fatos astronômicos organizados por categorias
-// 📦 Base de dados com fatos astronômicos organizados por categorias
 export const fatos = {
   planetas: [
     "A Terra é o único planeta conhecido com vida.",
@@ -341,6 +340,7 @@ export const fatos = {
     "No final, tudo o que resta de você são as memórias nas mentes de outras pessoas. E quando essas pessoas se forem, será como se você nunca tivesse existido. A menos que você faça algo que dure milênios, o que é quase impossível.",
   ],
 };
+
 // 📌 Função para obter os fatos conforme a categoria escolhida
 export function obterFatos(categoria = "todos") {
   // Se a categoria for "todos", junta todos os fatos de todas as categorias

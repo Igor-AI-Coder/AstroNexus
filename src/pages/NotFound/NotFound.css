@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Space+Grotesk:wght@400;700&display=swap");
+
+.error-404-container {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  font-family: "Space Grotesk", Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.erro404 {
+  font-family: "Orbitron", monospace;
+  font-size: 7rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 24px #32b6ff, 0 0 48px #fff2;
+}
+
+.mensagem {
+  font-size: 1.4rem;
+  color: #c9eaff;
+  margin-bottom: 2.2rem;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.motivos {
+  font-size: 1rem;
+  color: #fff;
+  opacity: 0.8;
+  margin-bottom: 2.5rem;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.motivos a {
+  color: #32b6ff;
+  font-weight: bold;
+  text-decoration: underline;
+  font-family: "Orbitron", monospace;
+  letter-spacing: 0.07em;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+
+.motivos a:hover {
+  color: #fff;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .erro404 {
+    font-size: 5rem;
+  }
+
+  .mensagem {
+    font-size: 1.2rem;
+  }
+
+  .motivos {
+    font-size: 0.9rem;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .erro404 {
+    font-size: 4rem;
+  }
+
+  .mensagem {
+    font-size: 1.1rem;
+  }
+
+  .motivos {
+    font-size: 0.85rem;
+    max-width: 280px;
+  }
+}

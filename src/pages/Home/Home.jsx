@@ -1,30 +1,11 @@
-// import { useState } from "react";
-import "../../assets/css/style.css";
-import "../../assets/css/menu.css";
+import "./Home.css";
 import "../../assets/css/background.css";
-import astronauta from "../../assets/img/astronauta.png";
-import sobre from "../../assets/img/sobre.png";
-import img3 from "../../assets/img/3.png";
-import noticia1 from "../../assets/img/noti-01.webp";
-import noticia2 from "../../assets/img/noti-02.png";
-import noticia3 from "../../assets/img/noti-03.jpg";
-import planetas from "../../assets/img/planetas.jpg";
-import costelacao1 from "../../assets/img/cost-01.jpg";
-import constelacao2 from "../../assets/img/const-02.avif";
-import constelacao3 from "../../assets/img/const-03.jpg";
-import constelacao4 from "../../assets/img/const-04.jpg";
-import galeria1 from "../../assets/img/gal-01.webp";
-import galeria2 from "../../assets/img/gal-02.jpg";
-import galeria3 from "../../assets/img/gal-03.jpg";
-import galeria4 from "../../assets/img/gal-04.webp";
-import galeria5 from "../../assets/img/gal-05.webp";
-import galeria6 from "../../assets/img/gal-06.jpg";
-
-function App() {
-  // const [count, setCount] = useState(0)
-
+import Header from "../../components/Header/Header";
+import { Link } from "react-router-dom";
+const Home = () => {
   return (
-    <div>
+    <>
+      <Header />
       <div id="space">
         <div className="stars"></div>
         <div className="stars"></div>
@@ -90,10 +71,10 @@ function App() {
               </div>
             </div>
             <div className="hero-buttons">
-              <a href="#products" className="btn-primary">
+              <Link to="/produtos" className="btn-primary">
                 <i className="fas fa-rocket"></i>
                 <span>Explorar Produtos</span>
-              </a>
+              </Link>
               <a href="#services" className="btn-secondary">
                 <i className="fas fa-info-circle"></i>
                 <span>Saiba Mais</span>
@@ -102,9 +83,9 @@ function App() {
           </div>
           <div className="hero-image hero-in">
             <div className="image-container">
-              <div className="image-glow"></div>
+              {/* <div className="image-glow"></div> */}
               <img
-                src={astronauta}
+                src="img/astronauta.png"
                 alt="Exploração do universo - AstroNexus"
                 loading="eager"
                 decoding="async"
@@ -150,7 +131,7 @@ function App() {
           <div className="about-right">
             <div className="about-image">
               <img
-                src={sobre}
+                src="img/sobre.png"
                 alt="Exploração espacial - Tecnologia AstroNexus"
                 loading="lazy"
                 decoding="async"
@@ -178,7 +159,7 @@ function App() {
                 Aprenda a usar telescópios e identificar objetos celestes com
                 nossos guias especializados.
               </p>
-              <a href="/AstroNexus/src/pages/404.html" className="service-link">
+              <a href="#" className="service-link">
                 Saiba Mais
               </a>
             </div>
@@ -189,7 +170,7 @@ function App() {
                 Navegue pelo céu noturno com nossos mapas interativos de
                 constelações em tempo real.
               </p>
-              <a href="/AstroNexus/src/pages/404.html" className="service-link">
+              <a href="#" className="service-link">
                 Explorar
               </a>
             </div>
@@ -200,7 +181,7 @@ function App() {
                 Receba notificações sobre eventos celestiais importantes e
                 fenômenos raros.
               </p>
-              <a href="/AstroNexus/src/pages/404.html" className="service-link">
+              <a href="#" className="service-link">
                 Ativar
               </a>
             </div>
@@ -239,13 +220,10 @@ function App() {
                 </div>
               </div>
               <div className="cta-buttons">
-                <a
-                  href="/AstroNexus/src/pages/produtos.html"
-                  className="btn-cta"
-                >
+                <Link to="/produtos" className="btn-cta">
                   <i className="fas fa-store"></i>
                   <span>Visitar Loja</span>
-                </a>
+                </Link>
                 <a href="#services" className="btn-secondary">
                   <i className="fas fa-info-circle"></i>
                   <span>Saiba Mais</span>
@@ -254,7 +232,7 @@ function App() {
             </div>
             <div className="cta-image">
               <img
-                src={img3}
+                src="/img/3.png"
                 alt="Equipamentos Astronômicos - AstroNexus"
                 loading="lazy"
                 decoding="async"
@@ -277,7 +255,7 @@ function App() {
             <article className="news-card featured">
               <div className="news-image">
                 <img
-                  src={noticia1}
+                  src="img/noti-01.webp"
                   alt="Novo exoplaneta descoberto"
                   loading="lazy"
                   decoding="async"
@@ -301,7 +279,7 @@ function App() {
             <article className="news-card">
               <div className="news-image">
                 <img
-                  src={noticia2}
+                  src="img/noti-02.png"
                   alt="Eclipse lunar total"
                   loading="lazy"
                   decoding="async"
@@ -323,7 +301,7 @@ function App() {
             <article className="news-card">
               <div className="news-image">
                 <img
-                  src={noticia3}
+                  src="img/noti-03.jpg"
                   alt="Nebulosa capturada pelo Hubble"
                   loading="lazy"
                   decoding="async"
@@ -404,13 +382,10 @@ function App() {
               </div>
 
               <div className="solar-system-buttons">
-                <a
-                  href="/AstroNexus/src/pages/planetas.html"
-                  className="btn-solar"
-                >
+                <Link to="/planetas" className="btn-solar">
                   <i className="fas fa-rocket"></i>
                   <span>Explorar Planetas</span>
-                </a>
+                </Link>
                 <a href="#news" className="btn-secondary">
                   <i className="fas fa-newspaper"></i>
                   <span>Ver Notícias</span>
@@ -421,7 +396,7 @@ function App() {
             <div className="solar-system-image">
               <div className="solar-system-visual">
                 <img
-                  src={planetas}
+                  src="img/planetas.jpg"
                   alt="Sistema Solar - Os Oito Planetas"
                   loading="lazy"
                   decoding="async"
@@ -445,7 +420,7 @@ function App() {
             <article className="constellation-featured">
               <div className="constellation-image">
                 <img
-                  src={costelacao1}
+                  src="img/cost-01.jpg"
                   alt="Constelação de Órion"
                   loading="lazy"
                   decoding="async"
@@ -477,7 +452,7 @@ function App() {
               <article className="constellation-card">
                 <div className="constellation-card-image">
                   <img
-                    src={constelacao2}
+                    src="img/const-02.avif"
                     alt="Constelação Ursa Maior"
                     loading="lazy"
                     decoding="async"
@@ -494,7 +469,7 @@ function App() {
               <article className="constellation-card">
                 <div className="constellation-card-image">
                   <img
-                    src={constelacao3}
+                    src="img/const-03.jpg"
                     alt="Constelação Cassiopeia"
                     loading="lazy"
                     decoding="async"
@@ -511,7 +486,7 @@ function App() {
               <article className="constellation-card">
                 <div className="constellation-card-image">
                   <img
-                    src={constelacao4}
+                    src="img/const-04.jpg"
                     alt="Constelação Leão"
                     loading="lazy"
                     decoding="async"
@@ -542,7 +517,7 @@ function App() {
           <div className="gallery-grid">
             <figure className="gallery-item large-item">
               <img
-                src={galeria1}
+                src="img/gal-01.webp"
                 alt="Nebulosa de formação estelar colorida"
                 loading="lazy"
                 decoding="async"
@@ -554,7 +529,7 @@ function App() {
             </figure>
             <figure className="gallery-item">
               <img
-                src={galeria2}
+                src="img/gal-02.jpg"
                 alt="Galáxia espiral majestosa"
                 loading="lazy"
                 decoding="async"
@@ -566,7 +541,7 @@ function App() {
             </figure>
             <figure className="gallery-item">
               <img
-                src={galeria3}
+                src="img/gal-03.jpg"
                 alt="Sistema planetário com luas"
                 loading="lazy"
                 decoding="async"
@@ -578,7 +553,7 @@ function App() {
             </figure>
             <figure className="gallery-item tall-item">
               <img
-                src={galeria5}
+                src="img/gal-05.webp"
                 alt="Aurora boreal dançando no céu"
                 loading="lazy"
                 decoding="async"
@@ -590,7 +565,7 @@ function App() {
             </figure>
             <figure className="gallery-item">
               <img
-                src={galeria6}
+                src="img/gal-06.jpg"
                 alt="Telescópio espacial em órbita"
                 loading="lazy"
                 decoding="async"
@@ -602,7 +577,7 @@ function App() {
             </figure>
             <figure className="gallery-item wide-item">
               <img
-                src={galeria4}
+                src="img/gal-04.webp"
                 alt="Via Láctea vista da Terra"
                 loading="lazy"
                 decoding="async"
@@ -754,7 +729,7 @@ function App() {
                     <a href="#about">Sobre</a>
                   </li>
                   <li>
-                    <a href="#products">Produtos</a>
+                    <Link to="/produtos">Produtos</Link>
                   </li>
                   <li>
                     <a href="#events">Eventos</a>
@@ -785,8 +760,8 @@ function App() {
           </div>
         </div>
       </footer>
-    </div>
+    </>
   );
-}
+};
 
-export default App;
+export default Home;

@@ -606,8 +606,7 @@ body {
   transform: translateZ(0);
   backface-visibility: hidden;
   /* Lazy loading nativo */
-  loading: lazy;
-  decoding: async;
+
   /* Aspect ratio para evitar CLS */
   aspect-ratio: 16/9;
 }
@@ -788,8 +787,6 @@ body {
   object-fit: contain;
   display: block;
   /* Otimizações para modal */
-  loading: eager;
-  decoding: sync;
 }
 
 .modal-info {

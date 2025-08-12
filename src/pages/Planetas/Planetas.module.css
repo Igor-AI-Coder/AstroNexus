@@ -1,0 +1,241 @@
+/* Planetas - Estilos específicos JSX */
+
+/* Configuração das fontes */
+.planetasPage {
+  font-family: "Space Grotesk", sans-serif;
+  background: #000000;
+}
+
+.fontOrbitron {
+  font-family: "Orbitron", monospace;
+}
+
+/* Fundo com estrelas */
+.starsBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  background: #000000;
+}
+
+.stars {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Sistema Solar */
+.solarSystem {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbit {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotate-orbit 20s linear infinite;
+  pointer-events: none;
+}
+
+.orbit1 {
+  width: 80px;
+  height: 80px;
+  animation-duration: 10s;
+}
+
+.orbit2 {
+  width: 120px;
+  height: 120px;
+  animation-duration: 15s;
+}
+
+.orbit3 {
+  width: 160px;
+  height: 160px;
+  animation-duration: 20s;
+}
+
+.orbit4 {
+  width: 200px;
+  height: 200px;
+  animation-duration: 25s;
+}
+
+.orbit5 {
+  width: 280px;
+  height: 280px;
+  animation-duration: 35s;
+}
+
+.orbit6 {
+  width: 360px;
+  height: 360px;
+  animation-duration: 45s;
+}
+
+.orbit7 {
+  width: 440px;
+  height: 440px;
+  animation-duration: 55s;
+}
+
+.orbit8 {
+  width: 520px;
+  height: 520px;
+  animation-duration: 65s;
+}
+
+@keyframes rotate-orbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: auto;
+}
+
+.planet:hover {
+  transform: translateX(-50%) scale(1.5);
+  z-index: 10;
+}
+
+.sun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, #ffd700, #ff8c00);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.6);
+  animation: pulse 3s ease-in-out infinite;
+  cursor: pointer;
+  z-index: 10;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.mercury {
+  width: 8px;
+  height: 8px;
+  background: #8c7853;
+}
+
+.venus {
+  width: 12px;
+  height: 12px;
+  background: #ffc649;
+}
+
+.earth {
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(45deg, #1e90ff, #228b22);
+}
+
+.mars {
+  width: 10px;
+  height: 10px;
+  background: #cd5c5c;
+}
+
+.jupiter {
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(45deg, #daa520, #b8860b);
+}
+
+.saturn {
+  width: 20px;
+  height: 20px;
+  background: #fad5a5;
+  position: relative;
+}
+
+.uranus {
+  width: 16px;
+  height: 16px;
+  background: #4fd0e4;
+}
+
+.neptune {
+  width: 14px;
+  height: 14px;
+  background: #4169e1;
+}
+
+.saturn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  border: 2px solid rgba(250, 213, 165, 0.6);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.glowText {
+  font-family: "Orbitron", monospace;
+  text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .solarSystem {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 480px) {
+  .solarSystem {
+    transform: scale(0.6);
+  }
+}
