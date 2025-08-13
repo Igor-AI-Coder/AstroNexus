@@ -1,7 +1,9 @@
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import "./Galeria.css";
+
 const Galeria = () => {
   const [filtroAtivo, setFiltroAtivo] = useState("todos");
   const [modalAberto, setModalAberto] = useState(false);
@@ -10,163 +12,51 @@ const Galeria = () => {
     titulo: "",
     descricao: "",
   });
+  const [imagens, setImagens] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Dados das imagens da galeria
-  const imagens = [
-    {
-      id: 1,
-      src: "/img/galeria-01.jpg",
-      titulo: "Galáxia NGC1300",
-      subtitulo: "Galáxia espiral barrada",
-      descricao:
-        "Uma magnífica galáxia espiral barrada localizada na constelação de Eridanus",
-      categoria: "galaxias",
-      classe: "",
-    },
-    {
-      id: 2,
-      src: "/img/galeria-02.jpg",
-      titulo: "Andrômeda M31",
-      subtitulo: "Nossa galáxia vizinha",
-      descricao:
-        "A galáxia mais próxima da Via Láctea, também conhecida como M31",
-      categoria: "galaxias",
-      classe: "",
-    },
-    {
-      id: 3,
-      src: "/img/galeria-03.jpeg",
-      titulo: "Cabeça de Cavalo",
-      subtitulo: "Nebulosa escura icônica",
-      descricao:
-        "Uma das nebulosas escuras mais famosas do céu, localizada na constelação de Órion",
-      categoria: "nebulosas",
-      classe: "tall",
-    },
-    {
-      id: 4,
-      src: "/img/galeria-04.jfif",
-      titulo: "Nebulosa do Caranguejo",
-      subtitulo: "Remanescente de supernova",
-      descricao:
-        "Resultado da explosão de uma supernova observada pelos chineses em 1054 d.C.",
-      categoria: "nebulosas",
-      classe: "",
-    },
-    {
-      id: 5,
-      src: "/img/galeria-05.webp",
-      titulo: "Nebulosa Borboleta",
-      subtitulo: "NGC 6302",
-      descricao:
-        "Uma nebulosa planetária com formato característico de borboleta",
-      categoria: "nebulosas",
-      classe: "wide",
-    },
-    {
-      id: 6,
-      src: "/img/galeria-06.jpg",
-      titulo: "Saturno",
-      subtitulo: "O Senhor dos Anéis",
-      descricao: "O magnífico planeta dos anéis capturado pela sonda Cassini",
-      categoria: "planetas",
-      classe: "",
-    },
-    {
-      id: 7,
-      src: "/img/galeria-07.jpg",
-      titulo: "Júpiter",
-      subtitulo: "Gigante gasoso",
-      descricao:
-        "O maior planeta do sistema solar com sua Grande Mancha Vermelha",
-      categoria: "planetas",
-      classe: "",
-    },
-    {
-      id: 8,
-      src: "/img/galeria-09.jpg",
-      titulo: "V838 Monocerotis",
-      subtitulo: "Estrela variável",
-      descricao:
-        "Uma estrela variável luminosa azul que expandiu dramaticamente em 2002",
-      categoria: "estrelas",
-      classe: "",
-    },
-    {
-      id: 9,
-      src: "/img/galeria-10.jpg",
-      titulo: "Eta Carinae",
-      subtitulo: "Supergigante azul",
-      descricao: "Uma das estrelas mais massivas e luminosas conhecidas",
-      categoria: "estrelas",
-      classe: "tall",
-    },
-    {
-      id: 10,
-      src: "/img/galeria-11.jpg",
-      titulo: "Terra",
-      subtitulo: "Nosso planeta azul",
-      descricao: "Nossa casa no cosmos, vista do espaço",
-      categoria: "sistema-solar",
-      classe: "wide",
-    },
-    {
-      id: 11,
-      src: "/img/galeria-12.jpg",
-      titulo: "Lua",
-      subtitulo: "Nosso satélite natural",
-      descricao: "Nosso satélite natural em toda sua glória",
-      categoria: "sistema-solar",
-      classe: "",
-    },
-    {
-      id: 12,
-      src: "/img/galeria-13.jpg",
-      titulo: "Ultra Deep Field",
-      subtitulo: "Olhando para o passado",
-      descricao: "Uma das imagens mais profundas do universo já capturadas",
-      categoria: "deep-space",
-      classe: "",
-    },
-    {
-      id: 13,
-      src: "/img/galeria-14.webp",
-      titulo: "Extreme Deep Field",
-      subtitulo: "O universo primitivo",
-      descricao:
-        "A imagem mais profunda do universo, mostrando galáxias de bilhões de anos atrás",
-      categoria: "deep-space",
-      classe: "large",
-    },
-    {
-      id: 14,
-      src: "/img/galeria-15.jpg",
-      titulo: "Pilares da Criação",
-      subtitulo: "Nebulosa da Águia",
-      descricao:
-        "Estruturas icônicas na Nebulosa da Águia onde nascem novas estrelas",
-      categoria: "nebulosas",
-      classe: "",
-    },
-    {
-      id: 15,
-      src: "/img/galeria-16.webp",
-      titulo: "Marte",
-      subtitulo: "O planeta vermelho",
-      descricao: "O planeta vermelho capturado pelo Telescópio Hubble",
-      categoria: "planetas",
-      classe: "",
-    },
-  ];
+  // Busca imagens da API da NASA (APOD)
+  useEffect(() => {
+    const fetchImages = async () => {
+      setIsLoading(true);
+      setError(null);
+      try {
+        // Use sua chave da NASA, ou variável de ambiente VITE_NASA_API_KEY
+        const apiKey = import.meta.env.VITE_NASA_API_KEY || "DEMO_KEY";
+        // Busca múltiplas imagens (ex: últimos 15 dias)
+        const endDate = new Date();
+        const startDate = new Date();
+        startDate.setDate(endDate.getDate() - 14);
+        const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&start_date=${startDate.toISOString().slice(0, 10)}&end_date=${endDate.toISOString().slice(0, 10)}`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("Erro ao buscar imagens da NASA");
+        let data = await res.json();
+        // Filtra apenas imagens (descarta vídeos)
+        data = data.filter((item) => item.media_type === "image");
+        // Adiciona categoria fake para filtro (exemplo)
+        data = data.map((item, idx) => ({
+          id: idx + 1,
+          src: item.url,
+          titulo: item.title,
+          subtitulo: item.copyright || "NASA APOD",
+          descricao: item.explanation,
+          categoria: "deep-space", // ou "galaxias", "nebulosas", etc, se quiser randomizar
+          classe: "",
+        }));
+        setImagens(data.reverse()); // mais recente primeiro
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchImages();
+  }, []);
 
-  // Categorias de filtro
+  // Categorias de filtro (apenas "deep-space" para as imagens da API, mas pode expandir)
   const categorias = [
     { id: "todos", nome: "Todas", icon: "fas fa-th" },
-    { id: "galaxias", nome: "Galáxias", icon: "fas fa-circle" },
-    { id: "nebulosas", nome: "Nebulosas", icon: "fas fa-cloud" },
-    { id: "planetas", nome: "Planetas", icon: "fas fa-globe" },
-    { id: "estrelas", nome: "Estrelas", icon: "fas fa-star" },
-    { id: "sistema-solar", nome: "Sistema Solar", icon: "fas fa-sun" },
     { id: "deep-space", nome: "Deep Space", icon: "fas fa-satellite" },
   ];
 
@@ -196,7 +86,6 @@ const Galeria = () => {
         fecharModal();
       }
     };
-
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [modalAberto]);
@@ -238,15 +127,15 @@ const Galeria = () => {
               <div className="stat-item">
                 <i className="fas fa-camera"></i>
                 <div className="stat-content">
-                  <span className="stat-number">500+</span>
+                  <span className="stat-number">{imagens.length}</span>
                   <span className="stat-label">Imagens</span>
                 </div>
               </div>
               <div className="stat-item">
                 <i className="fas fa-star"></i>
                 <div className="stat-content">
-                  <span className="stat-number">50+</span>
-                  <span className="stat-label">Objetos</span>
+                  <span className="stat-number">1</span>
+                  <span className="stat-label">Categoria</span>
                 </div>
               </div>
             </div>
@@ -278,28 +167,34 @@ const Galeria = () => {
       {/* Gallery Section */}
       <section className="gallery-section">
         <div className="gallery-container">
-          <div className="gallery-grid">
-            {imagensFiltradas.map((imagem) => (
-              <div key={imagem.id} className={`gallery-item ${imagem.classe}`}>
-                <img src={imagem.src} alt={imagem.titulo} />
-                <div className="image-overlay">
-                  <button
-                    className="view-btn"
-                    onClick={() =>
-                      abrirModal(imagem.src, imagem.titulo, imagem.descricao)
-                    }
-                  >
-                    <i className="fas fa-eye"></i>
-                    <span>Ver Imagem</span>
-                  </button>
+          {isLoading ? (
+            <div style={{ color: '#fff', textAlign: 'center', padding: '40px' }}>Carregando imagens...</div>
+          ) : error ? (
+            <div style={{ color: 'red', textAlign: 'center', padding: '40px' }}>{error}</div>
+          ) : (
+            <div className="gallery-grid">
+              {imagensFiltradas.map((imagem) => (
+                <div key={imagem.id} className={`gallery-item ${imagem.classe}`}>
+                  <img src={imagem.src} alt={imagem.titulo} />
+                  <div className="image-overlay">
+                    <button
+                      className="view-btn"
+                      onClick={() =>
+                        abrirModal(imagem.src, imagem.titulo, imagem.descricao)
+                      }
+                    >
+                      <i className="fas fa-eye"></i>
+                      <span>Ver Imagem</span>
+                    </button>
+                  </div>
+                  <div className="image-info">
+                    <h3>{imagem.titulo}</h3>
+                    <p>{imagem.subtitulo}</p>
+                  </div>
                 </div>
-                <div className="image-info">
-                  <h3>{imagem.titulo}</h3>
-                  <p>{imagem.subtitulo}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
