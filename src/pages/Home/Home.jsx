@@ -1,23 +1,18 @@
+
 import { useState, useEffect } from "react";
 import "./Home.css";
 import "../../assets/css/background.css";
 import Header from "../../components/Header/Header";
 import { Link } from "react-router-dom";
 
-// --- FUNÇÃO AUXILIAR PARA REDUZIR COMPLEXIDADE ---
-// Esta função isola a lógica de atribuição de classes.
+// Função auxiliar para classes da galeria
 const getGalleryItemClass = (index) => {
   let itemClass = "gallery-item";
-  if (index === 0) {
-    itemClass += " large-item";
-  } else if (index === 3) {
-    itemClass += " tall-item";
-  } else if (index === 5) {
-    itemClass += " wide-item";
-  }
+  if (index === 0) itemClass += " large-item";
+  if (index === 3) itemClass += " tall-item";
+  if (index === 5) itemClass += " wide-item";
   return itemClass;
 };
-// ------------------------------------------------
 
 const Home = () => {
   const [galleryImages, setGalleryImages] = useState([]);
@@ -27,7 +22,8 @@ const Home = () => {
   useEffect(() => {
     const fetchGalleryImages = async () => {
       try {
-  const apiKey = import.meta.env.VITE_NASA_API_KEY;
+
+        const apiKey = import.meta.env.VITE_NASA_API_KEY;
         if (!apiKey) {
           throw new Error("Chave da API da NASA não encontrada. Verifique seu arquivo .env.");
         }
@@ -133,6 +129,7 @@ const Home = () => {
           </div>
           <div className="hero-image hero-in">
             <div className="image-container">
+              {/* <div className="image-glow"></div> */}
               <img
                 src="img/astronauta.png"
                 alt="Exploração do universo - AstroNexus"
@@ -208,7 +205,7 @@ const Home = () => {
                 Aprenda a usar telescópios e identificar objetos celestes com
                 nossos guias especializados.
               </p>
-              <a href="#services" className="service-link">
+              <a href="#" className="service-link">
                 Saiba Mais
               </a>
             </div>
@@ -219,7 +216,7 @@ const Home = () => {
                 Navegue pelo céu noturno com nossos mapas interativos de
                 constelações em tempo real.
               </p>
-              <a href="#services" className="service-link">
+              <a href="#" className="service-link">
                 Explorar
               </a>
             </div>
@@ -230,7 +227,7 @@ const Home = () => {
                 Receba notificações sobre eventos celestiais importantes e
                 fenômenos raros.
               </p>
-              <a href="#services" className="service-link">
+              <a href="#" className="service-link">
                 Ativar
               </a>
             </div>
@@ -555,7 +552,7 @@ const Home = () => {
       </section>
 
       {/* ======================================================= */}
-      {/* ============= SEÇÃO DA GALERIA DINÂMICA (REFATORADA) ============== */}
+      {/* ============= SEÇÃO DA GALERIA DINÂMICA ============== */}
       {/* ======================================================= */}
       <section className="gallery-section" id="gallery">
         <div className="gallery-container">
@@ -571,23 +568,22 @@ const Home = () => {
             {error && <p style={{ color: "#ff8a8a", textAlign: "center", gridColumn: "1 / -1" }}>Erro: {error}</p>}
             
             {!isLoading && !error && galleryImages.map((image, index) => (
-                <figure className={getGalleryItemClass(index)} key={image.date || image.url}>
-                  <img
-                    src={image.url}
-                    alt={image.title}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption className="gallery-overlay">
-                    <h4>{image.title}</h4>
-                    <p>
-                      {image.explanation.substring(0, 120)}
-                      {image.explanation.length > 120 ? '... Leia mais' : ''}
-                    </p>
-                  </figcaption>
-                </figure>
-              )
-            )}
+              <figure className={getGalleryItemClass(index)} key={image.date || image.url}>
+                <img
+                  src={image.url}
+                  alt={image.title}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="gallery-overlay">
+                  <h4>{image.title}</h4>
+                  <p>
+                    {image.explanation.substring(0, 120)}
+                    {image.explanation.length > 120 ? '...' : ''}
+                  </p>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
@@ -630,7 +626,7 @@ const Home = () => {
                     <i className="fas fa-map-marker-alt"></i> São Paulo
                   </span>
                 </div>
-                <a href="#events" className="event-link">
+                <a href="#" className="event-link">
                   Mais Detalhes
                 </a>
               </div>
@@ -662,7 +658,7 @@ const Home = () => {
                     <i className="fas fa-map-marker-alt"></i> Campos do Jordão
                   </span>
                 </div>
-                <a href="#events" className="event-link">
+                <a href="#" className="event-link">
                   Mais Detalhes
                 </a>
               </div>
@@ -694,7 +690,7 @@ const Home = () => {
                     <i className="fas fa-map-marker-alt"></i> Online
                   </span>
                 </div>
-                <a href="#events" className="event-link">
+                <a href="#" className="event-link">
                   Inscrever-se
                 </a>
               </div>
@@ -711,13 +707,13 @@ const Home = () => {
               <h3>AstroNexus</h3>
               <p>Conectando você com as maravilhas do universo.</p>
               <div className="footer-social">
-                <a href="#social" aria-label="Facebook">
+                <a href="#" aria-label="Facebook">
                   <i className="fab fa-facebook"></i>
                 </a>
-                <a href="#social" aria-label="Instagram">
+                <a href="#" aria-label="Instagram">
                   <i className="fab fa-instagram"></i>
                 </a>
-                <a href="#social" aria-label="YouTube">
+                <a href="#" aria-label="YouTube">
                   <i className="fab fa-youtube"></i>
                 </a>
               </div>
@@ -757,7 +753,7 @@ const Home = () => {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>&copy; 2025 AstroNexus. Todos os direitos reservados.</p>
+            <p>&copy; 2024 AstroNexus. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
