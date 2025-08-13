@@ -21,23 +21,21 @@ const Home = () => {
 
   useEffect(() => {
     const fetchGalleryImages = async () => {
+      setIsLoading(true);
+      setError(null);
       try {
-
         const apiKey = import.meta.env.VITE_NASA_API_KEY;
         if (!apiKey) {
           throw new Error("Chave da API da NASA não encontrada. Verifique seu arquivo .env.");
         }
         const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&count=7`;
-
         const response = await fetch(apiUrl);
         if (!response.ok) {
           throw new Error("Falha ao buscar dados da NASA. Verifique a chave da API ou tente novamente mais tarde.");
         }
         const data = await response.json();
-
         const imagesOnly = data.filter(item => item.media_type === 'image');
         setGalleryImages(imagesOnly);
-
       } catch (err) {
         setError(err.message);
         console.error(err);
@@ -45,7 +43,6 @@ const Home = () => {
         setIsLoading(false);
       }
     };
-
     fetchGalleryImages();
   }, []);
 
@@ -76,11 +73,8 @@ const Home = () => {
           <div className="floating-icon satellite-1">
             <i className="fas fa-satellite"></i>
           </div>
-          <div className="floating-icon moon-1">
-            <i className="fas fa-moon"></i>
-          </div>
+          <div className="floating-icon moon-1"></div>
         </div>
-
         <div className="hero-container">
           <div className="hero-content hero-in">
             <div className="hero-badge">
