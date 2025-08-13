@@ -61,6 +61,7 @@ const Galeria = () => {
   ];
 
   // Filtrar imagens
+  // Garante que só as imagens da API sejam exibidas
   const imagensFiltradas =
     filtroAtivo === "todos"
       ? imagens
@@ -173,26 +174,31 @@ const Galeria = () => {
             <div style={{ color: 'red', textAlign: 'center', padding: '40px' }}>{error}</div>
           ) : (
             <div className="gallery-grid">
-              {imagensFiltradas.map((imagem) => (
-                <div key={imagem.id} className={`gallery-item ${imagem.classe}`}>
-                  <img src={imagem.src} alt={imagem.titulo} />
-                  <div className="image-overlay">
-                    <button
-                      className="view-btn"
-                      onClick={() =>
-                        abrirModal(imagem.src, imagem.titulo, imagem.descricao)
-                      }
-                    >
-                      <i className="fas fa-eye"></i>
-                      <span>Ver Imagem</span>
-                    </button>
+              {/* Só exibe imagens da API, nunca imagens antigas */}
+              {imagensFiltradas.length === 0 ? (
+                <div style={{ color: '#fff', textAlign: 'center', padding: '40px' }}>Nenhuma imagem encontrada.</div>
+              ) : (
+                imagensFiltradas.map((imagem) => (
+                  <div key={imagem.id} className={`gallery-item ${imagem.classe}`}>
+                    <img src={imagem.src} alt={imagem.titulo} />
+                    <div className="image-overlay">
+                      <button
+                        className="view-btn"
+                        onClick={() =>
+                          abrirModal(imagem.src, imagem.titulo, imagem.descricao)
+                        }
+                      >
+                        <i className="fas fa-eye"></i>
+                        <span>Ver Imagem</span>
+                      </button>
+                    </div>
+                    <div className="image-info">
+                      <h3>{imagem.titulo}</h3>
+                      <p>{imagem.subtitulo}</p>
+                    </div>
                   </div>
-                  <div className="image-info">
-                    <h3>{imagem.titulo}</h3>
-                    <p>{imagem.subtitulo}</p>
-                  </div>
-                </div>
-              ))}
+                ))
+              )}
             </div>
           )}
         </div>
