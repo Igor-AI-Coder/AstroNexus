@@ -179,7 +179,7 @@ const Galeria = () => {
                 <div style={{ color: '#fff', textAlign: 'center', padding: '40px' }}>Nenhuma imagem encontrada.</div>
               ) : (
                 imagensFiltradas.map((imagem) => (
-                  <div key={imagem.id} className={`gallery-item ${imagem.classe}`}>
+                  <div key={imagem.id} className={`gallery-item`}>
                     <img src={imagem.src} alt={imagem.titulo} />
                     <div className="image-overlay">
                       <button
