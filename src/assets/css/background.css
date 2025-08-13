@@ -1,0 +1,120 @@
+#space,
+#space .stars {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+#space .stars {
+  background-image: radial-gradient(
+      2px 2px at 20px 30px,
+      #eee,
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 90px 40px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 130px 80px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: zoom 5s infinite;
+  opacity: 0;
+  /* Otimizações sutis de performance */
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+#space .stars:nth-child(1) {
+  background-position: 50% 50%;
+  animation-delay: 0s;
+}
+
+#space .stars:nth-child(2) {
+  background-position: 20% 60%;
+  animation-delay: 1s;
+}
+
+#space .stars:nth-child(3) {
+  background-position: -20% -30%;
+  animation-delay: 2s;
+}
+
+#space .stars:nth-child(4) {
+  background-position: 40% -80%;
+  animation-delay: 3s;
+}
+
+#space .stars:nth-child(5) {
+  background-position: -20% 30%;
+  animation-delay: 4s;
+}
+
+#space .stars:nth-child(6) {
+  background-position: 80% 10%;
+  animation-delay: 5s;
+}
+
+@keyframes zoom {
+  0% {
+    opacity: 0;
+    transform: scale3d(0.5, 0.5, 1);
+    animation-timing-function: ease-in;
+  }
+  85% {
+    opacity: 1;
+    transform: scale3d(2.8, 2.8, 1);
+    animation-timing-function: linear;
+  }
+  100% {
+    opacity: 0;
+    transform: scale3d(3.5, 3.5, 1);
+  }
+}
+
+body {
+  background: #000000;
+  z-index: 0;
+  font-family: "Orbitron", sans-serif;
+  color: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-width: 320px;
+  /* Otimização sutil para scrolling suave */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Reduzir animações para usuários que preferem movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  #space .stars {
+    animation-duration: 8s;
+  }
+
+  @keyframes zoom {
+    0% {
+      opacity: 0;
+      transform: scale3d(0.8, 0.8, 1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale3d(1.5, 1.5, 1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale3d(2, 2, 1);
+    }
+  }
+}
+
+/* Pausar animações em dispositivos com bateria baixa (quando suportado) */
+@media (prefers-reduced-data: reduce) {
+  #space .stars {
+    animation-play-state: paused;
+    opacity: 0.1;
+  }
+}

@@ -1,0 +1,203 @@
+/* Estilos para a página de Fatos Curiosos */
+
+/* Fundo espacial */
+body {
+  background: #000000;
+}
+
+.facts-container {
+  max-width: 800px;
+  margin: 120px auto 40px;
+  padding: 0 20px;
+}
+
+.facts-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+}
+
+.facts-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.facts-title {
+  font-family: "Orbitron", monospace;
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.facts-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+}
+
+.fact-display {
+  min-height: 200px;
+  padding: 40px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.04)
+  );
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  margin: 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.fact-display::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.8s;
+}
+
+.fact-display:hover::before {
+  left: 100%;
+}
+
+.fact-display::after {
+  content: "🌟";
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+  opacity: 0.3;
+}
+
+.fact-text {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: #fff;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.fact-text.placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+}
+
+.generate-button-container {
+  text-align: center;
+}
+
+.generate-btn {
+  background: linear-gradient(135deg, #fff, #f0f0f0);
+  color: #000;
+  padding: 18px 36px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.generate-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+}
+
+.generate-btn:active {
+  transform: translateY(-1px);
+}
+
+.generate-btn i {
+  margin-right: 8px;
+}
+
+.categories {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 25px 0;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.category-btn.active {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+}
+
+.category-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .facts-card {
+    padding: 25px;
+  }
+
+  .facts-title {
+    font-size: 2rem;
+  }
+
+  .fact-display {
+    min-height: 180px;
+    padding: 30px 25px;
+  }
+
+  .fact-text {
+    font-size: 1.1rem;
+  }
+
+  .categories {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .category-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+}
