@@ -586,115 +586,6 @@ body {
 }
 
 /* =========================
-        FOOTER SECTION
-========================== */
-.footerSection {
-  background: rgba(0, 0, 0, 0.9);
-  padding: 60px 0 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footerContainer {
-  max-width: 1400px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 max(16px, 5vw);
-}
-
-.footerContent {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  margin-bottom: 40px;
-}
-
-.footerBrand h3 {
-  font-size: 1.8rem;
-  margin: 0 0 15px 0;
-  color: #ffffff;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.footerBrand p {
-  color: #cccccc;
-  line-height: 1.6;
-  margin-bottom: 25px;
-  font-size: 14px;
-}
-
-.footerSocial {
-  display: flex;
-  gap: 15px;
-}
-
-.footerSocial a {
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  color: #ffffff;
-  will-change: transform;
-}
-
-.footerSocial a:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-}
-
-.footerLinks {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-}
-
-.footerColumn h4 {
-  color: #ffffff;
-  margin: 0 0 20px 0;
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-
-.footerColumn ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footerColumn li {
-  margin-bottom: 12px;
-}
-
-.footerColumn a {
-  color: #cccccc;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-size: 14px;
-}
-
-.footerColumn a:hover {
-  color: #ffffff;
-}
-
-.footerBottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 20px;
-  text-align: center;
-}
-
-.footerBottom p {
-  color: #cccccc;
-  margin: 5px 0;
-  font-size: 14px;
-}
-
-/* =========================
         RESPONSIVE
 ========================== */
 @media (max-width: 1024px) {
@@ -710,15 +601,6 @@ body {
   .productsGrid {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
-  }
-
-  .footerContent {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .footerLinks {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -738,11 +620,6 @@ body {
   .productsGrid {
     grid-template-columns: 1fr;
     gap: 20px;
-  }
-
-  .footerLinks {
-    grid-template-columns: 1fr;
-    gap: 30px;
   }
 }
 
@@ -780,8 +657,7 @@ body {
 @media (max-width: 400px) {
   .heroContainer,
   .filterContainer,
-  .productsContainer,
-  .footerContainer {
+  .productsContainer {
     padding: 0 12px;
   }
 
@@ -1044,8 +920,7 @@ body {
   .filterTab:hover,
   .actionIcon:hover,
   .actionBtn:hover,
-  .btnAddCart:hover,
-  .footerSocial a:hover {
+  .btnAddCart:hover {
     transform: none;
     box-shadow: initial;
   }

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "./Home.module.css";
 // import "../../assets/css/background.css";
 import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
 
 // Função auxiliar para classes da galeria
@@ -734,64 +735,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className={styles.footerSection}>
-        <div className={styles.footerContainer}>
-          <div className={styles.footerContent}>
-            <div className={styles.footerBrand}>
-              <h3>AstroNexus</h3>
-              <p>Conectando você com as maravilhas do universo.</p>
-              <div className={styles.footerSocial}>
-                <a href="#" aria-label="Facebook">
-                  <i className="fab fa-facebook"></i>
-                </a>
-                <a href="#" aria-label="Instagram">
-                  <i className="fab fa-instagram"></i>
-                </a>
-                <a href="#" aria-label="YouTube">
-                  <i className="fab fa-youtube"></i>
-                </a>
-              </div>
-            </div>
-            <div className={styles.footerLinks}>
-              <div className={styles.footerColumn}>
-                <h4>Links Rápidos</h4>
-                <ul>
-                  <li>
-                    <a href="#about">Sobre</a>
-                  </li>
-                  <li>
-                    <Link to="/produtos">Produtos</Link>
-                  </li>
-                  <li>
-                    <a href="#events">Eventos</a>
-                  </li>
-                  <li>
-                    <a href="#contact">Contato</a>
-                  </li>
-                </ul>
-              </div>
-              <div className={styles.footerColumn}>
-                <h4>Suporte</h4>
-                <ul>
-                  <li>
-                    <a href="#faq">FAQ</a>
-                  </li>
-                  <li>
-                    <a href="#help">Ajuda</a>
-                  </li>
-                  <li>
-                    <a href="#privacy">Privacidade</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className={styles.footerBottom}>
-            <p>&copy; 2024 AstroNexus. Todos os direitos reservados.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 };

@@ -64,6 +64,35 @@
   gap: 15px;
 }
 
+.loginIcon {
+  position: relative;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.loginIcon:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.loginIcon i {
+  font-size: 14px;
+  color: #ffffff;
+}
+
 .cartIcon {
   position: relative;
   cursor: pointer;
@@ -111,13 +140,122 @@
 }
 
 /* =========================
+        NAVEGAÇÃO DESKTOP
+========================== */
+.desktopNav {
+  display: flex;
+  align-items: center;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+}
+
+.navItem {
+  position: relative;
+}
+
+.navLink {
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navLink:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.navLink i {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+/* =========================
+        DROPDOWN MENU
+========================== */
+.dropdownContainer {
+  position: relative;
+}
+
+.dropdownContainer:hover .navLink i {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 0;
+  min-width: 200px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+.dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdownLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+.dropdownLink:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.dropdownLink i {
+  font-size: 14px;
+  width: 16px;
+  text-align: center;
+}
+
+/* =========================
         MENU HAMBÚRGUER
 ========================== */
 .hamburgerMenu {
   background: transparent;
   border: none;
   cursor: pointer;
-  display: flex;
+  display: none; /* Oculto por padrão no desktop */
   flex-direction: column;
   gap: 4px;
   padding: 8px;
@@ -258,7 +396,15 @@
 /* =========================
         RESPONSIVE
 ========================== */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .desktopNav {
+    display: none;
+  }
+
+  .hamburgerMenu {
+    display: flex;
+  }
+
   .sideMenu {
     width: 280px;
   }
@@ -268,9 +414,36 @@
   }
 }
 
+@media (min-width: 1025px) {
+  .hamburgerMenu {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .sideMenu {
+    width: 280px;
+  }
+}
+
 @media (max-width: 480px) {
   .sideMenu {
     width: 100vw;
     right: -100vw;
+  }
+
+  .headerActions {
+    gap: 10px;
+  }
+
+  .loginIcon,
+  .cartIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .loginIcon i,
+  .cartIcon i {
+    font-size: 12px;
   }
 }

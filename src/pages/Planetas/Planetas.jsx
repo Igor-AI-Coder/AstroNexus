@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 import styles from "./Planetas.module.css";
 import "./Planetas.tailwind.css";
 
@@ -864,114 +865,7 @@ const Planetas = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-black bg-opacity-90 border-t border-white border-opacity-10 py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-16 mb-10">
-            <div>
-              <h3 className="font-orbitron text-2xl font-bold mb-4 text-white">
-                AstroNexus
-              </h3>
-              <p className="text-white text-opacity-70 mb-6 leading-relaxed">
-                Explorando os mistérios do universo, um planeta de cada vez.
-              </p>
-              <div className="flex gap-4">
-                <a
-                  href="#"
-                  className="w-10 h-10 bg-white bg-opacity-10 rounded-full flex items-center justify-center text-white hover:bg-opacity-20 transition-all"
-                >
-                  <i className="fab fa-facebook"></i>
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 bg-white bg-opacity-10 rounded-full flex items-center justify-center text-white hover:bg-opacity-20 transition-all"
-                >
-                  <i className="fab fa-instagram"></i>
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 bg-white bg-opacity-10 rounded-full flex items-center justify-center text-white hover:bg-opacity-20 transition-all"
-                >
-                  <i className="fab fa-youtube"></i>
-                </a>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-8">
-              <div>
-                <h4 className="font-semibold text-white mb-4">Links Rápidos</h4>
-                <ul className="space-y-3">
-                  <li>
-                    <Link
-                      to="/"
-                      className="text-white text-opacity-70 hover:text-white transition-colors"
-                    >
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/planetas"
-                      className="text-white text-opacity-70 hover:text-white transition-colors"
-                    >
-                      Planetas
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/galeria"
-                      className="text-white text-opacity-70 hover:text-white transition-colors"
-                    >
-                      Galeria
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/produtos"
-                      className="text-white text-opacity-70 hover:text-white transition-colors"
-                    >
-                      Produtos
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold text-white mb-4">Suporte</h4>
-                <ul className="space-y-3">
-                  <li>
-                    <a
-                      href="#"
-                      className="text-white text-opacity-70 hover:text-white transition-colors"
-                    >
-                      FAQ
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="text-white text-opacity-70 hover:text-white transition-colors"
-                    >
-                      Ajuda
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="text-white text-opacity-70 hover:text-white transition-colors"
-                    >
-                      Privacidade
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-white border-opacity-10 pt-8 text-center">
-            <p className="text-white text-opacity-70">
-              &copy; 2024 AstroNexus. Todos os direitos reservados.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
