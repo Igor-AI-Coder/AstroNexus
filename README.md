@@ -19,7 +19,7 @@ Este projeto foi desenvolvido como parte da disciplina **Linguagem Script** do c
 
 ## 🌐 Acesse o Projeto
 
-🚀 **[Ver Site Online](https://igor-ai-coder.github.io/AstroNexus/)**
+🚀 **[Ver Site Online](https://astro-nexus-two.vercel.app/)**
 
 ## 🛠️ Como instalar e executar o projeto
 
@@ -36,14 +36,19 @@ Este projeto foi desenvolvido como parte da disciplina **Linguagem Script** do c
    npm install
    ```
 4. **Execute o projeto em modo de desenvolvimento:**
+
    ```sh
    npm run dev
    ```
+
    Ou, para visualizar uma prévia de produção, primeiro gere o build:
+
    ```sh
    npm run build
    ```
+
    E então execute:
+
    ```sh
    npm run preview
    ```
@@ -51,5 +56,3 @@ Este projeto foi desenvolvido como parte da disciplina **Linguagem Script** do c
 5. **Abra o navegador e acesse o endereço exibido no terminal** (geralmente `http://localhost:5173`).
 
 Agora você pode explorar o projeto localmente! 🌌
-
-

@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
-import "./Galeria.css";
+import styles from "./Galeria.module.css";
 
 const Galeria = () => {
   const [filtroAtivo, setFiltroAtivo] = useState("todos");
@@ -28,7 +27,9 @@ const Galeria = () => {
         const endDate = new Date();
         const startDate = new Date();
         startDate.setDate(endDate.getDate() - 14);
-        const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&start_date=${startDate.toISOString().slice(0, 10)}&end_date=${endDate.toISOString().slice(0, 10)}`;
+        const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&start_date=${startDate
+          .toISOString()
+          .slice(0, 10)}&end_date=${endDate.toISOString().slice(0, 10)}`;
         const res = await fetch(url);
         if (!res.ok) throw new Error("Erro ao buscar imagens da NASA");
         let data = await res.json();
@@ -106,37 +107,37 @@ const Galeria = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-container">
-          <div className="hero-content">
-            <div className="hero-badge">
+      <section className={styles.heroSection}>
+        <div className={styles.heroContainer}>
+          <div className={styles.heroContent}>
+            <div className={styles.heroBadge}>
               <i className="fas fa-images"></i>
               <span>Galeria Cósmica</span>
             </div>
-            <h1 className="hero-title">
-              <span className="title-main">Galeria</span>
-              <span className="title-subtitle">
+            <h1 className={styles.heroTitle}>
+              <span className={styles.titleMain}>Galeria</span>
+              <span className={styles.titleSubtitle}>
                 Explore as Maravilhas do Universo
               </span>
             </h1>
-            <p className="hero-desc">
+            <p className={styles.heroDesc}>
               Descubra uma coleção impressionante de imagens astronômicas
               capturadas pelos melhores telescópios e observatórios do mundo.
               Cada foto conta uma história única do cosmos.
             </p>
-            <div className="hero-stats">
-              <div className="stat-item">
+            <div className={styles.heroStats}>
+              <div className={styles.statItem}>
                 <i className="fas fa-camera"></i>
-                <div className="stat-content">
-                  <span className="stat-number">{imagens.length}</span>
-                  <span className="stat-label">Imagens</span>
+                <div className={styles.statContent}>
+                  <span className={styles.statNumber}>{imagens.length}</span>
+                  <span className={styles.statLabel}>Imagens</span>
                 </div>
               </div>
-              <div className="stat-item">
+              <div className={styles.statItem}>
                 <i className="fas fa-star"></i>
-                <div className="stat-content">
-                  <span className="stat-number">1</span>
-                  <span className="stat-label">Categoria</span>
+                <div className={styles.statContent}>
+                  <span className={styles.statNumber}>1</span>
+                  <span className={styles.statLabel}>Categoria</span>
                 </div>
               </div>
             </div>
@@ -145,15 +146,15 @@ const Galeria = () => {
       </section>
 
       {/* Filter Section */}
-      <section className="filter-section">
-        <div className="filter-container">
-          <h2 className="filter-title">Filtrar por Categoria</h2>
-          <div className="filter-tabs">
+      <section className={styles.filterSection}>
+        <div className={styles.filterContainer}>
+          <h2 className={styles.filterTitle}>Filtrar por Categoria</h2>
+          <div className={styles.filterTabs}>
             {categorias.map((categoria) => (
               <button
                 key={categoria.id}
-                className={`filter-tab ${
-                  filtroAtivo === categoria.id ? "active" : ""
+                className={`${styles.filterTab} ${
+                  filtroAtivo === categoria.id ? styles.active : ""
                 }`}
                 onClick={() => setFiltroAtivo(categoria.id)}
               >
@@ -166,33 +167,51 @@ const Galeria = () => {
       </section>
 
       {/* Gallery Section */}
-      <section className="gallery-section">
-        <div className="gallery-container">
+      <section className={styles.gallerySection}>
+        <div className={styles.galleryContainer}>
           {isLoading ? (
-            <div style={{ color: '#fff', textAlign: 'center', padding: '40px' }}>Carregando imagens...</div>
+            <div
+              style={{ color: "#fff", textAlign: "center", padding: "40px" }}
+            >
+              Carregando imagens...
+            </div>
           ) : error ? (
-            <div style={{ color: 'red', textAlign: 'center', padding: '40px' }}>{error}</div>
+            <div style={{ color: "red", textAlign: "center", padding: "40px" }}>
+              {error}
+            </div>
           ) : (
-            <div className="gallery-grid">
+            <div className={styles.galleryGrid}>
               {/* Só exibe imagens da API, nunca imagens antigas */}
               {imagensFiltradas.length === 0 ? (
-                <div style={{ color: '#fff', textAlign: 'center', padding: '40px' }}>Nenhuma imagem encontrada.</div>
+                <div
+                  style={{
+                    color: "#fff",
+                    textAlign: "center",
+                    padding: "40px",
+                  }}
+                >
+                  Nenhuma imagem encontrada.
+                </div>
               ) : (
                 imagensFiltradas.map((imagem) => (
-                  <div key={imagem.id} className={`gallery-item`}>
+                  <div key={imagem.id} className={styles.galleryItem}>
                     <img src={imagem.src} alt={imagem.titulo} />
-                    <div className="image-overlay">
+                    <div className={styles.imageOverlay}>
                       <button
-                        className="view-btn"
+                        className={styles.viewBtn}
                         onClick={() =>
-                          abrirModal(imagem.src, imagem.titulo, imagem.descricao)
+                          abrirModal(
+                            imagem.src,
+                            imagem.titulo,
+                            imagem.descricao
+                          )
                         }
                       >
                         <i className="fas fa-eye"></i>
                         <span>Ver Imagem</span>
                       </button>
                     </div>
-                    <div className="image-info">
+                    <div className={styles.imageInfo}>
                       <h3>{imagem.titulo}</h3>
                       <p>{imagem.subtitulo}</p>
                     </div>
@@ -206,33 +225,33 @@ const Galeria = () => {
 
       {/* Modal */}
       {modalAberto && (
-        <div className="modal active">
-          <div className="modal-overlay" onClick={fecharModal}></div>
-          <div className="modal-content">
-            <button className="modal-close" onClick={fecharModal}>
+        <div className={`${styles.modal} ${styles.active}`}>
+          <div className={styles.modalOverlay} onClick={fecharModal}></div>
+          <div className={styles.modalContent}>
+            <button className={styles.modalClose} onClick={fecharModal}>
               <i className="fas fa-times"></i>
             </button>
             <img
-              className="modal-image"
+              className={styles.modalImage}
               src={imagemModal.src}
               alt={imagemModal.titulo}
             />
-            <div className="modal-info">
-              <h3 className="modal-title">{imagemModal.titulo}</h3>
-              <p className="modal-description">{imagemModal.descricao}</p>
+            <div className={styles.modalInfo}>
+              <h3 className={styles.modalTitle}>{imagemModal.titulo}</h3>
+              <p className={styles.modalDescription}>{imagemModal.descricao}</p>
             </div>
           </div>
         </div>
       )}
 
       {/* Footer */}
-      <footer className="footer-section">
-        <div className="footer-container">
-          <div className="footer-content">
-            <div className="footer-brand">
+      <footer className={styles.footerSection}>
+        <div className={styles.footerContainer}>
+          <div className={styles.footerContent}>
+            <div className={styles.footerBrand}>
               <h3>AstroNexus</h3>
               <p>Conectando você com as maravilhas do universo.</p>
-              <div className="footer-social">
+              <div className={styles.footerSocial}>
                 <a href="#" aria-label="Facebook">
                   <i className="fab fa-facebook"></i>
                 </a>
@@ -244,8 +263,8 @@ const Galeria = () => {
                 </a>
               </div>
             </div>
-            <div className="footer-links">
-              <div className="footer-column">
+            <div className={styles.footerLinks}>
+              <div className={styles.footerColumn}>
                 <h4>Links Rápidos</h4>
                 <ul>
                   <li>
@@ -262,7 +281,7 @@ const Galeria = () => {
                   </li>
                 </ul>
               </div>
-              <div className="footer-column">
+              <div className={styles.footerColumn}>
                 <h4>Suporte</h4>
                 <ul>
                   <li>
@@ -278,7 +297,7 @@ const Galeria = () => {
               </div>
             </div>
           </div>
-          <div className="footer-bottom">
+          <div className={styles.footerBottom}>
             <p>&copy; 2024 AstroNexus. Todos os direitos reservados.</p>
           </div>
         </div>

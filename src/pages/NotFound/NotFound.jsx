@@ -1,12 +1,12 @@
-import "./NotFound.css";
+import styles from "./NotFound.module.css";
 import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <div className="error-404-container">
-      <div className="erro404">404</div>
-      <div className="mensagem">Página não encontrada</div>
-      <div className="motivos">
+    <div className={styles.error404Container}>
+      <div className={styles.erro404}>404</div>
+      <div className={styles.mensagem}>Página não encontrada</div>
+      <div className={styles.motivos}>
         Possíveis motivos:
         <br />
         • O endereço está incorreto

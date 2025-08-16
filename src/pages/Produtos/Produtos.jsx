@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import { useCart } from "../../context/CartContext";
-import "./Produtos.css";
+import styles from "./Produtos.module.css";
 
 const Produtos = () => {
   const { addToCart, getTotalItems } = useCart();
@@ -254,10 +254,24 @@ const Produtos = () => {
       starter: "Kit Iniciante",
     };
 
+    const badgeClassMap = {
+      "best-seller": styles.bestSeller,
+      new: styles.new,
+      premium: styles.premium,
+      portable: styles.portable,
+      kit: styles.kit,
+      safety: styles.safety,
+      educational: styles.educational,
+      trending: styles.trending,
+      starter: styles.starter,
+    };
+
     if (!badge) return null;
 
     return (
-      <div className={`product-badge ${badge}`}>{badgeMap[badge] || badge}</div>
+      <div className={`${styles.productBadge} ${badgeClassMap[badge] || ""}`}>
+        {badgeMap[badge] || badge}
+      </div>
     );
   };
 
@@ -276,20 +290,20 @@ const Produtos = () => {
       <Header showCartIcon={true} cartItemsCount={getTotalItems()} />
 
       {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-container">
-          <div className="hero-content">
-            <div className="hero-badge">
+      <section className={styles.heroSection}>
+        <div className={styles.heroContainer}>
+          <div className={styles.heroContent}>
+            <div className={styles.heroBadge}>
               <i className="fas fa-shopping-bag"></i>
               <span>Loja Oficial</span>
             </div>
-            <h1 className="hero-title">
-              <span className="title-main">Produtos</span>
-              <span className="title-subtitle">
+            <h1 className={styles.heroTitle}>
+              <span className={styles.titleMain}>Produtos</span>
+              <span className={styles.titleSubtitle}>
                 Equipamentos Profissionais para Astronomia
               </span>
             </h1>
-            <p className="hero-desc">
+            <p className={styles.heroDesc}>
               Descubra nossa coleção completa de telescópios, binóculos,
               acessórios e equipamentos astronômicos selecionados especialmente
               para entusiastas e profissionais da astronomia.
@@ -299,13 +313,13 @@ const Produtos = () => {
       </section>
 
       {/* Filter Section */}
-      <section className="filter-section">
-        <div className="filter-container">
-          <div className="filter-tabs">
+      <section className={styles.filterSection}>
+        <div className={styles.filterContainer}>
+          <div className={styles.filterTabs}>
             {categories.map((category) => (
               <button
                 key={category.id}
-                className={`filter-tab ${
+                className={`${styles.filterTab} ${
                   selectedCategory === category.id ? "active" : ""
                 }`}
                 onClick={() => setSelectedCategory(category.id)}
@@ -319,9 +333,9 @@ const Produtos = () => {
       </section>
 
       {/* Products Section */}
-      <section className="products-section">
-        <div className="products-container">
-          <div className="products-grid">
+      <section className={styles.productsSection}>
+        <div className={styles.productsContainer}>
+          <div className={styles.productsGrid}>
             {filteredProducts.map((product) => {
               const finalPrice =
                 product.discount > 0
@@ -331,50 +345,52 @@ const Produtos = () => {
               return (
                 <div
                   key={product.id}
-                  className="product-card"
+                  className={styles.productCard}
                   data-category={product.category}
                 >
-                  <div className="product-image">
+                  <div className={styles.productImage}>
                     <img src={product.image} alt={product.name} />
                     {renderBadge(product.badge)}
-                    <div className="product-actions">
-                      <button className="action-btn wishlist">
+                    <div className={styles.productActions}>
+                      <button className={`${styles.actionBtn} wishlist`}>
                         <i className="fas fa-heart"></i>
                       </button>
-                      <button className="action-btn quick-view">
+                      <button className={`${styles.actionBtn} quick-view`}>
                         <i className="fas fa-eye"></i>
                       </button>
                     </div>
                   </div>
-                  <div className="product-info">
-                    <div className="product-category">
+                  <div className={styles.productInfo}>
+                    <div className={styles.productCategory}>
                       {categories.find((cat) => cat.id === product.category)
                         ?.name || product.category}
                     </div>
                     <h3>{product.name}</h3>
-                    <div className="product-rating">
+                    <div className={styles.productRating}>
                       {renderStars(product.rating)}
                       <span>({product.reviews} avaliações)</span>
                     </div>
-                    <p className="product-description">{product.description}</p>
-                    <div className="product-price">
+                    <p className={styles.productDescription}>
+                      {product.description}
+                    </p>
+                    <div className={styles.productPrice}>
                       {product.discount > 0 && (
-                        <span className="price-original">
+                        <span className={styles.priceOriginal}>
                           R${" "}
                           {product.originalPrice.toFixed(2).replace(".", ",")}
                         </span>
                       )}
-                      <span className="price-current">
+                      <span className={styles.priceCurrent}>
                         R$ {finalPrice.toFixed(2).replace(".", ",")}
                       </span>
                       {product.discount > 0 && (
-                        <span className="price-discount">
+                        <span className={styles.priceDiscount}>
                           -{product.discount}%
                         </span>
                       )}
                     </div>
                     <button
-                      className="btn-add-cart"
+                      className={styles.btnAddCart}
                       onClick={() => handleAddToCart(product)}
                     >
                       <i className="fas fa-cart-plus"></i>
@@ -389,13 +405,13 @@ const Produtos = () => {
       </section>
 
       {/* Footer */}
-      <footer className="footer-section">
-        <div className="footer-container">
-          <div className="footer-content">
-            <div className="footer-brand">
+      <footer className={styles.footerSection}>
+        <div className={styles.footerContainer}>
+          <div className={styles.footerContent}>
+            <div className={styles.footerBrand}>
               <h3>AstroNexus</h3>
               <p>Conectando você com as maravilhas do universo.</p>
-              <div className="footer-social">
+              <div className={styles.footerSocial}>
                 <a href="#" aria-label="Facebook">
                   <i className="fab fa-facebook"></i>
                 </a>
@@ -407,8 +423,8 @@ const Produtos = () => {
                 </a>
               </div>
             </div>
-            <div className="footer-links">
-              <div className="footer-column">
+            <div className={styles.footerLinks}>
+              <div className={styles.footerColumn}>
                 <h4>Links Rápidos</h4>
                 <ul>
                   <li>
@@ -425,7 +441,7 @@ const Produtos = () => {
                   </li>
                 </ul>
               </div>
-              <div className="footer-column">
+              <div className={styles.footerColumn}>
                 <h4>Suporte</h4>
                 <ul>
                   <li>
@@ -441,7 +457,7 @@ const Produtos = () => {
               </div>
             </div>
           </div>
-          <div className="footer-bottom">
+          <div className={styles.footerBottom}>
             <p>&copy; 2024 AstroNexus. Todos os direitos reservados.</p>
           </div>
         </div>
@@ -478,9 +494,9 @@ const Produtos = () => {
 
       {/* Popup de confirmação do carrinho */}
       {showCartPopup && (
-        <div className="cart-popup">
-          <div className="cart-popup-content">
-            <div className="cart-popup-icon">
+        <div className={styles.cartPopup}>
+          <div className={styles.cartPopupContent}>
+            <div className={styles.cartPopupIcon}>
               <i className="fas fa-check-circle"></i>
             </div>
             <p>Produto adicionado ao carrinho!</p>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./Header.css";
+import styles from "./Header.module.css";
 
 const Header = ({ showCartIcon = false, cartItemsCount = 0 }) => {
   const [menuActive, setMenuActive] = useState(false);
@@ -44,70 +44,80 @@ const Header = ({ showCartIcon = false, cartItemsCount = 0 }) => {
   }, [menuActive]);
 
   return (
-    <header className="astrod-header">
-      <div className="header-container">
-        <Link to="/" className="logo" style={{ textDecoration: "none" }}>
+    <header className={styles.astrodHeader}>
+      <div className={styles.headerContainer}>
+        <Link to="/" className={styles.logo} style={{ textDecoration: "none" }}>
           <i className="fas fa-satellite"></i>
-          <span className="logo-text">AstroNexus</span>
+          <span className={styles.logoText}>AstroNexus</span>
         </Link>
-        <div className="header-actions">
+        <div className={styles.headerActions}>
           {/* Ícone do carrinho (apenas na página de produtos) */}
           {showCartIcon && (
-            <Link to="/carrinho" className="cart-icon">
+            <Link to="/carrinho" className={styles.cartIcon}>
               <i className="fas fa-shopping-cart"></i>
               {cartItemsCount > 0 && (
-                <span className="cart-badge">{cartItemsCount}</span>
+                <span className={styles.cartBadge}>{cartItemsCount}</span>
               )}
             </Link>
           )}
 
           {/* Menu Hambúrguer */}
           <button
-            className={`hamburger-menu ${menuActive ? "active" : ""}`}
+            className={`${styles.hamburgerMenu} ${
+              menuActive ? styles.active : ""
+            }`}
             onClick={abrirMenu}
           >
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
+            <span className={styles.hamburgerLine}></span>
+            <span className={styles.hamburgerLine}></span>
+            <span className={styles.hamburgerLine}></span>
           </button>
         </div>
       </div>
 
       {/* Menu Lateral */}
-      <nav className={`side-menu ${menuActive ? "active" : ""}`}>
-        <div className="menu-header">
+      <nav className={`${styles.sideMenu} ${menuActive ? styles.active : ""}`}>
+        <div className={styles.menuHeader}>
           <h3>Menu</h3>
-          <button className="close-menu" onClick={fecharMenu}>
+          <button className={styles.closeMenu} onClick={fecharMenu}>
             <i className="fas fa-times"></i>
           </button>
         </div>
-        <ul className="menu-links">
+        <ul className={styles.menuLinks}>
           <li>
-            <Link to="/" className="menu-link" onClick={fecharMenu}>
+            <Link to="/" className={styles.menuLink} onClick={fecharMenu}>
               <i className="fas fa-home"></i>
               <span>Home</span>
             </Link>
           </li>
           <li>
-            <a href="#" className="menu-link" onClick={fecharMenu}>
+            <a href="#" className={styles.menuLink} onClick={fecharMenu}>
               <i className="fas fa-user"></i>
               <span>Login</span>
             </a>
           </li>
           <li>
-            <Link to="/produtos" className="menu-link" onClick={fecharMenu}>
+            <Link
+              to="/produtos"
+              className={styles.menuLink}
+              onClick={fecharMenu}
+            >
               <i className="fas fa-shopping-bag"></i>
               <span>Loja</span>
             </Link>
           </li>
           <li>
-            <Link to="/carrinho" className="menu-link" onClick={fecharMenu}>
+            <Link
+              to="/carrinho"
+              className={styles.menuLink}
+              onClick={fecharMenu}
+            >
               <i className="fas fa-shopping-cart"></i>
               <span>Carrinho</span>
             </Link>
           </li>
           <li>
-            <a href="#" className="menu-link" onClick={fecharMenu}>
+            <a href="#" className={styles.menuLink} onClick={fecharMenu}>
               <i className="fas fa-question-circle"></i>
               <span>Quizes</span>
             </a>
@@ -115,7 +125,7 @@ const Header = ({ showCartIcon = false, cartItemsCount = 0 }) => {
           <li>
             <Link
               to="/fatos-curiosos"
-              className="menu-link"
+              className={styles.menuLink}
               onClick={fecharMenu}
             >
               <i className="fas fa-lightbulb"></i>
@@ -123,19 +133,27 @@ const Header = ({ showCartIcon = false, cartItemsCount = 0 }) => {
             </Link>
           </li>
           <li>
-            <Link to="/galeria" className="menu-link" onClick={fecharMenu}>
+            <Link
+              to="/galeria"
+              className={styles.menuLink}
+              onClick={fecharMenu}
+            >
               <i className="fas fa-images"></i>
               <span>Galeria</span>
             </Link>
           </li>
           <li>
-            <Link to="/planetas" className="menu-link" onClick={fecharMenu}>
+            <Link
+              to="/planetas"
+              className={styles.menuLink}
+              onClick={fecharMenu}
+            >
               <i className="fas fa-globe"></i>
               <span>Planetas</span>
             </Link>
           </li>
           <li>
-            <a href="#" className="menu-link" onClick={fecharMenu}>
+            <a href="#" className={styles.menuLink} onClick={fecharMenu}>
               <i className="fas fa-blog"></i>
               <span>Blog</span>
             </a>
@@ -144,7 +162,12 @@ const Header = ({ showCartIcon = false, cartItemsCount = 0 }) => {
       </nav>
 
       {/* Overlay para fechar menu */}
-      {menuActive && <div className="menu-overlay" onClick={fecharMenu}></div>}
+      {menuActive && (
+        <div
+          className={`${styles.menuOverlay} ${styles.active}`}
+          onClick={fecharMenu}
+        ></div>
+      )}
     </header>
   );
 };
