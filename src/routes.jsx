@@ -5,6 +5,7 @@ import Galeria from "./pages/Galeria/Galeria.jsx";
 import Produtos from "./pages/Produtos/Produtos.jsx";
 import Carrinho from "./pages/Carrinho/Carrinho.jsx";
 import Planetas from "./pages/Planetas/Planetas.jsx";
+import Login from "./pages/Login/Login.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function AppRoutes() {
@@ -17,6 +18,7 @@ function AppRoutes() {
         <Route path="/produtos" element={<Produtos />} />
         <Route path="/carrinho" element={<Carrinho />} />
         <Route path="/planetas" element={<Planetas />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

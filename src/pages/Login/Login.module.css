@@ -1,0 +1,714 @@
+.loginMain {
+  min-height: 100vh;
+  padding-top: 120px; /* Espaço para o header fixo */
+  padding-bottom: 80px;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.loginMain::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 25% 25%, #1e3a8a 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, #7c3aed 0%, transparent 50%);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.loginContainer {
+  width: 100%;
+  max-width: 450px;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.loginCard {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.loginCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.loginTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.loginSubtitle {
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(5px);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.input:focus {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.formOptions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox input {
+  width: 18px;
+  height: 18px;
+  accent-color: #3b82f6;
+  cursor: pointer;
+}
+
+.forgotPassword {
+  color: #3b82f6;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.forgotPassword:hover {
+  color: #60a5fa;
+}
+
+.loginButton {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.loginButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.loginButton:hover::before {
+  left: 100%;
+}
+
+.loginButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+}
+
+.loginButton:active {
+  transform: translateY(0);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 2.5rem 0 2rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.divider span {
+  padding: 0 1.5rem;
+  background: rgba(20, 20, 30, 0.9);
+}
+
+.signupSection {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+}
+
+.signupSection p {
+  margin-bottom: 0.75rem;
+}
+
+.signupLink {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.signupLink:hover {
+  color: #60a5fa;
+  text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .loginMain {
+    padding-top: 100px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .loginCard {
+    padding: 2rem 1.5rem;
+  }
+  
+  .loginTitle {
+    font-size: 2rem;
+  }
+  
+  .formOptions {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .loginMain {
+    padding-top: 90px;
+  }
+  
+  .loginCard {
+    padding: 1.5rem 1rem;
+  }
+  
+  .loginTitle {
+    font-size: 1.75rem;
+  }
+  
+  .input {
+    padding: 0.875rem 1rem;
+  }
+  
+  .loginButton {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Animações */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loginCard {
+  animation: slideInUp 0.6s ease-out;
+}
+
+/* Estados de loading para o botão */
+.loginButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.loginButton:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.loginWrapper {
+  min-height: 100vh;
+  background: #000000;
+  position: relative;
+  overflow: hidden;
+  padding-top: 120px;
+}
+
+.loginWrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.01) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Fundo com estrelas */
+.starsBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  background: transparent;
+  pointer-events: none;
+}
+
+.stars {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.3; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Sistema Solar */
+.solarSystemLogin {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.orbit {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotate-orbit 20s linear infinite;
+  pointer-events: none;
+}
+
+.orbit1 { width: 60px; height: 60px; animation-duration: 8s; }
+.orbit2 { width: 90px; height: 90px; animation-duration: 12s; }
+.orbit3 { width: 120px; height: 120px; animation-duration: 16s; }
+.orbit4 { width: 150px; height: 150px; animation-duration: 20s; }
+.orbit5 { width: 200px; height: 200px; animation-duration: 28s; }
+.orbit6 { width: 260px; height: 260px; animation-duration: 36s; }
+.orbit7 { width: 320px; height: 320px; animation-duration: 44s; }
+.orbit8 { width: 380px; height: 380px; animation-duration: 52s; }
+
+@keyframes rotate-orbit {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: auto;
+  z-index: 3;
+}
+
+.planet:hover {
+  transform: translateX(-50%) scale(1.3);
+  z-index: 10;
+}
+
+.sun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle, #ffd700, #ff8c00);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+  animation: pulse 3s ease-in-out infinite;
+  cursor: pointer;
+  z-index: 10;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.mercury { width: 6px; height: 6px; background: #8c7853; }
+.venus { width: 8px; height: 8px; background: #ffc649; }
+.earth { width: 10px; height: 10px; background: linear-gradient(45deg, #1e90ff, #228b22); }
+.mars { width: 8px; height: 8px; background: #cd5c5c; }
+.jupiter { width: 18px; height: 18px; background: linear-gradient(45deg, #daa520, #b8860b); }
+.saturn { width: 15px; height: 15px; background: #fad5a5; position: relative; }
+.uranus { width: 12px; height: 12px; background: #4fd0e4; }
+.neptune { width: 10px; height: 10px; background: #4169e1; }
+
+.saturn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140%;
+  height: 140%;
+  border: 2px solid rgba(250, 213, 165, 0.6);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Card do Login - RESPONSIVO */
+.loginCard {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+/* Inputs */
+.input {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(5px);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.input:focus {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+/* Botão principal */
+.submitButton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000000;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.submitButton:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+}
+
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Botões sociais */
+.socialButton {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(5px);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.socialButton:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Canvas partículas */
+.loginWrapper canvas {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* RESPONSIVIDADE ESPECÍFICA */
+
+/* Desktop Grande - Sistema Solar visível, formulário sem card */
+@media (min-width: 1031px) {
+  .loginWrapper {
+    padding-top: 120px;
+  }
+  
+  .loginCard {
+    background: transparent !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .loginCard:hover {
+    background: transparent !important;
+    border: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Tablet/Laptop - Sistema Solar oculto, formulário com card */
+@media (max-width: 1030px) {
+  .solarSystemLogin {
+    display: none !important;
+  }
+  
+  .loginWrapper {
+    padding-top: 140px; 
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .loginCard {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(10px) !important;
+    padding: 2rem !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  }
+  
+  .loginCard:hover {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .loginWrapper {
+    padding-top: 130px; 
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .loginCard {
+    max-width: 100% !important;
+    padding: 1.5rem !important;
+    border-radius: 1rem !important;
+  }
+  
+  .input {
+    padding: 0.875rem 2rem 0.875rem 2rem;
+    font-size: 16px; /* Evita zoom no iOS */
+  }
+  
+  .submitButton {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  .socialButton {
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+  .loginWrapper {
+    padding-top: 90px; 
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .loginCard {
+    padding: 1rem !important;
+    border-radius: 0.75rem !important;
+  }
+  
+  .input {
+    padding: 0.75rem 1.5rem 0.75rem 1.5rem;
+    font-size: 16px;
+  }
+  
+  .submitButton {
+    padding: 0.875rem;
+    font-size: 0.95rem;
+  }
+  
+  .socialButton {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Ajustes para Sistema Solar em diferentes tamanhos */
+@media (min-width: 1031px) and (max-width: 1200px) {
+  .solarSystemLogin {
+    width: 400px;
+    height: 400px;
+  }
+  
+  .orbit1 { width: 50px; height: 50px; }
+  .orbit2 { width: 75px; height: 75px; }
+  .orbit3 { width: 100px; height: 100px; }
+  .orbit4 { width: 125px; height: 125px; }
+  .orbit5 { width: 160px; height: 160px; }
+  .orbit6 { width: 200px; height: 200px; }
+  .orbit7 { width: 240px; height: 240px; }
+  .orbit8 { width: 280px; height: 280px; }
+  
+  .sun { width: 25px; height: 25px; }
+  .mercury { width: 5px; height: 5px; }
+  .venus { width: 7px; height: 7px; }
+  .earth { width: 8px; height: 8px; }
+  .mars { width: 7px; height: 7px; }
+  .jupiter { width: 15px; height: 15px; }
+  .saturn { width: 12px; height: 12px; }
+  .uranus { width: 10px; height: 10px; }
+  .neptune { width: 8px; height: 8px; }
+}
+
+/* Ajustes para altura baixa */
+@media (max-height: 700px) {
+  .loginWrapper {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  
+  .solarSystemLogin {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+/* Orientação landscape em mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .loginWrapper {
+    padding-top: 100px; 
+    padding-bottom: 40px;
+  }
+  
+  .loginCard {
+    padding: 1rem !important;
+  }
+}
