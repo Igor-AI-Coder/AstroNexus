@@ -5,11 +5,11 @@ import Particles from "../../components/Particles/Particles";
 import styles from "./Login.module.css";
 
 const Login = () => {
-  const [isSignUp, setIsSignUp] = useState(false); // Estado para alternar entre login e cadastro
+  const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    confirmPassword: "" // Só usado no cadastro
+    confirmPassword: ""
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -20,7 +20,6 @@ const Login = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
-    // Limpar erro quando usuário digitar
     if (error) setError("");
   };
 
@@ -29,7 +28,6 @@ const Login = () => {
     setIsLoading(true);
     setError("");
 
-    // Validações para cadastro
     if (isSignUp) {
       if (formData.password !== formData.confirmPassword) {
         setError("As senhas não coincidem");
@@ -48,19 +46,27 @@ const Login = () => {
       setIsLoading(false);
       
       if (isSignUp) {
-        // Simular sucesso no cadastro
         alert("Conta criada com sucesso! Agora você pode fazer login.");
-        setIsSignUp(false); // Voltar para tela de login
+        setIsSignUp(false);
         setFormData({ email: formData.email, password: "", confirmPassword: "" });
       } else {
-        // Simular sucesso no login
         alert("Login realizado com sucesso!");
       }
     }, 2000);
   };
 
-  const toggleMode = () => {
-    setIsSignUp(!isSignUp);
+  const toggleMode = (e) => {
+    e?.preventDefault();
+    e?.stopPropagation();
+    
+    console.log('Toggle mode triggered:', { currentMode: isSignUp, newMode: !isSignUp });
+    
+    setIsSignUp(prevState => {
+      const newState = !prevState;
+      console.log('State changing from', prevState, 'to', newState);
+      return newState;
+    });
+    
     setFormData({ email: "", password: "", confirmPassword: "" });
     setError("");
   };
@@ -68,7 +74,7 @@ const Login = () => {
   useEffect(() => {
     const starsBg = document.getElementById("login-stars-bg");
     if (starsBg && starsBg.children.length === 0) {
-      const numStars = windowWidth < 768 ? 50 : 100; // Menos estrelas em mobile
+      const numStars = windowWidth < 768 ? 50 : 100;
       for (let i = 0; i < numStars; i++) {
         let star = document.createElement("div");
         star.className = styles.stars;
@@ -87,6 +93,14 @@ const Login = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [windowWidth]);
+
+  useEffect(() => {
+    const canvas = document.querySelector('canvas');
+    if (canvas) {
+      canvas.style.pointerEvents = 'none';
+      canvas.style.zIndex = '1';
+    }
+  }, []);
 
   const showSolarSystem = windowWidth > 1030;
 
@@ -119,7 +133,7 @@ const Login = () => {
               justifyItems: 'center'
             }}>
               
-              {/* Sistema Solar - Só aparece acima de 1030px */}
+              {/* Sistema Solar */}
               {showSolarSystem && (
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                   <div className={styles.solarSystemLogin}>
@@ -152,12 +166,13 @@ const Login = () => {
                 </div>
               )}
 
-              {/* Formulário de Login/Cadastro */}
+              {/* Formulário */}
               <div style={{ 
                 width: '100%', 
                 maxWidth: showSolarSystem ? '28rem' : '100%', 
                 position: 'relative', 
-                margin: '0 auto' 
+                margin: '0 auto',
+                zIndex: 20
               }}>
                 <div className={styles.loginCard}>
                   {/* Header Section */}
@@ -217,7 +232,7 @@ const Login = () => {
                   <div style={{ 
                     padding: windowWidth <= 480 ? '0 1rem 1.5rem' : '0 2rem 2rem' 
                   }}>
-                    {/* Mostrar erro se houver */}
+                    {/* Error Display */}
                     {error && (
                       <div style={{
                         background: 'rgba(239, 68, 68, 0.1)',
@@ -318,7 +333,7 @@ const Login = () => {
                         </div>
                       </div>
 
-                      {/* Confirm Password Field - Só aparece no cadastro */}
+                      {/* Confirm Password - Only in signup */}
                       {isSignUp && (
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                           <label htmlFor="confirmPassword" style={{ 
@@ -360,7 +375,7 @@ const Login = () => {
                         </div>
                       )}
 
-                      {/* Options - Só no login */}
+                      {/* Login Options */}
                       {!isSignUp && (
                         <div style={{ 
                           display: 'flex', 
@@ -398,6 +413,7 @@ const Login = () => {
                         type="submit"
                         disabled={isLoading}
                         className={styles.submitButton}
+                        style={{ position: 'relative', zIndex: 25 }}
                       >
                         {isLoading ? (
                           <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -420,7 +436,7 @@ const Login = () => {
                       </button>
                     </form>
 
-                    {/* Divider - Só no login */}
+                    {/* Social Login - Only in login */}
                     {!isSignUp && (
                       <div style={{ marginTop: windowWidth <= 480 ? '1rem' : '1.5rem' }}>
                         <div style={{ position: 'relative' }}>
@@ -436,7 +452,6 @@ const Login = () => {
                           </div>
                         </div>
 
-                        {/* Social Login */}
                         <div style={{ 
                           marginTop: '1rem', 
                           display: 'grid', 
@@ -467,10 +482,11 @@ const Login = () => {
                       </div>
                     )}
 
-                    {/* Toggle Link */}
                     <div style={{ 
                       marginTop: windowWidth <= 480 ? '1rem' : '1.5rem', 
-                      textAlign: 'center' 
+                      textAlign: 'center',
+                      position: 'relative',
+                      zIndex: 25
                     }}>
                       <p style={{ 
                         fontSize: windowWidth <= 480 ? '0.8rem' : '0.875rem', 
@@ -478,7 +494,9 @@ const Login = () => {
                       }}>
                         {isSignUp ? 'Já tem uma conta?' : 'Não tem uma conta?'}{' '}
                         <button 
+                          type="button"
                           onClick={toggleMode}
+                          onTouchEnd={toggleMode}
                           style={{ 
                             fontWeight: '500', 
                             color: 'white', 
@@ -486,7 +504,11 @@ const Login = () => {
                             transition: 'color 0.3s',
                             background: 'none',
                             border: 'none',
-                            cursor: 'pointer'
+                            cursor: 'pointer',
+                            padding: '0.25rem 0.5rem',
+                            borderRadius: '0.25rem',
+                            position: 'relative',
+                            zIndex: 30
                           }}
                         >
                           {isSignUp ? 'Fazer login' : 'Cadastre-se gratuitamente'}
@@ -496,7 +518,7 @@ const Login = () => {
                   </div>
                 </div>
 
-                {/* Additional Security Info */}
+                {/* Security Info */}
                 {!showSolarSystem && (
                   <div style={{ marginTop: '1rem', textAlign: 'center' }}>
                     <p style={{ 
