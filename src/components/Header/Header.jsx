@@ -143,6 +143,14 @@ const Header = ({ showCartIcon = false, cartItemsCount = 0 }) => {
                   <i className="fas fa-shopping-cart"></i>
                   Carrinho
                 </Link>
+                <Link
+                  to="/contato"
+                  className={styles.dropdownLink}
+                  onClick={closeDropdown}
+                >
+                  <i className="fas fa-envelope"></i>
+                  Contato
+                </Link>
               </div>
             </li>
             <li className={styles.navItem}>
