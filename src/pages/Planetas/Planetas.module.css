@@ -4,6 +4,7 @@
 .planetasPage {
   font-family: "Space Grotesk", sans-serif;
   background: #000000;
+  min-height: 100vh;
 }
 
 .fontOrbitron {
@@ -20,6 +21,7 @@
   z-index: -1;
   overflow: hidden;
   background: #000000;
+  will-change: auto; /* Otimização de performance */
 }
 
 .stars {

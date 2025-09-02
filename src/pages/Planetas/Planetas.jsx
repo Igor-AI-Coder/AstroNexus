@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import styles from "./Planetas.module.css";
-import "./Planetas.tailwind.css";
 
 const Planetas = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -12,6 +11,7 @@ const Planetas = () => {
   const [quizFinished, setQuizFinished] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showNext, setShowNext] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // Perguntas do quiz
   const questions = [
@@ -62,43 +62,17 @@ const Planetas = () => {
     },
   ];
 
-  // Adicionar Tailwind CSS via CDN
-  useEffect(() => {
-    const tailwindScript = document.createElement("script");
-    tailwindScript.src = "https://cdn.tailwindcss.com";
-    document.head.appendChild(tailwindScript);
-
-    // Configurar Tailwind
-    const configScript = document.createElement("script");
-    configScript.innerHTML = `
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              'orbitron': ['Orbitron', 'monospace'],
-              'space': ['Space Grotesk', 'sans-serif']
-            }
-          }
-        }
-      }
-    `;
-    document.head.appendChild(configScript);
-
-    return () => {
-      if (document.head.contains(tailwindScript)) {
-        document.head.removeChild(tailwindScript);
-      }
-      if (document.head.contains(configScript)) {
-        document.head.removeChild(configScript);
-      }
-    };
-  }, []);
-
   // Gerar estrelas no fundo
   useEffect(() => {
+    // Verificar se estamos no cliente (browser)
+    if (typeof window === "undefined") return;
+
     const starsBg = document.getElementById("stars-bg");
     if (starsBg && starsBg.children.length === 0) {
+      // Criar fragment para melhor performance
+      const fragment = document.createDocumentFragment();
       const numStars = 150;
+
       for (let i = 0; i < numStars; i++) {
         let star = document.createElement("div");
         star.className = styles.stars;
@@ -106,9 +80,18 @@ const Planetas = () => {
         star.style.left = `${Math.random() * 100}%`;
         star.style.animationDelay = `${Math.random() * 3}s`;
         star.style.animationDuration = `${2 + Math.random() * 3}s`;
-        starsBg.appendChild(star);
+        fragment.appendChild(star);
       }
+
+      starsBg.appendChild(fragment);
     }
+
+    // Marcar como carregado após um pequeno delay para garantir que tudo foi renderizado
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, []);
 
   // Scroll suave para planeta
@@ -164,7 +147,13 @@ const Planetas = () => {
   };
 
   return (
-    <div className={`${styles.planetasPage} bg-black text-white`}>
+    <div
+      className={`${
+        styles.planetasPage
+      } bg-black text-white transition-opacity duration-300 ${
+        isLoaded ? "opacity-100" : "opacity-0"
+      }`}
+    >
       <div className={styles.starsBg} id="stars-bg"></div>
 
       <Header />
